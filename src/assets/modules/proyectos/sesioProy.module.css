@@ -1,0 +1,305 @@
+/* ==========================================================================
+   Animations & Transitions
+   ========================================================================== */
+
+/* Used for elements that animate on scroll into view */
+.scrollAnimate {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 520ms cubic-bezier(.2,.9,.3,1), transform 520ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Toggled via JS to trigger the transition */
+.inView {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* When a card is in view, its image scales up */
+.inView img {
+  transform: scale(1.08);
+  transition: transform 700ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Base state for images to ensure smooth animation */
+img {
+  transform: scale(1);
+  transition: transform 700ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Keyframe animation for elements fading up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fadeUp {
+  opacity: 0;
+  transform: translateY(10px);
+  animation-name: fadeUp;
+  animation-duration: 520ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.2,.9,.3,1);
+}
+
+/* Animation for React-Select dropdown menu */
+@keyframes rsFadeDown {
+  from { opacity: 0; transform: translateY(-8px) scale(0.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   Component-Specific Styles
+   ========================================================================== */
+
+/* Custom button style */
+.uiverse-btn {
+  --btn-default-bg: rgb(41, 41, 41);
+  --btn-padding: 15px 20px;
+  --btn-hover-bg: rgb(51, 51, 51);
+  --btn-transition: .3s;
+  --btn-letter-spacing: .1rem;
+  --btn-shadow-color: rgba(0, 0, 0, 0.133);
+  --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+  --hover-btn-color: #FAC921;
+  --default-btn-color: #fff;
+  --font-size: 16px;
+  --font-weight: 600;
+  --font-family: 'Arial', sans-serif;
+
+  box-sizing: border-box;
+  padding: var(--btn-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--default-btn-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  font-size: var(--font-size);
+  background: var(--btn-default-bg);
+  border: none;
+  cursor: pointer;
+  transition: var(--btn-transition);
+  overflow: hidden;
+  box-shadow: var(--btn-shadow);
+  border-radius: 8px;
+}
+
+.uiverse-btn span {
+  letter-spacing: var(--btn-letter-spacing);
+  transition: var(--btn-transition);
+  box-sizing: border-box;
+  position: relative;
+  background: inherit;
+}
+
+.uiverse-btn:hover {
+  background: var(--btn-hover-bg);
+  transform: translateY(-3px);
+}
+
+.uiverse-btn:hover span {
+  color: var(--hover-btn-color);
+}
+
+/* Styles for React-Select component */
+.rs__menu {
+  animation: rsFadeDown 220ms cubic-bezier(.2,.9,.3,1);
+  transform-origin: top center;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rs__menu-list {
+  padding: 6px 8px;
+}
+
+.rs__option {
+  transition: background-color 140ms ease, color 140ms ease;
+  border-radius: 8px;
+}
+
+.rs__option--is-focused {
+  background: #f3f4f6;
+}
+
+.rs__option--is-selected {
+  background: #111827;
+  color: #fff;
+}
+
+/* Micro-interaction for pagination buttons */
+.page-btn {
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.page-btn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* Animation delay helpers */
+.delay-0 { animation-delay: 0ms; }
+.delay-1 { animation-delay: 80ms; }
+.delay-2 { animation-delay: 160ms; }
+.delay-3 { animation-delay: 240ms; }
+.delay-4 { animation-delay: 320ms; }
+.delay-5 { animation-delay: 400ms; }
+.delay-6 { animation-delay: 480ms; }
+
+/* Transition delay helpers */
+.tDelay0 { transition-delay: 0ms; }
+.tDelay1 { transition-delay: 80ms; }
+.tDelay2 { transition-delay: 160ms; }
+.tDelay3 { transition-delay: 240ms; }
+
+/* ==========================================================================
+   Project Grid - Uniform Height Solution
+   ========================================================================== */
+
+/* Contenedor principal */
+.projectContentWrapper {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+/* Grid principal para las cards */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Cada card tendrá la misma altura */
+.projectsGrid > * {
+  height: 100%;
+}
+
+/* Estilo uniforme para todas las cards */
+.projectCard {
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(.2,.9,.3,1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+/* Contenedor de imagen uniforme */
+.projectCard .imageContainer {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Imagen dentro del contenedor */
+.projectCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover en imagen */
+.projectCard:hover img {
+  transform: scale(1.05);
+}
+
+/* Contenido de la card */
+.projectCard .cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem 1rem;
+  min-height: 140px;
+}
+
+/* Título con altura fija */
+.projectCard .cardTitle {
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Animaciones de entrada */
+.fromLeft {
+  transform: translateX(-80px) translateY(40px);
+}
+
+.fromRight {
+  transform: translateX(80px) translateY(40px);
+}
+
+.projectCard.inview {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .projectContentWrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .projectsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .projectCard .imageContainer {
+    height: 160px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .projectContentWrapper {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .projectCard {
+    max-width: 100%;
+  }
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1.5rem;
+  }
+
+  .projectsGrid > * {
+    width: 100%;
+    max-width: 400px;
+  }
+}
