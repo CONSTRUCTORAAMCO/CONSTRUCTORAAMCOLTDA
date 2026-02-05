@@ -18,6 +18,12 @@ import imgTibabuyes from "../../img/cdc-tibabuyes-suba-principal.png";
 import imgcdotacion from "../../img/construccion-dotacion-fase-iii-grupo-aereo-principal.jpg";
 import imgContraloriaManizales from "../../img/CONTRALORIAMANIZALES principal.jpg";
 import imgAropuerto from "../../img/AEROPUERTO INTERNACIONAL EL EDEN principal.jpeg";
+import imgAltamira from "../../img/altamira-300x139.jpg";
+import imgAcropolis from "../../img/acropolis-300x187.jpg";
+import imgTorres from "../../img/torres-de-granada-300x165.jpg";
+import imgNovum from "../../img/Novum-300x245.jpg";
+import imgMedicina from "../../img/2-CENTRO-DE-MEDICINA-AEROESPACIA-CEMAE principal.jpg";
+
 
 export const proyectos = [
   { id: 1, title: "Bodega Corabastos", category: "Infraestructura", location: "Bogotá", image: imgBodega, description: "Descripción detallada del proyecto Bodega Popular Corabastos.", images: [imgBodega] },
@@ -40,4 +46,10 @@ export const proyectos = [
   { id: 18, title: "Dotación FAC Fase III", category: "Infraestructura", location: "Cali", image: imgcdotacion, description: "Descripción detallada del proyecto Construcción Dotación Fase III Grupo Aéreo.", images: [imgcdotacion] },
   { id: 19, title: "Contraloría Manizales", category: "Infraestructura", location: "Manizales", image: imgContraloriaManizales, description: "Descripción detallada del proyecto Contraloría Manizales.", images: [imgContraloriaManizales] },
   { id: 20, title: "Aeropuerto El Edén", category: "Infraestructura", location: "Armenia", image: imgAropuerto, description: "Descripción detallada del proyecto Aeropuerto Internacional El Edén.", images: [imgAropuerto] },
+  { id: 21, title: "Altamira", category: "Residencial", location: "Bogotá", image: imgAltamira, description: "Descripción detallada del proyecto Altamira.", images: [imgAltamira] },
+  { id: 22, title: "Acropolis", category: "Residencial", location: "Bogotá", image: imgAcropolis, description: "Descripción detallada del proyecto Acropolis.", images: [imgAcropolis] },
+  { id: 23, title: "Torres de Granada", category: "Residencial", location: "Bogotá", image: imgTorres, description: "Descripción detallada del proyecto Torres de Granada.", images: [imgTorres] },
+  { id: 24, title: "Novum", category: "Residencial", location: "Bogotá", image: imgNovum, description: "Descripción detallada del proyecto Novum.", images: [imgNovum] },
+  { id: 25, title: "Medicina Aeroespacial CEMAE", category: "Infraestructura", location: "Bogotá", image: imgMedicina, description: "Descripción detallada del proyecto Medicina Aeroespacial CEMAE.", images: [imgMed] },
+
 ];
