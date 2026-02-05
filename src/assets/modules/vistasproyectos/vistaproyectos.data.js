@@ -212,12 +212,6 @@ export const proyectos = [
     description: "Es un proyecto arquitectónico que combina seguridad y funcionalidad...",
     image: imgManizales,
   },
-    {
-    id: 19,
-    title: "Contraloría Manizales",
-    description: "Es un proyecto arquitectónico que combina seguridad y funcionalidad...",
-    image: imgManizales,
-  },
   {
     id: 20,
     title: "Aeropuerto El Edén",

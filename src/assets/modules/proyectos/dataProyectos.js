@@ -50,6 +50,6 @@ export const proyectos = [
   { id: 22, title: "Acropolis", category: "Residencial", location: "Bogotá", image: imgAcropolis, description: "Descripción detallada del proyecto Acropolis.", images: [imgAcropolis] },
   { id: 23, title: "Torres de Granada", category: "Residencial", location: "Bogotá", image: imgTorres, description: "Descripción detallada del proyecto Torres de Granada.", images: [imgTorres] },
   { id: 24, title: "Novum", category: "Residencial", location: "Bogotá", image: imgNovum, description: "Descripción detallada del proyecto Novum.", images: [imgNovum] },
-  { id: 25, title: "Medicina Aeroespacial CEMAE", category: "Infraestructura", location: "Bogotá", image: imgMedicina, description: "Descripción detallada del proyecto Medicina Aeroespacial CEMAE.", images: [imgMed] },
+  { id: 25, title: "Medicina Aeroespacial CEMAE", category: "Infraestructura", location: "Bogotá", image: imgMedicina, description: "Descripción detallada del proyecto Medicina Aeroespacial CEMAE.", images: [imgMedicina] },
 
 ];

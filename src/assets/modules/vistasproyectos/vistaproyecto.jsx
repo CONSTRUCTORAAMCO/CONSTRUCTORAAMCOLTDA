@@ -3,7 +3,6 @@ import { proyectos } from "./vistaproyectos.data";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import { useState } from "react";
-
 import VideoPlayer from './VideoPlayer';
 
 const VistaProyecto = () => {
