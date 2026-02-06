@@ -19,6 +19,7 @@ const EntreCalles = () => {
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,7 +56,7 @@ const EntreCalles = () => {
     {
       id: 1,
       title: "Vista Principal del Edificio (Derechos de autor Bher President @Quantum-AIP LLC)",
-      description: "Diseño arquitectónico innovador con tecnología 3D y materiales de vanguardia ",
+      description: "Diseño arquitectónico innovador con tecnología 3D y materiales de vanguardia",
       category: "Arquitectura",
       image: edificioImage
     },
@@ -129,24 +130,32 @@ const EntreCalles = () => {
   const openModal = (index) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
+    setModalImageLoaded(false);
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setModalImageLoaded(false);
     document.body.style.overflow = 'auto';
   };
 
   const goToPrevious = () => {
+    setModalImageLoaded(false);
     setSelectedImageIndex(prev => 
       prev === 0 ? projectImages.length - 1 : prev - 1
     );
   };
 
   const goToNext = () => {
+    setModalImageLoaded(false);
     setSelectedImageIndex(prev => 
       prev === projectImages.length - 1 ? 0 : prev + 1
     );
+  };
+
+  const handleImageLoad = () => {
+    setModalImageLoaded(true);
   };
 
   // Cerrar con tecla ESC
@@ -268,7 +277,7 @@ const EntreCalles = () => {
                 <div className={styles.statItem}>
                   <Building2 className={styles.statIcon} />
                   <div className={styles.statContent}>
-                    <div className={styles.statNumber}>75</div>
+                    <div className={styles.statNumber}>100</div>
                     <div className={styles.statLabel}>Niveles de innovación</div>
                   </div>
                 </div>
@@ -324,7 +333,7 @@ const EntreCalles = () => {
             </div>
           </div>
 
-          {/* CARACTERÍSTICAS PRINCIPALES */}
+          {/* CARACTERÍSTICAS PRINCIPALES - 4 EN FILA EN PC */}
           <div 
             ref={el => sectionsRef.current[2] = el}
             className={styles.sectionWrapper}
@@ -346,7 +355,7 @@ const EntreCalles = () => {
             </div>
           </div>
 
-          {/* GALERÍA DE IMÁGENES MEJORADA */}
+          {/* GALERÍA DE IMÁGENES MEJORADA - ÚLTIMA CARD CENTRADA */}
           <div 
             ref={el => sectionsRef.current[3] = el}
             className={styles.sectionWrapper}
@@ -486,32 +495,71 @@ const EntreCalles = () => {
         </div>
       </div>
 
-      {/* MODAL DE GALERÍA MEJORADO */}
+      {/* MODAL DE GALERÍA MEJORADO - COMPLETAMENTE RESPONSIVO */}
       {isModalOpen && selectedImageIndex !== null && (
         <div className={styles.modalOverlay} onClick={closeModal}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            {/* Botón cerrar - SIEMPRE VISIBLE */}
-            <button className={styles.closeButton} onClick={closeModal}>
+          <div 
+            className={styles.modalContent} 
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: 'calc(100% - 2rem)',
+              maxHeight: 'calc(100% - 2rem)',
+              margin: 'auto'
+            }}
+          >
+            {/* Botón cerrar - MÁS GRANDE */}
+            <button 
+              className={styles.closeButton} 
+              onClick={closeModal}
+              aria-label="Cerrar modal"
+            >
               <X size={24} />
             </button>
             
-            {/* Contenedor de la imagen con tamaño fijo */}
+            {/* Contenedor de la imagen completamente responsivo */}
             <div className={styles.modalImageContainer}>
+              {!modalImageLoaded && (
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  color: 'white',
+                  fontSize: '1rem'
+                }}>
+                  Cargando...
+                </div>
+              )}
+              
               <img 
                 src={projectImages[selectedImageIndex].image} 
                 alt={projectImages[selectedImageIndex].title}
                 className={styles.modalImage}
+                onLoad={handleImageLoad}
+                style={{
+                  opacity: modalImageLoaded ? 1 : 0,
+                  transition: 'opacity 0.3s ease'
+                }}
               />
-              {/* Controles de navegación - AHORA DENTRO DEL CONTENEDOR DE IMAGEN */}
-              <button className={`${styles.navButton} ${styles.prevButton}`} onClick={goToPrevious}>
-                <ChevronLeft size={28} />
+              
+              {/* Controles de navegación - MÁS GRANDES */}
+              <button 
+                className={`${styles.navButton} ${styles.prevButton}`} 
+                onClick={goToPrevious}
+                aria-label="Imagen anterior"
+              >
+                <ChevronLeft size={24} />
               </button>
               
-              <button className={`${styles.navButton} ${styles.nextButton}`} onClick={goToNext}>
-                <RightIcon size={28} />
+              <button 
+                className={`${styles.navButton} ${styles.nextButton}`} 
+                onClick={goToNext}
+                aria-label="Siguiente imagen"
+              >
+                <RightIcon size={24} />
               </button>
 
-              {/* Indicador de imágenes - AHORA DENTRO DEL CONTENEDOR DE IMAGEN */}
+              {/* Indicador de imágenes */}
               <div className={styles.imageCounter}>
                 <span className={styles.currentIndex}>{selectedImageIndex + 1}</span>
                 <span className={styles.totalImages}> / {projectImages.length}</span>

@@ -631,10 +631,10 @@ body {
   font-size: clamp(0.95rem, 1.5vw, 1rem);
 }
 
-/* Características */
+/* Características - CORREGIDO PARA MANTENER 4 EN FILA */
 .featuresGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
@@ -684,10 +684,10 @@ body {
   font-size: clamp(0.95rem, 1.5vw, 1rem);
 }
 
-/* GALERÍA MEJORADA */
+/* GALERÍA MEJORADA - CORREGIDO PARA CENTRAR ÚLTIMA CARD */
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -771,7 +771,7 @@ body {
 /* Especificaciones */
 .specsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -904,7 +904,7 @@ body {
   margin: 0 auto;
 }
 
-/* ===== MODAL DE GALERÍA MEJORADO ===== */
+/* ===== MODAL DE GALERÍA MEJORADO - RESPONSIVO COMPLETO ===== */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -919,12 +919,11 @@ body {
   animation: fadeIn 0.3s ease;
   padding: 1rem;
   backdrop-filter: blur(10px);
+  overflow-y: auto; /* Permite scroll si es necesario */
 }
 
 .modalContent {
   position: relative;
-  max-width: min(1200px, 95vw);
-  max-height: min(900px, 90vh);
   background: #111;
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -933,9 +932,13 @@ body {
   flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 1200px;
+  max-height: 95vh; /* Limita la altura máxima */
+  margin: auto;
 }
 
-/* Botón cerrar - visible en todos los dispositivos */
+/* Botón cerrar - visible en todos los dispositivos - MÁS GRANDE */
 .closeButton {
   position: absolute;
   top: 1.5rem;
@@ -943,14 +946,14 @@ body {
   background: rgba(255, 255, 255, 0.15);
   border: none;
   color: white;
-  width: clamp(44px, 6vw, 52px);
-  height: clamp(44px, 6vw, 52px);
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   display: flex !important;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 20;
+  z-index: 100;
   transition: all var(--transition-base);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -961,31 +964,32 @@ body {
   transform: rotate(90deg) scale(1.1);
 }
 
-/* Contenedor de imagen mejorado */
+/* Contenedor de imagen mejorado - COMPLETAMENTE RESPONSIVO */
 .modalImageContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.5rem;
   flex: 1;
   overflow: hidden;
-  min-height: 400px;
+  min-height: 350px;
   position: relative;
   background: #000;
+  width: 100%;
 }
 
 .modalImage {
-  max-width: 65%;
-  max-height: 100%;
   width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 70vh; /* Limita la altura de la imagen */
   object-fit: contain;
   border-radius: var(--radius-lg);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .imageInfo {
-  padding: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1rem, 2vw, 1.5rem);
   background: #1a1a1a;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
@@ -993,7 +997,7 @@ body {
 
 .imageTitle {
   color: white;
-  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   margin-bottom: 0.5rem;
   font-weight: 700;
   line-height: 1.3;
@@ -1001,7 +1005,7 @@ body {
 
 .imageDescription {
   color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -1010,13 +1014,13 @@ body {
   display: inline-block;
   background: var(--accent);
   color: var(--gray-900);
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.2rem;
   border-radius: var(--radius-full);
   font-weight: 600;
   font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
-/* Controles de navegación - visibles en todos los dispositivos */
+/* Controles de navegación - visibles en todos los dispositivos - MÁS GRANDES */
 .navButton {
   position: absolute;
   top: 50%;
@@ -1024,8 +1028,8 @@ body {
   background: rgba(255, 255, 255, 0.15);
   border: none;
   color: white;
-  width: clamp(48px, 8vw, 64px);
-  height: clamp(48px, 8vw, 64px);
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   display: flex !important;
   align-items: center;
@@ -1034,7 +1038,7 @@ body {
   transition: all var(--transition-base);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 20;
+  z-index: 100;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -1052,40 +1056,19 @@ body {
   right: 1.5rem;
 }
 
-/* Asegurar visibilidad en móviles */
-@media (max-width: 768px) {
-  .navButton {
-    width: 44px !important;
-    height: 44px !important;
-  }
-  
-  .closeButton {
-    width: 40px !important;
-    height: 40px !important;
-  }
-  
-  .prevButton {
-    left: 0.75rem !important;
-  }
-  
-  .nextButton {
-    right: 0.75rem !important;
-  }
-}
-
 .imageCounter {
   position: absolute;
-  bottom: 2.5rem;
-  right: 2.5rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   color: white;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   background: rgba(0, 0, 0, 0.6);
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius-full);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 500;
-  z-index: 20;
+  z-index: 100;
 }
 
 .currentIndex {
@@ -1111,8 +1094,50 @@ body {
     margin-bottom: 6rem;
   }
   
+  /* Grids para tablets */
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .specsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Modal ajustado para tablets */
+  .modalContent {
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+  
+  .modalImageContainer {
+    min-height: 300px;
+    padding: 1.5rem;
+  }
+  
   .modalImage {
-    max-width: 75%;
+    max-height: 65vh;
+  }
+  
+  /* Botones más grandes en tablets */
+  .navButton {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .closeButton {
+    width: 48px;
+    height: 48px;
+  }
+  
+  /* Centrar última card en galería para tablets */
+  .galleryGrid .galleryItem:last-child:nth-child(2n+1) {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
 
@@ -1143,10 +1168,13 @@ body {
     min-height: 500px;
   }
   
+  /* Grids para móviles */
   .galleryGrid,
   .featuresGrid,
   .specsContainer {
     grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .impactGrid {
@@ -1157,56 +1185,47 @@ body {
     padding: 2rem;
   }
   
+  /* Modal para móviles */
+  .modalContent {
+    max-height: 95vh;
+    margin: 0.5rem;
+    border-radius: var(--radius-lg);
+  }
+  
   .modalImageContainer {
     min-height: 250px;
-    padding: 0;
-    background: #000;
+    padding: 1rem;
   }
 
   .modalImage {
-    max-width: 100%;
-    max-height: 50vh;
-    border-radius: 0;
+    max-height: 55vh;
   }
   
+  /* Botones más grandes en móviles */
   .navButton {
-    width: 44px;
-    height: 44px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    z-index: 100;
-    opacity: 1;
-    visibility: visible;
+    width: 48px;
+    height: 48px;
   }
   
   .prevButton {
-    left: 10px !important;
+    left: 1rem;
   }
   
   .nextButton {
-    right: 10px !important;
+    right: 1rem;
   }
 
   .closeButton {
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 100;
-    top: 10px;
-    right: 10px;
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  .modalContent {
-    max-height: 95vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
   }
   
   .imageCounter {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    padding: 0.3rem 0.8rem;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
   }
   
@@ -1261,6 +1280,7 @@ body {
   
   .modalContent {
     max-height: 95vh;
+    border-radius: var(--radius-lg);
   }
   
   .modalImageContainer {
@@ -1268,21 +1288,45 @@ body {
     min-height: 200px;
   }
   
+
   .navButton {
-    width: 50px !important;
-    height: 36px !important;
+    width: 55px;
+    height: 55px;
   }
   
   .closeButton {
-    top: 1rem;
-    right: 1rem;
-    width: 50px !important;
-    height: 36px !important;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 52px;
+    height: 52px;
   }
   
   .modalImage {
-    max-width: 100%;
-    max-height: 45vh;
+    max-height: 50vh;
+  }
+  
+  .imageInfo {
+    padding: 1rem;
+  }
+  
+  .imageTitle {
+    font-size: 1.1rem;
+  }
+  
+  .imageDescription {
+    font-size: 0.85rem;
+  }
+}
+
+/* Ajustes específicos para centrar el último card en galería en PC */
+@media (min-width: 1025px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Centrar el último item (7mo) en galería */
+  .galleryGrid .galleryItem:last-child:nth-child(3n+1) {
+    grid-column: 2 / 3;
   }
 }
 

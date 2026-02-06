@@ -63,10 +63,7 @@ const Propositocarousel = () => {
       }
       const el = carouselRef.current;
       if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
-        el.firstElementChild?.scrollIntoView({
-          behavior: "auto",
-          inline: "center",
-        });
+        el.scrollTo({ left: 0, behavior: "smooth" });
       } else {
         el.scrollBy({ left: scrollAmount, behavior: "smooth" });
       }

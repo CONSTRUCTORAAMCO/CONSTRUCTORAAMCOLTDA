@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Counter from "./Counter";
 import styles from "./Historial.module.css";
 import { useLanguage } from "../../../i18n/LanguageContext";
@@ -10,7 +11,10 @@ const Historial = () => {
       <div className={styles.container}>
         {/* ITEM 1 */}
         <div className={styles.item}>
-          <Counter end={50} />
+          <Counter 
+            end={50} 
+            delay={100}
+          />
           <div
             className={styles.text}
             dangerouslySetInnerHTML={{ __html: t('history.experience') }}
@@ -20,7 +24,10 @@ const Historial = () => {
         {/* ITEM 2 */}
         <div className={styles.item}>
           <div className={styles.million}>
-            <Counter end={1000000} />
+            <Counter 
+              end={10000000} 
+              delay={100}
+            />
             <span className={styles.unit}>m²</span>
           </div>
           <div className={`${styles.text} ${styles.textCompact}`}>
@@ -30,7 +37,10 @@ const Historial = () => {
 
         {/* ITEM 3 */}
         <div className={styles.item}>
-          <Counter end={60} />
+          <Counter 
+            end={60} 
+            delay={100}
+          />
           <div
             className={styles.text}
             dangerouslySetInnerHTML={{ __html: t('history.executed') }}

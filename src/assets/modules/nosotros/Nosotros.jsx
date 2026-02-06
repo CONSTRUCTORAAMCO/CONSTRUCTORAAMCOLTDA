@@ -108,7 +108,7 @@ export default function Nosotros() {
           <div className={styles.statItem}>
             <CheckCircle className={styles.statIcon} />
             <div className={styles.statContent}>
-              <h3 className={styles.statNumber}>1M+</h3>
+              <h3 className={styles.statNumber}>10M+</h3>
               <p className={styles.statLabel}>m² Construidos</p>
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function Nosotros() {
                 <div className={styles.imagenPlaceholder}>
                   <div className={styles.imagenContent}>
                     <User size={120} className={styles.imagenIcon} />
-                    <p className={styles.imagenTexto}>Imagen de Alfredo Moreno</p>
+                    <p className={styles.imagenTexto}>Imagen de Alfredo Muñoz</p>
                   </div>
                 </div>
                 <div className={styles.imagenCaption}>
