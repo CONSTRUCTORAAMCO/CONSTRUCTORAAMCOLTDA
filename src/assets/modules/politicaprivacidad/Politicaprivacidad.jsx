@@ -1,27 +1,20 @@
 import React from "react";
 import styles from "./Politicaprivacidad.module.css";
+import { useLanguage } from "../../../i18n/LanguageContext";
 
 const Politicaprivacidad = () => {
+  const { t } = useLanguage();
   return (
     <main className={styles.container}>
       <header className={styles.header}>
-        <h1>POLÍTICA DE PRIVACIDAD</h1>
-        <h2>CONSTRUCTORA AMCO LTDA</h2>
+        <h1>{t('politicaprivacidad.title')}</h1>
+        <h2>{t('politicaprivacidad.subtitle')}</h2>
       </header>
 
       <section className={styles.section}>
+        <div dangerouslySetInnerHTML={{ __html: t('politicaprivacidad.intro_1') }} />
         <p>
-          Constructora <strong>AMCO LTDA</strong>, con domicilio en Bogotá D.C.,
-          Colombia, en cumplimiento de lo dispuesto en la Ley 1581 de 2012, el
-          Decreto 1377 de 2013 y demás normas que regulan la protección de datos
-          personales, informa a los usuarios de su sitio web la presente Política
-          de Tratamiento de Datos Personales.
-        </p>
-
-        <p>
-          AMCO valora la privacidad de sus usuarios y se compromete a proteger la
-          información personal recolectada, garantizando su uso responsable,
-          seguro y conforme a la ley.
+          {t('politicaprivacidad.intro_2')}
         </p>
       </section>
 
@@ -153,12 +146,81 @@ const Politicaprivacidad = () => {
       </section>
 
       <section className={styles.section}>
-        <h3><strong>10. Aceptación de la política</strong></h3>
-        <p>
-          El uso del sitio web, el envío de información mediante formularios o el
-          contacto vía WhatsApp implica que el usuario ha leído, entendido y
-          aceptado esta Política de Tratamiento de Datos Personales.
-        </p>
+        <h3><strong>{t('politicaprivacidad.sections.1.title')}</strong></h3>
+        <p>{t('politicaprivacidad.sections.1.content')}</p>
+        <ul>
+          {t('politicaprivacidad.sections.1.list', { returnObjects: true }).map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <p>{t('politicaprivacidad.sections.1.footer')}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.2.title')}</strong></h3>
+        <ul>
+          {t('politicaprivacidad.sections.2.list', { returnObjects: true }).map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <p>{t('politicaprivacidad.sections.2.footer')}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.3.title')}</strong></h3>
+        <ul>
+          {t('politicaprivacidad.sections.3.list', { returnObjects: true }).map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <p>{t('politicaprivacidad.sections.3.footer')}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.4.title')}</strong></h3>
+        {t('politicaprivacidad.sections.4.content', { returnObjects: true }).map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.5.title')}</strong></h3>
+        <p>{t('politicaprivacidad.sections.5.content')}</p>
+        <ul>
+          {t('politicaprivacidad.sections.5.list', { returnObjects: true }).map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+        <p>{t('politicaprivacidad.sections.5.footer')}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.6.title')}</strong></h3>
+        <ul>
+          {t('politicaprivacidad.sections.6.list', { returnObjects: true }).map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.7.title')}</strong></h3>
+        <p>{t('politicaprivacidad.sections.7.content')}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.8.title')}</strong></h3>
+        <p>{t('politicaprivacidad.sections.8.content')}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.9.title')}</strong></h3>
+        <p>{t('politicaprivacidad.sections.9.content')}</p>
+      </section>
+
+      <section className={styles.section}>
+        <h3><strong>{t('politicaprivacidad.sections.10.title')}</strong></h3>
+        <p>{t('politicaprivacidad.sections.10.content')}</p>
       </section>
     </main>
   );

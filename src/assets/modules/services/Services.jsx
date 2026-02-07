@@ -40,10 +40,10 @@ export default function Services() {
           {t('services.title')}
         </h2>
         <br />
-        
+
         <div className={styles.twoColumnLayout}>
           {/* COLUMNA IZQUIERDA */}
-          <div 
+          <div
             ref={leftRef}
             className={`${styles.leftColumn} ${isVisible ? styles.slideInLeft : ''}`}
           >
@@ -53,22 +53,22 @@ export default function Services() {
               </h3>
               <div className={styles.accentLine}></div>
             </div>
-            
+
             <div className={styles.contentBox}>
               <p className={styles.paragraph}>
-               {t('services.paragraph')}
+                {t('services.paragraph')}
               </p>
-              
-           
-              
 
-              
-          
+
+
+
+
+
             </div>
           </div>
-          
-          
-          <div 
+
+
+          <div
             ref={rightRef}
             className={`${styles.rightColumn} ${isVisible ? styles.slideInRight : ''}`}
           >
@@ -79,19 +79,11 @@ export default function Services() {
                 {t('services.projects_intro')}
               </p>
             </div>
-            
+
             <div className={styles.projectsGrid}>
-              {[
-                "Centro Comercial Cedritos 151",
-                "Nuevo comando Policía de Bogotá", 
-                "SENA de Bronx",
-                "Bodega Popular Corabastos",
-                "Personería De Bogotá",
-                "Universidad Libre Bogotá",
-                "Gobernación de Cundinamarca"
-              ].map((project, index) => (
-                <div 
-                  key={index} 
+              {t('services.project_list', { returnObjects: true })?.map((project, index) => (
+                <div
+                  key={index}
                   className={styles.projectCard}
                   style={{ animationDelay: `${0.2 + (index * 0.1)}s` }}
                 >
@@ -101,8 +93,8 @@ export default function Services() {
                 </div>
               ))}
             </div>
-            
-       
+
+
           </div>
         </div>
       </div>

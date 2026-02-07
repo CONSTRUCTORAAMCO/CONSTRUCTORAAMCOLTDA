@@ -1,8 +1,11 @@
+// ================= IMPORTS =================
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../assets/components/layout/MainLayout";
 import ScrollToTop from "../assets/components/scrolltotop/ScrollToTop";
 
+// ================= LAZY LOADING =================
+// Carga diferida de componentes para mejorar el rendimiento inicial
 const Home = lazy(() => import("../pages/Home"));
 const Nosotros = lazy(() => import("../pages/Nosotros"));
 const Entrecalles = lazy(() => import("../pages/Entrecalles"));
@@ -22,6 +25,7 @@ const ComunidadesCarousel = lazy(() =>
   }))
 );
 
+// ================= COMPONENT =================
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -36,6 +40,7 @@ function App() {
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/politicaprivacidad" element={<Politicaprivacidad />} />
           <Route path="/tyc" element={<Tyc />} />
+          <Route path="/proyecto/:id" element={<VistasProyecto />} />
           <Route path="/vistaproyecto/:id" element={<VistasProyecto />} />
         </Route>
       </Routes>

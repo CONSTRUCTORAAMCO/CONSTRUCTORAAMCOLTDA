@@ -188,15 +188,41 @@ img {
 .projectCard {
   opacity: 0;
   transition: all 0.7s cubic-bezier(.2,.9,.3,1);
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   background: white;
+  cursor: pointer;
+
+  /* NUEVO */
+  min-width: 0;
+  will-change: transform, opacity;
+  transform: translateZ(0); /* fuerza repaint */
 }
+
+/* Animaciones de entrada */
+.fromLeft, .fromRight {
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(.2,.9,.3,1), opacity 0.7s cubic-bezier(.2,.9,.3,1);
+  will-change: transform, opacity;
+}
+
+.fromLeft {
+  transform: translateX(-20px) translateY(20px); /* menos offset ayuda en móviles */
+}
+
+.fromRight {
+  transform: translateX(20px) translateY(20px);
+}
+
+.projectCard.inview {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
 
 /* Contenedor de imagen uniforme */
 .projectCard .imageContainer {
@@ -290,16 +316,25 @@ img {
   }
 }
 
-/* Small screens */
+/* Mobile fix */
 @media (max-width: 640px) {
   .projectsGrid {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 1.5rem;
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+    justify-items: stretch; /* Forzar ancho completo */
   }
 
   .projectsGrid > * {
-    width: 100%;
-    max-width: 400px;
+    width: 100% !important;
+    max-width: 100% !important; /* Evita que se quede espacio al pellizcar */
+  }
+
+  /* Fix: Eliminar desplazamiento horizontal en móviles para evitar que se traben al hacer zoom/scroll */
+  .fromLeft, .fromRight {
+    transform: translateY(20px) !important;
+  }
+
+  .projectCard.inview {
+    transform: translate(0, 0) !important;
   }
 }

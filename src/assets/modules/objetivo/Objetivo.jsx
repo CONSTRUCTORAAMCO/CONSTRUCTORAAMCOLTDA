@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "./Objetivo.module.css";
+import { useLanguage } from "../../../i18n/LanguageContext";
 
 import imagenProyecto from "../../../assets/img/objetivosocialimg.png";
 import videoBg from "../../../assets/video/21233-316116300_small.mp4";
 
 const Objetivo = () => {
+  const { t } = useLanguage();
   const [isMobile, setIsMobile] = useState(false);
 
   /* Detectar móvil */
@@ -52,13 +54,9 @@ const Objetivo = () => {
         />
 
         <div className={`${styles.glassOverlay} ${styles.reveal}`}>
-          <h2>OBJETO SOCIAL</h2>
+          <h2>{t('objetivo.title')}</h2>
           <p>
-            Constructora AMCO Ltda. se dedica a la planeación, diseño, desarrollo,
-            gerencia y ejecución de proyectos de construcción en los sectores de
-            vivienda, oficinas, comercio, institucional e industrial, bajo
-            estrictas normas técnicas y de calidad, contribuyendo al desarrollo
-            urbano sostenible de Colombia.
+            {t('objetivo.description')}
           </p>
         </div>
       </div>

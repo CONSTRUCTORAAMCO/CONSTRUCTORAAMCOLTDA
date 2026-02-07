@@ -1,9 +1,8 @@
+// ================= IMPORTS =================
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
-import { proyectos as PROJECTS } from "./dataProyectos.js";
-import imgUniversidadLibre from "../../img/bogota-proyectos.jpg";
-import styles from "./sesioProy.module.css";
+// UI Components (MUI)
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import Card from '@mui/material/Card';
@@ -11,6 +10,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+// Local Data & Assets
+import { proyectos as PROJECTS } from "./dataProyectos.js";
+import { useLanguage } from "../../../i18n/LanguageContext";
+import imgUniversidadLibre from "../../img/bogota-proyectos.jpg";
+import styles from "./sesioProy.module.css";
 
 // ================= DATA =================
 const ACTIVITIES = ["Todas", "Residencial", "Comercial", "Infraestructura"];
@@ -49,61 +53,94 @@ const customStyles = {
 };
 
 export default function ProjectsSection2028() {
+  // ================= HOOKS & STATE =================
   const navigate = useNavigate();
+  const { t, language } = useLanguage(); // Obtener el idioma para forzar re-render si cambia
 
+  // Estados para filtros
   const [region, setRegion] = useState("Todos");
   const [city, setCity] = useState("Todos");
   const [activity, setActivity] = useState("Todas");
+  
+  // Estados de UI
   const [page, setPage] = useState(1);
   const [showFilters, setShowFilters] = useState(false);
   const [regionOptionsState, setRegionOptionsState] = useState([{ value: 'Todos', label: 'Departamentos' }]);
-
-  // ===== NUEVO: SCROLL ZOOM HERO =====
   const [scrollY, setScrollY] = useState(0);
-
-  // ===== NUEVO: TYPEWRITER =====
-  const fullText = "Proyectos";
+  
+  // Estado para efecto Typewriter
+  const fullText = t('nav.projects'); // "Proyectos" translated
   const [displayText, setDisplayText] = useState("");
 
+  // ================= LOGIC: DATA PROCESSING =================
+  // Hidratar proyectos con traducciones actuales
+  const translatedProjects = PROJECTS.map(p => ({
+    ...p,
+    title: t(`data_proyectos.${p.id}.title`),
+    category: t(`data_proyectos.${p.id}.category`),
+    location: t(`data_proyectos.${p.id}.location`),
+    description: t(`data_proyectos.${p.id}.description`),
+  }));
+
+  // Generar opciones dinámicas para los selectores basadas en los datos
+  const allCitiesLabel = t('proyectos.filters.all_cities') || "Ciudades"; // Ensure these keys exist or fallback
   const cityOptions = [
-    { value: 'Todos', label: 'Ciudades' },
-    ...Array.from(new Set(PROJECTS.map(p => p.location))).map(c => ({ value: c, label: c }))
+    { value: 'Todos', label: allCitiesLabel },
+    ...Array.from(new Set(translatedProjects.map(p => p.location))).sort().map(c => ({ value: c, label: c }))
   ];
 
-  const filtered = PROJECTS.filter((p) => {
+  const allCategoriesLabel = "Categorías"; // Or translate if key exists
+  const activityOptions = [
+    { value: 'Todas', label: allCategoriesLabel },
+    ...Array.from(new Set(translatedProjects.map(p => p.category))).sort().map(a => ({ value: a, label: a }))
+  ];
+
+  // Lógica de filtrado principal
+  const filtered = translatedProjects.filter((p) => {
     const matchesActivity = activity === "Todas" || p.category === activity;
     const matchesRegion = region === 'Todos' || p.location.toLowerCase().includes(region.toLowerCase());
     const matchesCity = city === 'Todos' || p.location.toLowerCase().includes(city.toLowerCase());
     return matchesActivity && matchesRegion && matchesCity;
   });
 
+  // Paginación: Calcular total de páginas y slice de datos visibles
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const visible = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  // ===== ZOOM SCALE =====
+  // Escala para el efecto zoom en el hero
   const heroScale = 1 + scrollY * 0.0005;
 
+  // ================= EFFECTS =================
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
 
+    // Lógica del efecto de máquina de escribir (Typewriter)
     let i = 0;
+    setDisplayText(""); // Reset typewriter on language change
     const interval = setInterval(() => {
-      setDisplayText(fullText.slice(0, i + 1));
-      i++;
-      if (i === fullText.length) clearInterval(interval);
+      // Simple logic to just show the text, avoiding complex slicing issues for now with re-renders
+      if (i < fullText.length) {
+        setDisplayText(prev => fullText.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(interval);
+      }
     }, 120);
 
+    // Fetch de departamentos de Colombia (API externa)
     fetch('https://api-colombia.com/api/v1/Department')
       .then(res => res.json())
       .then(json => {
         if (Array.isArray(json)) {
           const apiRegions = json.map(d => ({ value: d.name, label: d.name }));
-          const merged = [{ value: 'Todos', label: 'Departamentos' }, ...apiRegions];
+          const allDeptsLabel = t('proyectos.filters.all_depts') || 'Departamentos';
+          const merged = [{ value: 'Todos', label: allDeptsLabel }, ...apiRegions];
           setRegionOptionsState(merged);
         }
       });
 
+    // Inyectar estilos dinámicos para animaciones de entrada
     const styleTag = document.createElement('style');
     styleTag.innerHTML = `
       .inview { opacity: 1 !important; transform: translateY(0) !important; transition: 0.5s; }
@@ -115,8 +152,9 @@ export default function ProjectsSection2028() {
       clearInterval(interval);
       if (styleTag.parentNode) styleTag.parentNode.removeChild(styleTag);
     };
-  }, []);
+  }, [fullText, t]); // Re-run effect when fullText changes (language change)
 
+  // Observer para animar las tarjetas cuando entran en pantalla
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -180,8 +218,8 @@ export default function ProjectsSection2028() {
           {/* MOBILE FILTER BUTTON */}
           <div className="md:hidden flex justify-center mb-8">
             <button onClick={() => setShowFilters(!showFilters)}
-                    className="flex items-center justify-between w-fit min-w-[220px] px-5 py-2.5 border border-black text-black text-sm font-medium transition shadow-none"
-                    style={{ borderRadius: '15px', backgroundColor: 'transparent' }}>
+              className="flex items-center justify-between w-fit min-w-[220px] px-5 py-2.5 border border-black text-black text-sm font-medium transition shadow-none"
+              style={{ borderRadius: '15px', backgroundColor: 'transparent' }}>
               <span>{showFilters ? 'Hide filters' : 'Show filters'}</span>
               <i className="ri-filter-3-line text-lg ml-4 text-black"></i>
             </button>
@@ -199,17 +237,17 @@ export default function ProjectsSection2028() {
             }}
           >
             <Select menuPortalTarget={document.body} classNamePrefix="rs"
-                    value={regionOptionsState.find(o => o.value === region)}
-                    onChange={(o) => { setRegion(o.value); setPage(1); }}
-                    options={regionOptionsState} styles={customStyles} placeholder="Departamentos"/>
+              value={regionOptionsState.find(o => o.value === region)}
+              onChange={(o) => { setRegion(o.value); setPage(1); }}
+              options={regionOptionsState} styles={customStyles} placeholder="Departamentos" />
             <Select menuPortalTarget={document.body} classNamePrefix="rs"
-                    value={cityOptions.find(o => o.value === city)}
-                    onChange={(o) => { setCity(o.value); setPage(1); }}
-                    options={cityOptions} styles={customStyles} placeholder="Ciudades"/>
+              value={cityOptions.find(o => o.value === city)}
+              onChange={(o) => { setCity(o.value); setPage(1); }}
+              options={cityOptions} styles={customStyles} placeholder="Ciudades" />
             <Select menuPortalTarget={document.body} classNamePrefix="rs"
-                    value={activityOptions.find(o => o.value === activity)}
-                    onChange={(o) => { setActivity(o.value); setPage(1); }}
-                    options={activityOptions} styles={customStyles} placeholder="Categorías"/>
+              value={activityOptions.find(o => o.value === activity)}
+              onChange={(o) => { setActivity(o.value); setPage(1); }}
+              options={activityOptions} styles={customStyles} placeholder="Categorías" />
           </div>
 
           <br /><br />
@@ -226,10 +264,9 @@ export default function ProjectsSection2028() {
               <Card
                 key={project.id}
                 data-sr
-                className={`${styles.projectCard} ${
-                  index % 2 === 0 ? styles.fromLeft : styles.fromRight
-                }`}
-                sx={{ 
+                className={`${styles.projectCard} ${index % 2 === 0 ? styles.fromLeft : styles.fromRight
+                  }`}
+                sx={{
                   width: '100%',
                   height: '100%',
                   display: 'flex',
@@ -243,7 +280,7 @@ export default function ProjectsSection2028() {
                     component="img"
                     image={project.image}
                     alt={project.title}
-                    sx={{ 
+                    sx={{
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
@@ -259,11 +296,11 @@ export default function ProjectsSection2028() {
 
                   <Typography variant="body2" color="text.secondary" component="div">
                     <div className="flex items-center gap-2 mb-2">
-                      <i className="ri-briefcase-line text-lg" /> 
+                      <i className="ri-briefcase-line text-lg" />
                       <span><strong>Categoría:</strong> {project.category}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <i className="ri-map-pin-line text-lg" /> 
+                      <i className="ri-map-pin-line text-lg" />
                       <span><strong>Ubicación:</strong> {project.location}</span>
                     </div>
                   </Typography>
@@ -273,7 +310,7 @@ export default function ProjectsSection2028() {
                   <Button
                     variant="outlined"
                     fullWidth
-                    onClick={() => navigate(`/vistaproyecto/${project.id}`)}
+                    onClick={() => navigate(`/proyecto/${project.id}`)}
                     sx={{
                       color: 'black',
                       borderColor: '#f6c400',

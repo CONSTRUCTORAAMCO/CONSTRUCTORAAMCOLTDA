@@ -1,15 +1,18 @@
 import { useEffect, useRef } from "react";
-import { 
-  Building2, Target, Eye, Award, Clock, Leaf, MessageSquare, 
-  Lightbulb, Users, Calendar, CheckCircle, TrendingUp, 
+import {
+  Building2, Target, Eye, Award, Clock, Leaf, MessageSquare,
+  Lightbulb, Users, Calendar, CheckCircle, TrendingUp,
   Home, Briefcase, ShoppingBag, School, Factory,
   User, Quote
 } from "lucide-react";
 import styles from "./Nosotros.module.css";
+import { useLanguage } from "../../../i18n/LanguageContext";
 
 export default function Nosotros() {
-  // Referencias para las animaciones
+  const { t } = useLanguage();
+
   const mainTitleRef = useRef(null);
+  const heroNameRef = useRef(null);
   const fundadorRef = useRef(null);
   const organizacionRef = useRef(null);
   const misionRef = useRef(null);
@@ -23,7 +26,7 @@ export default function Nosotros() {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -35,9 +38,9 @@ export default function Nosotros() {
       });
     }, observerOptions);
 
-    // Observar todos los elementos
     const elements = [
       mainTitleRef.current,
+      heroNameRef.current,
       fundadorRef.current,
       organizacionRef.current,
       misionRef.current,
@@ -49,14 +52,10 @@ export default function Nosotros() {
       ...paragraphRefs.current.filter(Boolean)
     ];
 
-    elements.forEach(el => {
-      if (el) observer.observe(el);
-    });
+    elements.forEach(el => el && observer.observe(el));
 
     return () => {
-      elements.forEach(el => {
-        if (el) observer.unobserve(el);
-      });
+      elements.forEach(el => el && observer.unobserve(el));
     };
   }, []);
 
@@ -69,15 +68,17 @@ export default function Nosotros() {
           <div className={styles.companyLogo}>
             <Building2 size={64} className={styles.logoIcon} />
             <div className={styles.companyName}>
-              <h1 className={styles.companyMainName}>NOSOTROS</h1>
+              <h1 ref={heroNameRef} className={styles.heroTitle}>
+                {t('nosotros.hero.name')}
+              </h1>
               <p className={styles.companySubtitle}>CONSTRUCTORA AMCO LTDA</p>
             </div>
           </div>
           <h2 ref={mainTitleRef} className={styles.heroTitle}>
-            Construyendo el Futuro de Colombia
+            {t('nosotros.hero.title')}
           </h2>
           <p className={styles.heroSubtitle}>
-            Más de 50 años de experiencia, innovación y excelencia en construcción
+            {t('nosotros.hero.subtitle')}
           </p>
         </div>
       </div>
@@ -89,27 +90,27 @@ export default function Nosotros() {
             <Calendar className={styles.statIcon} />
             <div className={styles.statContent}>
               <h3 className={styles.statNumber}>50+</h3>
-              <p className={styles.statLabel}>Años de Experiencia</p>
+              <p className={styles.statLabel}>{t('nosotros.stats.experience')}</p>
             </div>
           </div>
-          
+
           <div className={styles.statDivider}></div>
-          
+
           <div className={styles.statItem}>
             <TrendingUp className={styles.statIcon} />
             <div className={styles.statContent}>
               <h3 className={styles.statNumber}>60+</h3>
-              <p className={styles.statLabel}>Proyectos Ejecutados</p>
+              <p className={styles.statLabel}>{t('nosotros.stats.executed')}</p>
             </div>
           </div>
-          
+
           <div className={styles.statDivider}></div>
-          
+
           <div className={styles.statItem}>
             <CheckCircle className={styles.statIcon} />
             <div className={styles.statContent}>
               <h3 className={styles.statNumber}>10M+</h3>
-              <p className={styles.statLabel}>m² Construidos</p>
+              <p className={styles.statLabel}>{t('nosotros.stats.built')}</p>
             </div>
           </div>
         </div>
@@ -118,73 +119,58 @@ export default function Nosotros() {
         <div ref={fundadorRef} className={styles.fundadorSection}>
           <div className={styles.sectionHeader}>
             <User className={styles.sectionIcon} />
-            <h2 className={styles.sectionTitle}>Historia Alfredo Muñoz Gerente</h2>
+            <h2 className={styles.sectionTitle}>{t('nosotros.founder.title')}</h2>
           </div>
-          
+
           <div className={styles.fundadorContent}>
             {/* Tarjeta izquierda: Texto */}
             <div className={styles.fundadorTexto}>
               <div className={styles.fundadorHeader}>
-                <h3 className={styles.fundadorNombre}>Alfredo Muñoz Roa</h3>
+                <h3 className={styles.fundadorNombre}>{t('nosotros.founder.name')}</h3>
                 <div className={styles.fundadorCargo}>
-                  <span>Fundador </span>
+                  <span>{t('nosotros.founder.role')} </span>
                   <div className={styles.fundadorExperiencia}>
                     <Calendar size={16} />
-                    <span>Más de 50 años de experiencia</span>
+                    <span>{t('nosotros.founder.experience')}</span>
                   </div>
                 </div>
               </div>
-              
+
               <div className={styles.fundadorHistoria}>
-                <p>
-                  Alfredo Muñoz, visionario empresario colombiano, fundó Constructora AMCO en 1973 
-                  con una clara misión: contribuir al desarrollo del país a través de la construcción 
-                  de infraestructura de calidad.
-                </p>
-                <p>
-                  Con una profunda pasión por la ingeniería y el desarrollo urbano, lideró la empresa 
-                  desde sus inicios en Bogotá, estableciendo los principios de excelencia, integridad 
-                  y compromiso social que han guiado a la organización por más de cinco décadas.
-                </p>
-                <p>
-                  Su visión estratégica y dedicación permitieron no solo el crecimiento sostenido de 
-                  AMCO, sino también la creación de AMR Construcciones en el año 2000, expandiendo 
-                  así el alcance y servicios del grupo empresarial.
-                </p>
-                <p>
-                  Hoy, su legado continúa vivo en cada proyecto, inspirando a nuevas generaciones 
-                  de profesionales a construir un mejor futuro para Colombia.
-                </p>
+                <p>{t('nosotros.founder.p1')}</p>
+                <p>{t('nosotros.founder.p2')}</p>
+                <p>{t('nosotros.founder.p3')}</p>
+                <p>{t('nosotros.founder.p4')}</p>
               </div>
             </div>
-            
+
             {/* Tarjeta derecha: Imagen */}
             <div className={styles.fundadorImagen}>
               <div className={styles.imagenContainer}>
                 <div className={styles.imagenPlaceholder}>
                   <div className={styles.imagenContent}>
                     <User size={120} className={styles.imagenIcon} />
-                    <p className={styles.imagenTexto}>Imagen de Alfredo Muñoz</p>
+                    <p className={styles.imagenTexto}>{t('nosotros.founder.caption')}</p>
                   </div>
                 </div>
                 <div className={styles.imagenCaption}>
-                  <span className={styles.captionText}>Alfredo Muñoz - Fundador</span>
-                  <span className={styles.captionYear}>Desde 1973</span>
+                  <span className={styles.captionText}>{t('nosotros.founder.caption_role')}</span>
+                  <span className={styles.captionYear}>{t('nosotros.founder.caption_year')}</span>
                 </div>
               </div>
             </div>
           </div>
-          
+
           {/* Texto descriptivo abajo */}
           <div className={styles.fundadorFrase}>
             <div className={styles.fraseContainer}>
               <Quote className={styles.fraseIcon} />
               <p className={styles.fraseTexto}>
-                "Que nuestras obras hablen por nosotros"
+                "{t('nosotros.founder.quote')}"
               </p>
               <div className={styles.fraseAutor}>
                 <span className={styles.autorLine}></span>
-                <span className={styles.autorNombre}>— Alfredo Muñoz Roa</span>
+                <span className={styles.autorNombre}>— {t('nosotros.founder.name')}</span>
                 <span className={styles.autorLine}></span>
               </div>
             </div>
@@ -195,9 +181,9 @@ export default function Nosotros() {
         <div ref={organizacionRef} className={styles.organizacion}>
           <div className={styles.sectionHeader}>
             <Building2 className={styles.sectionIcon} />
-            <h2 className={styles.sectionTitle}>Nuestra Organización</h2>
+            <h2 className={styles.sectionTitle}>{t('nosotros.organization.title')}</h2>
           </div>
-          
+
           <div className={styles.organizacionContent}>
             <div className={styles.empresaCard}>
               <div className={styles.empresaHeader}>
@@ -208,21 +194,20 @@ export default function Nosotros() {
                   <h3 className={styles.empresaName}>Constructora AMCO Ltda.</h3>
                   <div className={styles.empresaBadge}>
                     <Calendar size={16} />
-                    <span>Fundada en 1973</span>
+                    <span>{t('nosotros.organization.amco.founded')}</span>
                   </div>
                 </div>
               </div>
               <p className={styles.empresaDescription}>
-                Empresa fundada en Bogotá con capital colombiano, dedicada a promoción, 
-                mercadeo, ventas, diseño, gerencia y construcción en general.
+                {t('nosotros.organization.amco.desc')}
               </p>
               <div className={styles.empresaTags}>
-                <span className={styles.tag}>Sede Principal</span>
-                <span className={styles.tag}>Capital Colombiano</span>
-                <span className={styles.tag}>50+ Años</span>
+                {t('nosotros.organization.amco.tags', { returnObjects: true })?.map((tag, i) => (
+                  <span key={i} className={styles.tag}>{tag}</span>
+                ))}
               </div>
             </div>
-            
+
             <div className={styles.empresaCard}>
               <div className={styles.empresaHeader}>
                 <div className={styles.empresaLogo}>
@@ -232,38 +217,34 @@ export default function Nosotros() {
                   <h3 className={styles.empresaName}>AMR Construcciones</h3>
                   <div className={styles.empresaBadge}>
                     <Calendar size={16} />
-                    <span>Fundada en 2000</span>
+                    <span>{t('nosotros.organization.amr.founded')}</span>
                   </div>
                 </div>
               </div>
               <p className={styles.empresaDescription}>
-                Empresa constituida para complementar y expandir los servicios de 
-                la organización en el sector de la construcción.
+                {t('nosotros.organization.amr.desc')}
               </p>
               <div className={styles.empresaTags}>
-                <span className={styles.tag}>Expansión</span>
-                <span className={styles.tag}>Complemento</span>
-                <span className={styles.tag}>Innovación</span>
+                {t('nosotros.organization.amr.tags', { returnObjects: true })?.map((tag, i) => (
+                  <span key={i} className={styles.tag}>{tag}</span>
+                ))}
               </div>
             </div>
           </div>
-          
-          <p 
+
+          <p
             ref={el => paragraphRefs.current[0] = el}
             className={`${styles.organizacionText} ${styles.animatedParagraph}`}
           >
-            Nuestra organización, compuesta por Constructora AMCO Ltda. (1973) y AMR Construcciones y CIA S.A. (2000), 
-            se dedica al servicio de promoción, mercadeo, ventas, diseño, gerencia y construcción en general, 
-            abarcando los sectores de vivienda, institucional, oficinas, comercial e industrial.
+            {t('nosotros.organization.p1')}
           </p>
-          
-          <p 
+
+          <p
             ref={el => paragraphRefs.current[1] = el}
             className={`${styles.organizacionText} ${styles.animatedParagraph}`}
             style={{ transitionDelay: "0.1s" }}
           >
-            Desde su fundación, hemos realizado importantes aportes al desarrollo del país a través de diversos 
-            programas de construcción, generando miles de empleos directos e indirectos en proyectos públicos y privados.
+            {t('nosotros.organization.p2')}
           </p>
         </div>
 
@@ -275,39 +256,39 @@ export default function Nosotros() {
               <div className={styles.timelineDotInner}></div>
             </div>
             <div className={styles.timelineContent}>
-              <h4 className={styles.timelineTitle}>Fundación AMCO</h4>
+              <h4 className={styles.timelineTitle}>{t('nosotros.timeline.t1973.title')}</h4>
               <p className={styles.timelineDescription}>
-                Inicio de operaciones en Bogotá con capital 100% colombiano
+                {t('nosotros.timeline.t1973.desc')}
               </p>
             </div>
           </div>
-          
+
           <div className={styles.timelineConnector}></div>
-          
+
           <div className={styles.timelineItem}>
             <div className={styles.timelineYear}>2000</div>
             <div className={styles.timelineDot}>
               <div className={styles.timelineDotInner}></div>
             </div>
             <div className={styles.timelineContent}>
-              <h4 className={styles.timelineTitle}>Expansión AMR</h4>
+              <h4 className={styles.timelineTitle}>{t('nosotros.timeline.t2000.title')}</h4>
               <p className={styles.timelineDescription}>
-                Creación de AMR Construcciones para ampliar servicios
+                {t('nosotros.timeline.t2000.desc')}
               </p>
             </div>
           </div>
-          
+
           <div className={styles.timelineConnector}></div>
-          
+
           <div className={styles.timelineItem}>
-            <div className={styles.timelineYear}>Presente</div>
+            <div className={styles.timelineYear}>{t('nosotros.timeline.present.year')}</div>
             <div className={styles.timelineDot}>
               <div className={styles.timelineDotInner}></div>
             </div>
             <div className={styles.timelineContent}>
-              <h4 className={styles.timelineTitle}>Liderazgo Continuo</h4>
+              <h4 className={styles.timelineTitle}>{t('nosotros.timeline.present.title')}</h4>
               <p className={styles.timelineDescription}>
-                Más de 60 proyectos exitosos a nivel nacional
+                {t('nosotros.timeline.present.desc')}
               </p>
             </div>
           </div>
@@ -317,47 +298,47 @@ export default function Nosotros() {
         <div ref={sectoresRef} className={styles.sectores}>
           <div className={styles.sectionHeader}>
             <Briefcase className={styles.sectionIcon} />
-            <h2 className={styles.sectionTitle}>Sectores de Especialización</h2>
+            <h2 className={styles.sectionTitle}>{t('nosotros.sectors.title')}</h2>
           </div>
-          
+
           <div className={styles.sectoresGrid}>
             <div className={styles.sectorCard}>
               <Home className={styles.sectorIcon} />
-              <h3 className={styles.sectorTitle}>Vivienda</h3>
+              <h3 className={styles.sectorTitle}>{t('nosotros.sectors.housing.title')}</h3>
               <p className={styles.sectorDescription}>
-                Proyectos residenciales de alta calidad
+                {t('nosotros.sectors.housing.desc')}
               </p>
             </div>
-            
+
             <div className={styles.sectorCard}>
               <Briefcase className={styles.sectorIcon} />
-              <h3 className={styles.sectorTitle}>Oficinas</h3>
+              <h3 className={styles.sectorTitle}>{t('nosotros.sectors.offices.title')}</h3>
               <p className={styles.sectorDescription}>
-                Espacios corporativos modernos
+                {t('nosotros.sectors.offices.desc')}
               </p>
             </div>
-            
+
             <div className={styles.sectorCard}>
               <ShoppingBag className={styles.sectorIcon} />
-              <h3 className={styles.sectorTitle}>Comercial</h3>
+              <h3 className={styles.sectorTitle}>{t('nosotros.sectors.commercial.title')}</h3>
               <p className={styles.sectorDescription}>
-                Centros comerciales y locales
+                {t('nosotros.sectors.commercial.desc')}
               </p>
             </div>
-            
+
             <div className={styles.sectorCard}>
               <School className={styles.sectorIcon} />
-              <h3 className={styles.sectorTitle}>Institucional</h3>
+              <h3 className={styles.sectorTitle}>{t('nosotros.sectors.institutional.title')}</h3>
               <p className={styles.sectorDescription}>
-                Edificios públicos y educativos
+                {t('nosotros.sectors.institutional.desc')}
               </p>
             </div>
-            
+
             <div className={styles.sectorCard}>
               <Factory className={styles.sectorIcon} />
-              <h3 className={styles.sectorTitle}>Industrial</h3>
+              <h3 className={styles.sectorTitle}>{t('nosotros.sectors.industrial.title')}</h3>
               <p className={styles.sectorDescription}>
-                Plantas y bodegas especializadas
+                {t('nosotros.sectors.industrial.desc')}
               </p>
             </div>
           </div>
@@ -368,44 +349,39 @@ export default function Nosotros() {
           <div ref={misionRef} className={styles.misionCard}>
             <div className={styles.cardHeader}>
               <Target className={styles.cardHeaderIcon} />
-              <h3 className={styles.cardTitle}>Nuestra Misión</h3>
+              <h3 className={styles.cardTitle}>{t('nosotros.mission_vision.mission.title')}</h3>
             </div>
             <div className={styles.cardContent}>
               <p className={styles.cardText}>
-                Servir a la Sociedad Colombiana a través de la construcción de obras civiles 
-                y de infraestructura, complementando con la promoción de proyectos propios. 
-                Aseguramos satisfacción a nuestros clientes mediante calidad y excelencia 
-                en cada servicio.
+                {t('nosotros.mission_vision.mission.text')}
               </p>
               <div className={styles.cardHighlight}>
                 <CheckCircle className={styles.highlightIcon} />
-                <span>Compromiso con la calidad</span>
+                <span>{t('nosotros.mission_vision.mission.h1')}</span>
               </div>
               <div className={styles.cardHighlight}>
                 <Users className={styles.highlightIcon} />
-                <span>Servicio a la sociedad</span>
+                <span>{t('nosotros.mission_vision.mission.h2')}</span>
               </div>
             </div>
           </div>
-          
+
           <div ref={visionRef} className={styles.visionCard}>
             <div className={styles.cardHeader}>
               <Eye className={styles.cardHeaderIcon} />
-              <h3 className={styles.cardTitle}>Nuestra Visión</h3>
+              <h3 className={styles.cardTitle}>{t('nosotros.mission_vision.vision.title')}</h3>
             </div>
             <div className={styles.cardContent}>
               <p className={styles.cardText}>
-                Ser una empresa consultora y constructora líder, emprendedora y competitiva, 
-                comprometida con su futuro. Fomentamos principios de calidad y desarrollamos 
-                el talento humano colombiano para construir un mejor país.
+                {t('nosotros.mission_vision.vision.text')}
               </p>
               <div className={styles.cardHighlight}>
                 <TrendingUp className={styles.highlightIcon} />
-                <span>Liderazgo en el sector</span>
+                <span>{t('nosotros.mission_vision.vision.h1')}</span>
               </div>
               <div className={styles.cardHighlight}>
                 <Users className={styles.highlightIcon} />
-                <span>Desarrollo del talento colombiano</span>
+                <span>{t('nosotros.mission_vision.vision.h2')}</span>
               </div>
             </div>
           </div>
@@ -415,55 +391,55 @@ export default function Nosotros() {
         <div ref={valoresRef} className={styles.valores}>
           <div className={styles.sectionHeader}>
             <Award className={styles.sectionIcon} />
-            <h2 className={styles.sectionTitle}>Nuestros Valores</h2>
+            <h2 className={styles.sectionTitle}>{t('nosotros.values.title')}</h2>
           </div>
-          
+
           <div className={styles.valoresGrid}>
             <div className={styles.valorCard}>
               <Award className={styles.valorIcon} />
-              <h3 className={styles.valorTitle}>Calidad</h3>
+              <h3 className={styles.valorTitle}>{t('nosotros.values.quality.title')}</h3>
               <p className={styles.valorDescription}>
-                Priorizamos precisión y atención al detalle en cada proyecto
+                {t('nosotros.values.quality.desc')}
               </p>
             </div>
-            
+
             <div className={styles.valorCard}>
               <Clock className={styles.valorIcon} />
-              <h3 className={styles.valorTitle}>Responsabilidad</h3>
+              <h3 className={styles.valorTitle}>{t('nosotros.values.responsibility.title')}</h3>
               <p className={styles.valorDescription}>
-                Cumplimos plazos sin comprometer la excelencia
+                {t('nosotros.values.responsibility.desc')}
               </p>
             </div>
-            
+
             <div className={styles.valorCard}>
               <Leaf className={styles.valorIcon} />
-              <h3 className={styles.valorTitle}>Sostenibilidad</h3>
+              <h3 className={styles.valorTitle}>{t('nosotros.values.sustainability.title')}</h3>
               <p className={styles.valorDescription}>
-                Implementamos prácticas y materiales ecológicos
+                {t('nosotros.values.sustainability.desc')}
               </p>
             </div>
-            
+
             <div className={styles.valorCard}>
               <MessageSquare className={styles.valorIcon} />
-              <h3 className={styles.valorTitle}>Comunicación</h3>
+              <h3 className={styles.valorTitle}>{t('nosotros.values.communication.title')}</h3>
               <p className={styles.valorDescription}>
-                Transparencia y comunicación constante
+                {t('nosotros.values.communication.desc')}
               </p>
             </div>
-            
+
             <div className={styles.valorCard}>
               <Lightbulb className={styles.valorIcon} />
-              <h3 className={styles.valorTitle}>Innovación</h3>
+              <h3 className={styles.valorTitle}>{t('nosotros.values.innovation.title')}</h3>
               <p className={styles.valorDescription}>
-                Tecnología de vanguardia para soluciones modernas
+                {t('nosotros.values.innovation.desc')}
               </p>
             </div>
-            
+
             <div className={styles.valorCard}>
               <Users className={styles.valorIcon} />
-              <h3 className={styles.valorTitle}>Enfoque Cliente</h3>
+              <h3 className={styles.valorTitle}>{t('nosotros.values.customer.title')}</h3>
               <p className={styles.valorDescription}>
-                Personalizamos soluciones para cada visión
+                {t('nosotros.values.customer.desc')}
               </p>
             </div>
           </div>
@@ -473,25 +449,20 @@ export default function Nosotros() {
         <div className={styles.objetoSocial}>
           <div className={styles.sectionHeader}>
             <Target className={styles.sectionIcon} />
-            <h2 className={styles.sectionTitle}>Nuestro Compromiso</h2>
+            <h2 className={styles.sectionTitle}>{t('nosotros.social.title')}</h2>
           </div>
-          
+
           <div className={styles.objetoContent}>
             <p className={styles.objetoText}>
-              En <strong>Constructora AMCO Ltda.</strong> nos dedicamos a la planeación, diseño, 
-              desarrollo, gerencia y ejecución de proyectos de construcción en los sectores 
-              de vivienda, oficinas, comercio, institucional e industrial. Trabajamos bajo 
-              estrictas normas técnicas y de calidad, contribuyendo al desarrollo urbano 
-              sostenible de Colombia.
+              {t('nosotros.social.text')}
             </p>
-            
+
             <div className={styles.objetoHighlight}>
               <div className={styles.highlightIconWrapper}>
                 <Award className={styles.highlightIconMain} />
               </div>
               <p className={styles.highlightText}>
-                "La excelencia en la construcción es nuestro compromiso permanente 
-                con Colombia y su desarrollo sostenible."
+                "{t('nosotros.social.highlight')}"
               </p>
             </div>
           </div>

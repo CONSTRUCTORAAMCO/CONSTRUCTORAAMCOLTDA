@@ -2,10 +2,13 @@ import React, { useRef, useState, useEffect } from "react";
 import propositoData from "./Proposito.data";
 import "./Proposito.css";
 import { useLanguage } from "../../../i18n/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 const Propositocarousel = () => {
   const carouselRef = useRef(null);
   const { t } = useLanguage();
+  const navigate = useNavigate();
+
   /* -------------------- STATES -------------------- */
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -17,8 +20,7 @@ const Propositocarousel = () => {
 
   /* -------------------- TOUCH DETECTION -------------------- */
   useEffect(() => {
-    isTouchDevice.current =
-      window.matchMedia("(pointer: coarse)").matches;
+    isTouchDevice.current = window.matchMedia("(pointer: coarse)").matches;
   }, []);
 
   /* -------------------- INTERACTION PAUSE -------------------- */
@@ -54,11 +56,7 @@ const Propositocarousel = () => {
   useEffect(() => {
     if (isTouchDevice.current) return;
     const interval = setInterval(() => {
-      if (
-        isHoverPaused ||
-        isInteractionPaused ||
-        !carouselRef.current
-      ) {
+      if (isHoverPaused || isInteractionPaused || !carouselRef.current) {
         return;
       }
       const el = carouselRef.current;
@@ -85,16 +83,14 @@ const Propositocarousel = () => {
 
   return (
     <section className="section">
-      <br /><br /><br /> 
+      <br /><br /><br />
       <div className="container">
         <div className="header">
           <h2>{t("proposito.title")}</h2>
 
           <div className="controls">
             <i
-              className={`ri-arrow-left-line nav-icon ${
-                !canScrollLeft ? "disabled" : ""
-              }`}
+              className={`ri-arrow-left-line nav-icon ${!canScrollLeft ? "disabled" : ""}`}
               onClick={() => {
                 if (!canScrollLeft) return;
                 handleInteraction();
@@ -103,9 +99,7 @@ const Propositocarousel = () => {
             />
 
             <i
-              className={`ri-arrow-right-line nav-icon primary ${
-                !canScrollRight ? "disabled" : ""
-              }`}
+              className={`ri-arrow-right-line nav-icon primary ${!canScrollRight ? "disabled" : ""}`}
               onClick={() => {
                 if (!canScrollRight) return;
                 handleInteraction();
@@ -122,15 +116,18 @@ const Propositocarousel = () => {
         >
           <div ref={carouselRef} className="carousel">
             {propositoData.map((item) => (
-              <div className="card snap-center" key={item.id}>
+              <div
+                className="card snap-center cursor-pointer"
+                key={item.id}
+                onClick={() => navigate(`/proyecto/${item.id}`)}
+              >
                 <img src={item.image} alt={item.title} loading="lazy" />
                 <div className="card-body">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <h3>{t(`proposito_carousel.${item.id}.title`)}</h3>
+                  <p>{t(`proposito_carousel.${item.id}.description`)}</p>
                 </div>
               </div>
             ))}
-
           </div>
         </div>
       </div>

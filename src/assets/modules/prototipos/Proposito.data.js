@@ -11,67 +11,16 @@ import img10 from "../../img/javeriana.jpg";
 
 
 const propositoData = [
-  {
-    id: 1,
-    image: img1,
-    title: "Sena de soacha",
-    description: "Bogota D.C"
-  },
-  {
-    id: 2,
-    image: img2,
-    title: "Bodega corabastos",
-    description: "Bogota D.C"
-  },
-  {
-    id: 3,
-    image: img3,
-    title: "Carcel de san angel",
-    description: "Sabanas de San Angel"
-  },
-  {
-    id: 4,
-    image: img4,
-    title: "Centro comercial cedritos",
-    description: "Bogota D.C"
-  },
-  {
-    id: 5,
-    image: img5,
-    title: "Nuevo Comando de Policia",
-    description: "Bogota D.C"
-  },
-  {
-    id: 6,
-    image: img6,
-    title: "Universidad Libre",
-    description: "Bogota D.C"
-  },
-  {
-    id: 7,
-    image: img7,
-    title: "Escuela de Aviación FAC",
-    description: "Cali"
-  },
-  {
-    id: 8,
-    image: img8,
-    title: "Penitenciaria de máxima seguridad de Valledupar",
-    description: "Valledupar"
-  },
-  {
-    id: 9,
-    image: img9,
-    title: "Personería Bogota",
-    description: "Bogota D.C"
-  },
-  {
-    id: 10,
-    image: img10,
-    title: "Universidad Javeriana Gabriel Jiraldo",
-    description: "Bogota D.C"
-  },
-
+  { id: 12, image: img1 }, // Sena de Soacha
+  { id: 1, image: img2 },  // Bodega Popular Corabastos
+  { id: 2, image: img3 },  // Cárcel de San Ángel
+  { id: 3, image: img4 },  // Centro Comercial Cedritos 151
+  { id: 5, image: img5 },  // Nuevo Comando Policía
+  { id: 10, image: img6 }, // Universidad Libre Bogotá
+  { id: 7, image: img7 },  // Escuela De Aviación FAC CALI
+  { id: 13, image: img8 }, // Penitenciaria Valledupar
+  { id: 11, image: img9 }, // Personería De Bogotá
+  { id: 9, image: img10 }, // Universidad Javeriana
 ];
 
 export default propositoData;

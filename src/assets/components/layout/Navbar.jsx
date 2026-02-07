@@ -1,15 +1,21 @@
+// ================= IMPORTS =================
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import AMCO from "../../img/AMCO.png";
+// Iconos y Assets
 import { FaChevronDown } from "react-icons/fa";
 import ReactCountryFlag from "react-country-flag";
+import AMCO from "../../img/AMCO.png";
+// Contexto y Utilidades
 import { useLanguage } from "../../../i18n/LanguageContext";
 import { searchIndex } from "../../modules/buscador/buscador";
 import { normalizeText } from "../../modules/buscador/busquedautil";
 
 const Navbar = () => {
+  // ================= HOOKS & STATE =================
   const navigate = useNavigate();
   const location = useLocation();
+  
+  // Estados de UI y Scroll
   const [show, setShow] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -18,14 +24,21 @@ const Navbar = () => {
   const [showDropdownMobile, setShowDropdownMobile] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  
+  // Refs para detección de clicks fuera
   const searchRef = useRef(null);
   const searchTriggerRef = useRef(null);
   const inputRef = useRef(null);
-  const [searchValue, setSearchValue] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
   const dropdownDesktopRef = useRef(null);
   const dropdownDesktopTriggerRef = useRef(null);
 
+  // Estados de Búsqueda
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  // ================= EFFECTS =================
+  
+  /** Efecto para manejar la visibilidad y estilo del navbar al hacer scroll */
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -38,6 +51,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  /** Efecto para cerrar el dropdown de idioma al hacer click fuera */
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -54,6 +68,7 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  /** Efecto para cerrar el buscador al hacer click fuera */
   useEffect(() => {
     const handleClickOutsideSearch = (event) => {
       if (
@@ -71,6 +86,7 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutsideSearch);
   }, []);
 
+  // ================= CONFIG =================
   const navLinks = [
     { key: 'nav.home', path: '/' },
     { key: 'nav.about', path: '/nosotros' },
@@ -79,6 +95,7 @@ const Navbar = () => {
     { key: 'nav.contact', path: '/contacto' }
   ];
 
+  // Determina si el navbar debe tener fondo blanco (scrolled o no en home)
   const isScrolledStyle = scrolled || location.pathname !== "/";
 
   return (
@@ -116,6 +133,7 @@ const Navbar = () => {
                 className={`ri-search-line cursor-pointer text-lg ${isScrolledStyle ? "text-black" : "text-white"}`}
               />
 
+              {/* Input de Búsqueda */}
               <input
                 ref={inputRef}
                 type="text"
@@ -124,10 +142,12 @@ const Navbar = () => {
                 onChange={(e) => {
                   const val = e.target.value;
                   setSearchValue(val);
+                  // Limpiar resultados si está vacío
                   if (!val.trim()) {
                     setSearchResults([]);
                     return;
                   }
+                  // Lógica de filtrado de búsqueda
                   const q = normalizeText(val);
                   const results = searchIndex.filter((item) =>
                     normalizeText(item.title).includes(q) ||
@@ -176,12 +196,10 @@ const Navbar = () => {
 
             <div
               ref={dropdownDesktopTriggerRef}
-              onClick={() => setShowDropdownDesktop(prev => !prev)}
-              className={`hidden md:flex items-center gap-1 cursor-pointer
-                text-sm font-semibold uppercase tracking-wide
-                ${isScrolledStyle ? "text-black" : "text-white"}`}
+              onClick={() => setShowDropdownDesktop(!showDropdownDesktop)}
+              className={`flex items-center gap-1 cursor-pointer ${isScrolledStyle ? "text-black" : "text-white"}`}
             >
-              {language}
+             {language}
               <FaChevronDown className="text-[10px] transition-transform duration-300" />
             </div>
 
@@ -341,7 +359,6 @@ const Navbar = () => {
                       ${language === item.value
                         ? "bg-gray-100 text-black"
                         : "text-gray-600 hover:text-black hover:bg-gray-50"}
-                    }
                     `}
                   >
                     <ReactCountryFlag
