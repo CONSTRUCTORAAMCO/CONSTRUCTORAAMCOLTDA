@@ -16,6 +16,7 @@
 
 /* ULTRA PANTALLAS GRANDES */
 @media (min-width: 1600px) {
+
   .header,
   .carousel-wrapper,
   .container {
@@ -23,7 +24,8 @@
   }
 
   .container {
-    padding: 0 8px; /* menos padding lateral */
+    padding: 0 8px;
+    /* menos padding lateral */
   }
 }
 
@@ -100,7 +102,7 @@
 
 .carousel {
   display: flex;
-  gap: 24px;
+  gap: 16px;
   padding-inline: 24px;
 }
 
@@ -117,8 +119,8 @@
 
 /* CARDS */
 .card {
-  min-width: 280px;
-  max-width: 280px;
+  min-width: 450px;
+  max-width: 450px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -127,8 +129,8 @@
 /* HACER CARDS MÁS GRANDES EN MONITORES GRANDES */
 @media (min-width: 1600px) {
   .card {
-    min-width: 320px;
-    max-width: 360px;
+    min-width: 550px;
+    max-width: 550px;
   }
 }
 
@@ -156,7 +158,7 @@
 /* IMÁGENES */
 .card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
   border-radius: 10px;
   display: block;
@@ -202,12 +204,12 @@
 /* AJUSTES EXTRA MÓVIL */
 @media (max-width: 480px) {
   .card {
-    min-width: 240px;
-    max-width: 240px;
+    min-width: 300px;
+    max-width: 300px;
   }
 
   .card img {
-    height: 150px;
+    height: 180px;
   }
 
   .header h2 {
