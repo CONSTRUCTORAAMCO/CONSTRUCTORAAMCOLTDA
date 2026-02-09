@@ -297,7 +297,24 @@ export const translations = {
       7: { title: "Escuela De Aviación FAC CALI", description: "Cali" },
       8: { title: "Gobernación De Cundinamarca", description: "Bogotá" },
       9: { title: "Universidad Javeriana Gabriel Giraldo", description: "Bogotá" },
-      10: { title: "Universidad Libre Bogotá", description: "Bogotá" }
+      10: { title: "Universidad Libre Bogotá", description: "Bogotá" },
+      11: { title: "Personería De Bogotá", description: "Bogotá" },
+      12: { title: "SENA de Soacha", description: "Soacha" },
+      13: { title: "Penitenciaria De Máxima Seguridad", description: "Valledupar" },
+      14: { title: "Construcción Gibraltar", description: "Bogotá" },
+      15: { title: "Plataforma Base FAC", description: "Barranquilla" },
+      16: { title: "Consorcio Yopal", description: "Yopal" },
+      17: { title: "CDC TIBABUYES SUBA", description: "Bogotá" },
+      18: { title: "Dotación FAC Fase III", description: "Cali" },
+      19: { title: "Contraloría Manizales", description: "Manizales" },
+      20: { title: "Aeropuerto El Edén", description: "Armenia" },
+      21: { title: "Altamira", description: "Bogotá" },
+      22: { title: "Acropolis", description: "Bogotá" },
+      23: { title: "Torres de Granada", description: "Bogotá" },
+      24: { title: "Novum", description: "Bogotá" },
+      25: { title: "Medicina Aeroespacial CEMAE", description: "Bogotá" },
+      26: { title: "Base Aerea Leticia", description: "Leticia" },
+      27: { title: "Centro Deportivo El Tunal", description: "Bogotá" }
     },
     objetivo: {
       title: "OBJETO SOCIAL",
@@ -319,6 +336,60 @@ export const translations = {
         8: { title: "8. Seguridad de la información", content: "AMCO adopta medidas técnicas, administrativas y organizativas razonables para proteger los datos personales contra accesos no autorizados, uso indebido o divulgación." },
         9: { title: "9. Modificaciones a la política", content: "Constructora AMCO LTDA se reserva el derecho de modificar esta política en cualquier momento. Las modificaciones entrarán en vigencia desde su publicación en el sitio web." },
         10: { title: "10. Aceptación de la política", content: "El uso del sitio web, el envío de información mediante formularios o el contacto vía WhatsApp implica que el usuario ha leído, entendido y aceptado esta Política de Tratamiento de Datos Personales." }
+      }
+    },
+    tyc: {
+      title: "TÉRMINOS Y CONDICIONES DE USO",
+      subtitle: "CONSTRUCTORA AMCO LTDA",
+      sections: {
+        1: {
+          title: "<strong>1. Aceptación de los términos</strong>",
+          content: [
+            "El acceso, navegación y uso del sitio web de <strong>Constructora AMCO LTDA</strong>, con domicilio en Bogotá D.C., Colombia, implica la aceptación plena y sin reservas de los presentes Términos y Condiciones de Uso.",
+            "Si el usuario no está de acuerdo con alguno de los términos aquí establecidos, deberá abstenerse de utilizar este sitio web."
+          ]
+        },
+        2: {
+          title: "<strong>2. Objeto del sitio web</strong>",
+          content: [
+            "El sitio web tiene como finalidad proporcionar información general sobre los proyectos, servicios, desarrollos inmobiliarios, actividades corporativas y datos de contacto de Constructora AMCO LTDA.",
+            "La información publicada no constituye una oferta comercial vinculante ni compromiso contractual, salvo que se indique expresamente lo contrario."
+          ]
+        },
+        3: {
+          title: "<strong>3. Uso adecuado del sitio</strong>",
+          content: "El usuario se compromete a utilizar el sitio web de manera responsable, lícita y conforme a la normativa colombiana vigente.",
+          list: [
+            "No utilizar el sitio con fines ilícitos o fraudulentos.",
+            "No afectar la disponibilidad, seguridad o funcionamiento del sitio.",
+            "No intentar acceder a información restringida o sistemas internos.",
+            "No introducir virus, malware o cualquier código malicioso."
+          ]
+        },
+        4: {
+          title: "<strong>4. Propiedad intelectual</strong>",
+          content: [
+            "Todo el contenido del sitio web, incluyendo textos, imágenes, renders, fotografías de proyectos, planos, diseños, logotipos, marcas, videos y material gráfico, es propiedad exclusiva de Constructora AMCO LTDA o cuenta con las autorizaciones correspondientes.",
+            "Queda estrictamente prohibida la reproducción, distribución, modificación, uso comercial o divulgación del contenido sin autorización previa y expresa por escrito de AMCO."
+          ]
+        },
+        5: {
+          title: "<strong>5. Uso de imágenes y proyectos</strong>",
+          content: "Las imágenes de proyectos, renders, diseños arquitectónicos y material visual publicados en el sitio web tienen fines exclusivamente informativos y promocionales.",
+          list: ["No pueden ser utilizadas con fines comerciales sin autorización.", "No pueden ser alteradas o manipuladas.", "No pueden ser presentadas como proyectos de terceros."],
+          footer: "El uso indebido de este material podrá dar lugar a acciones legales conforme a la legislación vigente."
+        },
+        6: {
+          title: "<strong>6. Formularios y contacto</strong>",
+          content: ["Al diligenciar formularios o contactar a AMCO mediante el sitio web o WhatsApp, el usuario declara que la información suministrada es veraz, completa y actualizada.", "El uso de estos canales no genera relación contractual automática ni obligación de respuesta inmediata por parte de la empresa."]
+        },
+        7: { title: "<strong>7. Enlaces a terceros</strong>", content: "El sitio web puede contener enlaces a sitios web de terceros. Constructora AMCO LTDA no se hace responsable por el contenido, políticas o prácticas de dichos sitios externos." },
+        8: {
+          title: "<strong>8. Limitación de responsabilidad</strong>",
+          content: ["AMCO no garantiza que el sitio esté libre de errores, interrupciones o fallos técnicos, ni que el acceso sea continuo o ininterrumpido.", "El uso del sitio se realiza bajo responsabilidad exclusiva del usuario."]
+        },
+        9: { title: "<strong>9. Modificaciones</strong>", content: ["Constructora AMCO LTDA se reserva el derecho de modificar en cualquier momento los presentes Términos y Condiciones.", "Las modificaciones entrarán en vigencia desde su publicación en el sitio web."] },
+        10: { title: "<strong>10. Legislación aplicable</strong>", content: "Los presentes Términos y Condiciones se rigen por las leyes de la República de Colombia. Cualquier controversia será sometida a la jurisdicción de los tribunales competentes de Bogotá D.C." }
       }
     },
     data_proyectos: {
@@ -413,7 +484,7 @@ export const translations = {
     services: {
       title: "AMCO Construction Ltd.",
       subtitle: "Building Civil Works and Infrastructure with Excellence in Colombia",
-      paragraph: "Constructora AMCO Ltda. is a Colombian company with a solid track record dedicated to the construction of civil works, infrastructure and the promotion of its own projects nationwide. With headquarters in Bogotá, the company is characterized by its commitment to quality, excellence and the pursuit of sustainable development in each of its processes.",
+      paragraph: "AMCO Construction Ltd. is a Colombian company with a solid track record dedicated to the construction of civil works, infrastructure and the promotion of its own projects nationwide. With headquarters in Bogotá, the company is characterized by its commitment to quality, excellence and the pursuit of sustainable development in each of its processes.",
       badge: "FEATURED PROJECTS",
       projects_title: "Featured Projects and Clients",
       projects_intro: "AMCO has collaborated on important projects for public and private sector clients",
@@ -430,7 +501,7 @@ export const translations = {
     objective: {
       name: "BETWEEN STREETS",
       title: "CORPORATE PURPOSE",
-      paragraph: "Constructora AMCO Ltda. is dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors, under strict technical and quality standards, contributing to the sustainable urban development of Colombia."
+      paragraph: "AMCO Construction Ltd. is dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors, under strict technical and quality standards, contributing to the sustainable urban development of Colombia."
     },
     entrecalles: {
       name: "BETWEEN STREETS",
@@ -511,7 +582,7 @@ export const translations = {
         f4_desc: "Project in advanced construction with cutting-edge technology. Currently in development, no completion date set."
       },
       specs_list_main: [
-        "<strong>Total height:</strong> 300+ metros",
+        "<strong>Total height:</strong> 300+ meters",
         "<strong>Total levels:</strong> 75 floors",
         "<strong>Built area:</strong> 180,000 m²",
         "<strong>Residential units:</strong> 450 apartments",
@@ -572,7 +643,7 @@ export const translations = {
           tags: ["Expansion", "Complement", "Innovation"],
           founded: "Founded in 2000"
         },
-        p1: "Our organization, composed of Constructora AMCO Ltda. (1973) and AMR Construcciones y CIA S.A. (2000), is dedicated to the service of promotion, marketing, sales, design, management and construction in general, covering the housing, institutional, office, commercial and industrial sectors.",
+        p1: "Our organization, composed of AMCO Construction Ltd. (1973) and AMR Construcciones y CIA S.A. (2000), is dedicated to the service of promotion, marketing, sales, design, management and construction in general, covering the housing, institutional, office, commercial and industrial sectors.",
         p2: "Since its foundation, we have made important contributions to the country's development through various construction programs, generating thousands of direct and indirect jobs in public and private projects."
       },
       timeline: {
@@ -613,7 +684,7 @@ export const translations = {
       },
       social: {
         title: "Our Commitment",
-        text: "At Constructora AMCO Ltda. we are dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors. We work under strict technical and quality standards, contributing to Colombia's sustainable urban development.",
+        text: "At AMCO Construction Ltd. we are dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors. We work under strict technical and quality standards, contributing to Colombia's sustainable urban development.",
         highlight: "Excellence in construction is our permanent commitment to Colombia and its sustainable development."
       }
     },
@@ -690,19 +761,36 @@ export const translations = {
       7: { title: "FAC Aviation School CALI", description: "Cali" },
       8: { title: "Cundinamarca Governorate", description: "Bogotá" },
       9: { title: "Javeriana University Gabriel Giraldo", description: "Bogotá" },
-      10: { title: "Libre University Bogotá", description: "Bogotá" }
+      10: { title: "Libre University Bogotá", description: "Bogotá" },
+      11: { title: "Bogotá Personería", description: "Bogotá" },
+      12: { title: "SENA Soacha", description: "Soacha" },
+      13: { title: "Maximum Security Penitentiary", description: "Valledupar" },
+      14: { title: "Gibraltar Construction", description: "Bogotá" },
+      15: { title: "FAC Base Platform", description: "Barranquilla" },
+      16: { title: "Yopal Consortium", description: "Yopal" },
+      17: { title: "CDC TIBABUYES SUBA", description: "Bogotá" },
+      18: { title: "FAC Phase III Endowment", description: "Cali" },
+      19: { title: "Manizales Comptroller", description: "Manizales" },
+      20: { title: "El Edén Airport", description: "Armenia" },
+      21: { title: "Altamira", description: "Bogotá" },
+      22: { title: "Acropolis", description: "Bogotá" },
+      23: { title: "Torres de Granada", description: "Bogotá" },
+      24: { title: "Novum", description: "Bogotá" },
+      25: { title: "CEMAE Aerospace Medicine", description: "Bogotá" },
+      26: { title: "Leticia Air Base", description: "Leticia" },
+      27: { title: "El Tunal Sports Center", description: "Bogotá" }
     },
     objetivo: {
       title: "SOCIAL OBJECTIVE",
-      description: "Constructora AMCO Ltda. is dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors, under strict technical and quality standards, contributing to the sustainable urban development of Colombia."
+      description: "AMCO Construction Ltd. is dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors, under strict technical and quality standards, contributing to the sustainable urban development of Colombia."
     },
     politicaprivacidad: {
       title: "PRIVACY POLICY",
       subtitle: "AMCO CONSTRUCTION LTD",
-      intro_1: "Constructora <strong>AMCO LTDA</strong>, domiciled in Bogotá D.C., Colombia, in compliance with the provisions of Law 1581 of 2012, Decree 1377 of 2013 and other regulations governing the protection of personal data, informs users of its website of this Personal Data Treatment Policy.",
+      intro_1: "AMCO CONSTRUCTION LTD, domiciled in Bogotá D.C., Colombia, in compliance with the provisions of Law 1581 of 2012, Decree 1377 of 2013 and other regulations governing the protection of personal data, informs users of its website of this Personal Data Treatment Policy.",
       intro_2: "AMCO values the privacy of its users and is committed to protecting the collected personal information, guaranteeing its responsible, safe and lawful use.",
       sections: {
-        1: { title: "1. Personal data collected", content: "Through this website and associated contact channels, Constructora AMCO LTDA may collect the following personal data:", list: ["Name", "Email", "Phone number (when the user contacts voluntarily via WhatsApp or other means)"], footer: "No sensitive data or unnecessary information is collected for the purposes described in this policy." },
+        1: { title: "1. Personal data collected", content: "Through this website and associated contact channels, AMCO CONSTRUCTION LTD may collect the following personal data:", list: ["Name", "Email", "Phone number (when the user contacts voluntarily via WhatsApp or other means)"], footer: "No sensitive data or unnecessary information is collected for the purposes described in this policy." },
         2: { title: "2. Origin of personal data", list: ["Forms available on the website", "Direct contact by email", "Voluntary communication via the WhatsApp button", "Commercial interactions related to company projects and services"], footer: "AMCO does not acquire databases from third parties or use information obtained by unauthorized means." },
         3: { title: "3. Purpose of data processing", list: ["Respond to information requests made by users", "Contact people interested in construction projects and services", "Provide commercial advice and follow up on requests", "Respond to messages sent via WhatsApp or website forms", "Maintain communications related to projects and commercial information"], footer: "In no case will personal data be sold, rented, transferred or shared with third parties without express authorization from the owner, except for legal obligation." },
         4: { title: "4. Use of WhatsApp and direct contact", content: ["By using the WhatsApp button available on the website, the user voluntarily accepts that their phone number will be used exclusively to attend to their request.", "The phone number will not be used for other purposes nor will it be shared with third parties."] },
@@ -712,6 +800,63 @@ export const translations = {
         8: { title: "8. Information security", content: "AMCO adopts reasonable technical, administrative and organizational measures to protect personal data against unauthorized access, misuse or disclosure." },
         9: { title: "9. Modifications to the policy", content: "Constructora AMCO LTDA reserves the right to modify this policy at any time. Modifications will enter into force upon publication on the website." },
         10: { title: "10. Acceptance of the policy", content: "The use of the website, the sending of information through forms or contact via WhatsApp implies that the user has read, understood and accepted this Personal Data Treatment Policy." }
+      }
+    },
+    tyc: {
+      title: "TERMS AND CONDITIONS OF USE",
+      subtitle: "AMCO CONSTRUCTION LTD",
+      sections: {
+        1: {
+          title: "<strong>1. Acceptance of Terms</strong>",
+          content: [
+            "Access, navigation, and use of the website of <strong>AMCO CONSTRUCTION LTD</strong>, domiciled in Bogotá D.C., Colombia, implies full and unreserved acceptance of these Terms and Conditions of Use.",
+            "If the user does not agree with any of the terms established herein, they must refrain from using this website."
+          ]
+        },
+        2: {
+          title: "<strong>2. Purpose of the Website</strong>",
+          content: [
+            "The purpose of the website is to provide general information about the projects, services, real estate developments, corporate activities, and contact details of AMCO CONSTRUCTION LTD.",
+            "The information published does not constitute a binding commercial offer or contractual commitment, unless expressly stated otherwise."
+          ]
+        },
+        3: {
+          title: "<strong>3. Proper Use of the Site</strong>",
+          content: "The user agrees to use the website responsibly, lawfully, and in accordance with current Colombian regulations.",
+          list: [
+            "Do not use the site for illicit or fraudulent purposes.",
+            "Do not affect the availability, security, or operation of the site.",
+            "Do not attempt to access restricted information or internal systems.",
+            "Do not introduce viruses, malware, or any malicious code."
+          ]
+        },
+        4: {
+          title: "<strong>4. Intellectual Property</strong>",
+          content: [
+            "All content on the website, including texts, images, renders, project photographs, plans, designs, logos, trademarks, videos, and graphic material, is the exclusive property of AMCO CONSTRUCTION LTD or has the corresponding authorizations.",
+            "The reproduction, distribution, modification, commercial use, or disclosure of the content is strictly prohibited without prior and express written authorization from AMCO."
+          ]
+        },
+        5: {
+          title: "<strong>5. Use of Images and Projects</strong>",
+          content: "The images of projects, renders, architectural designs, and visual material published on the website are for informational and promotional purposes only.",
+          list: ["They may not be used for commercial purposes without authorization.", "They may not be altered or manipulated.", "They may not be presented as third-party projects."],
+          footer: "The improper use of this material may lead to legal action in accordance with current legislation."
+        },
+        6: {
+          title: "<strong>6. Forms and Contact</strong>",
+          content: [
+            "By filling out forms or contacting AMCO through the website or WhatsApp, the user declares that the information provided is true, complete, and up-to-date.",
+            "The use of these channels does not automatically create a contractual relationship or an obligation for an immediate response from the company."
+          ]
+        },
+        7: { title: "<strong>7. Third-Party Links</strong>", content: "The website may contain links to third-party websites. AMCO CONSTRUCTION LTD is not responsible for the content, policies, or practices of such external sites." },
+        8: {
+          title: "<strong>8. Limitation of Liability</strong>",
+          content: ["AMCO does not guarantee that the site is free of errors, interruptions, or technical failures, nor that access will be continuous or uninterrupted.", "The use of the site is at the user's sole risk."]
+        },
+        9: { title: "<strong>9. Modifications</strong>", content: ["AMCO CONSTRUCTION LTD reserves the right to modify these Terms and Conditions at any time.", "The modifications will take effect upon their publication on the website."] },
+        10: { title: "<strong>10. Applicable Law</strong>", content: "These Terms and Conditions are governed by the laws of the Republic of Colombia. Any dispute will be submitted to the jurisdiction of the competent courts of Bogotá D.C." }
       }
     },
     data_proyectos: {
@@ -992,7 +1137,24 @@ export const translations = {
       7: { title: "Escola de Aviação FAC CALI", description: "Cali" },
       8: { title: "Governo de Cundinamarca", description: "Bogotá" },
       9: { title: "Universidade Javeriana Gabriel Giraldo", description: "Bogotá" },
-      10: { title: "Universidade Livre Bogotá", description: "Bogotá" }
+      10: { title: "Universidade Livre Bogotá", description: "Bogotá" },
+      11: { title: "Personería de Bogotá", description: "Bogotá" },
+      12: { title: "SENA de Soacha", description: "Soacha" },
+      13: { title: "Penitenciária de Segurança Máxima", description: "Valledupar" },
+      14: { title: "Construção Gibraltar", description: "Bogotá" },
+      15: { title: "Plataforma Base FAC", description: "Barranquilla" },
+      16: { title: "Consórcio Yopal", description: "Yopal" },
+      17: { title: "CDC TIBABUYES SUBA", description: "Bogotá" },
+      18: { title: "Dotação FAC Fase III", description: "Cali" },
+      19: { title: "Controladoria Manizales", description: "Manizales" },
+      20: { title: "Aeroporto El Edén", description: "Armenia" },
+      21: { title: "Altamira", description: "Bogotá" },
+      22: { title: "Acropolis", description: "Bogotá" },
+      23: { title: "Torres de Granada", description: "Bogotá" },
+      24: { title: "Novum", description: "Bogotá" },
+      25: { title: "Medicina Aeroespacial CEMAE", description: "Bogotá" },
+      26: { title: "Base Aérea Leticia", description: "Leticia" },
+      27: { title: "Centro Esportivo El Tunal", description: "Bogotá" }
     },
     objetivo: {
       title: "OBJETO SOCIAL",
@@ -1014,6 +1176,63 @@ export const translations = {
         8: { title: "8. Segurança da informação", content: "A AMCO adota medidas técnicas, administrativas e organizacionais razoáveis para proteger os dados pessoais contra acessos não autorizados, uso indevido ou divulgação." },
         9: { title: "9. Modificações à política", content: "A Construtora AMCO LTDA reserva-se o direito de modificar esta política a qualquer momento. As modificações entrarão em vigor a partir de sua publicação no site." },
         10: { title: "10. Aceitação da política", content: "O uso do site, o envio de informações através de formulários ou o contato via WhatsApp implica que o usuário leu, entendeu e aceitou esta Política de Tratamento de Dados Pessoais." }
+      }
+    },
+    tyc: {
+      title: "TERMOS E CONDIÇÕES DE USO",
+      subtitle: "CONSTRUTORA AMCO LTDA",
+      sections: {
+        1: {
+          title: "<strong>1. Aceitação dos Termos</strong>",
+          content: [
+            "O acesso, navegação e uso do site da <strong>Construtora AMCO LTDA</strong>, com domicílio em Bogotá D.C., Colômbia, implica a aceitação plena e sem reservas destes Termos e Condições de Uso.",
+            "Se o usuário não concordar com algum dos termos aqui estabelecidos, deverá abster-se de usar este site."
+          ]
+        },
+        2: {
+          title: "<strong>2. Objeto do Site</strong>",
+          content: [
+            "O site tem como finalidade fornecer informações gerais sobre os projetos, serviços, desenvolvimentos imobiliários, atividades corporativas e dados de contato da Construtora AMCO LTDA.",
+            "As informações publicadas não constituem uma oferta comercial vinculativa nem um compromisso contratual, salvo indicação expressa em contrário."
+          ]
+        },
+        3: {
+          title: "<strong>3. Uso Adequado do Site</strong>",
+          content: "O usuário compromete-se a utilizar o site de forma responsável, lícita e em conformidade com a legislação colombiana vigente.",
+          list: [
+            "Não utilizar o site para fins ilícitos ou fraudulentos.",
+            "Não afetar a disponibilidade, segurança ou funcionamento do site.",
+            "Não tentar aceder a informações restritas ou sistemas internos.",
+            "Não introduzir vírus, malware ou qualquer código malicioso."
+          ]
+        },
+        4: {
+          title: "<strong>4. Propriedade Intelectual</strong>",
+          content: [
+            "Todo o conteúdo do site, incluindo textos, imagens, renders, fotografias de projetos, plantas, desenhos, logotipos, marcas, vídeos e material gráfico, é propriedade exclusiva da Construtora AMCO LTDA ou possui as autorizações correspondentes.",
+            "É estritamente proibida a reprodução, distribuição, modificação, uso comercial ou divulgação do conteúdo sem autorização prévia e expressa por escrito da AMCO."
+          ]
+        },
+        5: {
+          title: "<strong>5. Uso de Imagens e Projetos</strong>",
+          content: "As imagens de projetos, renders, desenhos arquitetônicos e material visual publicados no site têm fins exclusivamente informativos e promocionais.",
+          list: ["Não podem ser utilizadas para fins comerciais sem autorização.", "Não podem ser alteradas ou manipuladas.", "Não podem ser apresentadas como projetos de terceiros."],
+          footer: "O uso indevido deste material poderá dar origem a ações legais em conformidade com a legislação vigente."
+        },
+        6: {
+          title: "<strong>6. Formulários e Contato</strong>",
+          content: [
+            "Ao preencher formulários ou contatar a AMCO através do site ou WhatsApp, o usuário declara que as informações fornecidas são verdadeiras, completas e atualizadas.",
+            "O uso desses canais não gera uma relação contratual automática nem a obrigação de uma resposta imediata por parte da empresa."
+          ]
+        },
+        7: { title: "<strong>7. Links para Terceiros</strong>", content: "O site pode conter links para sites de terceiros. A Construtora AMCO LTDA não se responsabiliza pelo conteúdo, políticas ou práticas de tais sites externos." },
+        8: {
+          title: "<strong>8. Limitação de Responsabilidade</strong>",
+          content: ["A AMCO não garante que o site esteja livre de erros, interrupções ou falhas técnicas, nem que o acesso seja contínuo ou ininterrupto.", "O uso do site é de responsabilidade exclusiva do usuário."]
+        },
+        9: { title: "<strong>9. Modificações</strong>", content: ["A Construtora AMCO LTDA reserva-se o direito de modificar a qualquer momento os presentes Termos e Condições.", "As modificações entrarão em vigor a partir da sua publicação no site."] },
+        10: { title: "<strong>10. Legislação Aplicável</strong>", content: "Os presentes Termos e Condições são regidos pelas leis da República da Colômbia. Qualquer controvérsia será submetida à jurisdição dos tribunais competentes de Bogotá D.C." }
       }
     },
     data_proyectos: {
