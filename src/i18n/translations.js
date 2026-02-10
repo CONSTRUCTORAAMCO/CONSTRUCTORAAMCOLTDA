@@ -25,13 +25,13 @@ export const translations = {
       projects_title: "Proyectos y Clientes Destacados",
       projects_intro: "AMCO ha colaborado en importantes proyectos para clientes del sector público y privado",
       project_list: [
-        "Centro Comercial Cedritos 151",
-        "Nuevo comando Policía de Bogotá",
-        "SENA de Bronx",
+        "Comando de la Policía Metropolitana de Bogotá",
+        "Edificio Gabriel Giraldo - Universidad Javeriana",
         "Bodega Popular Corabastos",
-        "Personería De Bogotá",
-        "Universidad Libre Bogotá",
-        "Gobernación de Cundinamarca"
+        "Penitenciaría de Máxima Seguridad de Valledupar",
+        "Sena de Soacha",
+        "Sede de la Gobernación de Cundinamarca",
+        "Edificio Universidad Libre Bogotá"
       ]
     },
     objective: {
@@ -118,8 +118,8 @@ export const translations = {
         f4_desc: "Proyecto en construcción avanzada con tecnología de punta. Actualmente en desarrollo, sin fecha de finalización establecida."
       },
       specs_list_main: [
-        "<strong>Altura total:</strong> 300+ metros",
-        "<strong>Niveles totales:</strong> 75 pisos",
+        "<strong>Altura total:</strong> 500 metros",
+        "<strong>Niveles totales:</strong> 100 pisos",
         "<strong>Área construida:</strong> 180,000 m²",
         "<strong>Unidades residenciales:</strong> 450 apartamentos",
         "<strong>Oficinas corporativas:</strong> 25,000 m²",
@@ -179,7 +179,7 @@ export const translations = {
           tags: ["Expansión", "Complemento", "Innovación"],
           founded: "Fundada en 2000"
         },
-        p1: "Nuestra organización, compuesta por Constructora AMCO Ltda. (1973) y AMR Construcciones y CIA S.A. (2000), se dedica al servicio de promoción, mercadeo, ventas, diseño, gerencia y construcción en general, abarcando los sectores de vivienda, institucional, oficinas, comercial e industrial.",
+        p1: "Nuestra organización, compuesta por Constructora AMCO Ltda. (1973) y AMR Construcciones (2000), se dedica al servicio de promoción, mercadeo, ventas, diseño, gerencia y construcción en general, abarcando los sectores de vivienda, institucional, oficinas, comercial e industrial.",
         p2: "Desde su fundación, hemos realizado importantes aportes al desarrollo del país a través de diversos programas de construcción, generando miles de empleos directos e indirectos en proyectos públicos y privados."
       },
       timeline: {
@@ -489,13 +489,13 @@ export const translations = {
       projects_title: "Featured Projects and Clients",
       projects_intro: "AMCO has collaborated on important projects for public and private sector clients",
       project_list: [
-        "Cedritos Shopping Center 151",
-        "New Bogotá Police Command",
-        "Bronx SENA",
-        "Corabastos Popular Warehouse",
-        "Bogotá Personería",
-        "Libre University of Bogotá",
-        "Cundinamarca Governorate"
+        "Bogotá Metropolitan Police Command",
+        "Gabriel Giraldo Building Javeriana University",
+        "Corabastos Popular Winery",
+        "Valledupar Maximum Security Penitentiary",
+        "Sena de Soacha",
+        "Headquarters of the Cundinamarca Governorate",
+        "Free University Building Bogotá"
       ]
     },
     objective: {
@@ -582,8 +582,8 @@ export const translations = {
         f4_desc: "Project in advanced construction with cutting-edge technology. Currently in development, no completion date set."
       },
       specs_list_main: [
-        "<strong>Total height:</strong> 300+ meters",
-        "<strong>Total levels:</strong> 75 floors",
+        "<strong>Total height:</strong> 500 meters",
+        "<strong>Total levels:</strong> 100 floors",
         "<strong>Built area:</strong> 180,000 m²",
         "<strong>Residential units:</strong> 450 apartments",
         "<strong>Corporate offices:</strong> 25,000 m²",
@@ -643,7 +643,7 @@ export const translations = {
           tags: ["Expansion", "Complement", "Innovation"],
           founded: "Founded in 2000"
         },
-        p1: "Our organization, composed of AMCO Construction Ltd. (1973) and AMR Construcciones y CIA S.A. (2000), is dedicated to the service of promotion, marketing, sales, design, management and construction in general, covering the housing, institutional, office, commercial and industrial sectors.",
+        p1: "Our organization, composed of AMCO Construction Ltd. (1973) and AMR Construcciones (2000), is dedicated to the service of promotion, marketing, sales, design, management and construction in general, covering the housing, institutional, office, commercial and industrial sectors.",
         p2: "Since its foundation, we have made important contributions to the country's development through various construction programs, generating thousands of direct and indirect jobs in public and private projects."
       },
       timeline: {

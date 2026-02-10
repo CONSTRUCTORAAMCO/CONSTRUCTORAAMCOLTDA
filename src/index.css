@@ -86,3 +86,21 @@ button:focus-visible {
 .animate-popIn {
   animation: popIn 0.35s cubic-bezier(.22,1,.36,1) forwards;
 }
+
+/* Scrollbar personalizada global */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9; /* --gray-100 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFD600; /* --accent */
+  border-radius: 9999px; /* --radius-full */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffdf1a; /* Un tono ligeramente más claro para el hover */
+}
