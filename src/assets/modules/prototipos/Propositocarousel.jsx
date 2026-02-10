@@ -16,7 +16,7 @@ const Propositocarousel = () => {
   const [isInteractionPaused, setIsInteractionPaused] = useState(false);
   const interactionTimeout = useRef(null);
   const isTouchDevice = useRef(false);
-  const scrollAmount = 300;
+
 
   /* -------------------- TOUCH DETECTION -------------------- */
   useEffect(() => {
@@ -39,17 +39,36 @@ const Propositocarousel = () => {
     setCanScrollLeft(el.scrollLeft > 0);
     setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
   };
-  const scrollNext = () => {
-    carouselRef.current?.scrollBy({
-      left: scrollAmount,
-      behavior: "smooth",
-    });
+
+  const getScrollAmount = () => {
+    const el = carouselRef.current;
+    if (!el) return 0;
+    const card = el.firstElementChild;
+    if (!card) return 0;
+
+    // Get gap from computed style (default to 16 if not found)
+    const gap = parseFloat(window.getComputedStyle(el).gap) || 16;
+    return card.offsetWidth + gap;
   };
+
+  const scrollNext = () => {
+    const amount = getScrollAmount();
+    if (amount > 0) {
+      carouselRef.current?.scrollBy({
+        left: amount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const scrollPrev = () => {
-    carouselRef.current?.scrollBy({
-      left: -scrollAmount,
-      behavior: "smooth",
-    });
+    const amount = getScrollAmount();
+    if (amount > 0) {
+      carouselRef.current?.scrollBy({
+        left: -amount,
+        behavior: "smooth",
+      });
+    }
   };
 
   /* -------------------- AUTOPLAY (SOLO PC) -------------------- */
@@ -63,7 +82,10 @@ const Propositocarousel = () => {
       if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
         el.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        el.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        const amount = getScrollAmount();
+        if (amount > 0) {
+          el.scrollBy({ left: amount, behavior: "smooth" });
+        }
       }
     }, 3000);
     return () => clearInterval(interval);

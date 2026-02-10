@@ -3,7 +3,7 @@ import styles from "./Objetivo.module.css";
 import { useLanguage } from "../../../i18n/LanguageContext";
 
 import imagenProyecto from "../../../assets/img/objetivosocialimg.png";
-import videoBg from "../../../../public/video/21233-316116300_small.mp4";
+import videoBg from "../../../assets/video/21233-316116300_small.mp4";
 
 const Objetivo = () => {
   const { t } = useLanguage();
