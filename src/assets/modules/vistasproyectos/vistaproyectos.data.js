@@ -71,8 +71,6 @@ import imgLeticia4 from "../../img/1-BASE-AEREA-LETICIA4.jpg";
 import imgLeticia5 from "../../img/2-BASE-AEREA-LETICIA-5.jpg";
 import imgLeticia6 from "../../img/3-BASE-AEREA-LETICIA-6.jpg";
 import imgLeticia7 from "../../img/4-BASE-AEREA-LETICIA-7.jpg";
-import imgLeticia8 from "../../img/5-BASE-AEREA-LETICIA-8.jpg";
-import imgLeticia9 from "../../img/6-BASE-AEREA-LETICIA 9.jpg";
 import imgLeticia10 from "../../img/7-BASE-AEREA-LETICIA 10.jpg";
 import imgTunal from "../../img/Tunalprincipal.jpeg";
 import imgTunal1 from "../../img/tunal1.jpg";
@@ -80,7 +78,6 @@ import imgTunal2 from "../../img/tunal4.jpeg";
 import imgTunal3 from "../../img/tunal5.jpeg";
 import imgTunal4 from "../../img/tunal6.jpeg";
 import imgTunal5 from "../../img/tunal7.jpeg";
-import imgTunal6 from "../../img/tunal6.jpeg";
 
 
 export const proyectos = [
@@ -301,8 +298,6 @@ export const proyectos = [
       { image: imgLeticia5 },
       { image: imgLeticia6 },
       { image: imgLeticia7 },
-      { image: imgLeticia8 },
-      { image: imgLeticia9 },
       { image: imgLeticia10 },
     ],
   },
@@ -317,7 +312,7 @@ export const proyectos = [
       { image: imgTunal3 },
       { image: imgTunal4 },
       { image: imgTunal5 },
-      { image: imgTunal6 },
+
     ]
   },
 ];
