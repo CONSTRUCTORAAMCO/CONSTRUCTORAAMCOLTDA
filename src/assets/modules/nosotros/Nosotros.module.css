@@ -299,12 +299,9 @@
 
 .imagenPlaceholder {
   flex: 1;
-  background: linear-gradient(135deg, var(--primary-color-light) 0%, var(--background-card) 100%);
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dashed var(--primary-color);
   min-height: 400px;
 }
 

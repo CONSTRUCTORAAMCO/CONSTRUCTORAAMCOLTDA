@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import styles from "./Nosotros.module.css";
 import { useLanguage } from "../../../i18n/LanguageContext";
+import imgAlfredo from "../../img/alfredoimg.png";
 
 export default function Nosotros() {
   const { t } = useLanguage();
@@ -147,12 +148,11 @@ export default function Nosotros() {
             {/* Tarjeta derecha: Imagen */}
             <div className={styles.fundadorImagen}>
               <div className={styles.imagenContainer}>
-                <div className={styles.imagenPlaceholder}>
-                  <div className={styles.imagenContent}>
-                    <User size={120} className={styles.imagenIcon} />
-                    <p className={styles.imagenTexto}>{t('nosotros.founder.caption')}</p>
-                  </div>
-                </div>
+                <img
+                  src={imgAlfredo}
+                  alt={t('nosotros.founder.name')}
+                  style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "20px" }}
+                />
                 <div className={styles.imagenCaption}>
                   <span className={styles.captionText}>{t('nosotros.founder.caption_role')}</span>
                   <span className={styles.captionYear}>{t('nosotros.founder.caption_year')}</span>
