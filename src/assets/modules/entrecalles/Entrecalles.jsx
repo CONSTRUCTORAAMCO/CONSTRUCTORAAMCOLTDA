@@ -1,6 +1,7 @@
 // ================= IMPORTS =================
 // React y Hooks
 import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 // Iconos
 import { Building2, Target, Users, Award, Clock, ChevronRight, CheckCircle, Calendar, X, ChevronLeft, ChevronRight as RightIcon, Info } from "lucide-react";
 // Imágenes
@@ -210,6 +211,12 @@ const EntreCalles = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{t('entrecalles.meta.title', "Entrecalles Emerald Tower - Proyecto Insignia de AMCO en Bogotá")}</title>
+        <meta name="description" content={t('entrecalles.meta.description', "Conoce Entrecalles, el rascacielos que transformará el centro de Bogotá. Un proyecto de uso mixto con 500m de altura, apartamentos de lujo, oficinas y más.")} />
+        <link rel="canonical" href="https://www.amcoltda.com/entrecalles" />
+      </Helmet>
+
       {/* HERO SECTION - CON MÁS ESPACIO ABAJO */}
       <div className={styles.heroSection}>
         <div className={styles.heroOverlay}></div>
@@ -379,12 +386,13 @@ const EntreCalles = () => {
                   onClick={() => openModal(index)}
                   style={{ cursor: 'pointer' }}
                 >
-                  <div
-                    className={styles.galleryImage}
-                    style={{
-                      backgroundImage: `url(${image.image})`
-                    }}
-                  >
+                  <img
+                    src={image.image}
+                    alt={image.description}
+                    loading="lazy"
+                    className={styles.galleryImageTag}
+                  />
+                  <div className={styles.galleryImageOverlay}>
                     <div className={styles.imageCategory}>{image.category}</div>
                     <div className={styles.imageContent}>
                       <h4>{image.title}</h4>

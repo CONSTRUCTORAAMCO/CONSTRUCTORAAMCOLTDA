@@ -6,7 +6,7 @@ import whatsappIcon from "../../img/WhatsApp_icon.png";
 export default function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
 
-  const phoneNumber = "573001234567";
+  const phoneNumber = "573223351710";
   const message = "Hola 👋, quisiera más información sobre el proyecto";
 
   return (

@@ -9,6 +9,7 @@ import {
   RiCloseLine,
 } from "react-icons/ri"
 import { Building2 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { useLanguage } from "../../../i18n/LanguageContext";
 
 const Formulario = () => {
@@ -182,6 +183,12 @@ const Formulario = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{t('formulario.meta.title')}</title>
+        <meta name="description" content={t('formulario.meta.description')} />
+        <link rel="canonical" href="https://www.amcoltda.com/contacto" />
+      </Helmet>
+
       {/* HERO SECTION */}
       <div className={styles.heroSection}>
         <div className={styles.heroOverlay}></div>
@@ -310,14 +317,14 @@ const Formulario = () => {
                 <h3>
                   {t('formulario.info.phone')} <RiPhoneLine size={18} />
                 </h3>
-                <p>+57 300 123 4567</p>
+                <p>+57 3223351710</p>
               </div>
             </div>
 
             <div className={styles.mapCard}>
               <iframe
                 title="Ubicación Constructora AMCO"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5000!2d-74.0519526!3d4.6786749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a931ebe1a1d%3A0x1d267cdfe5b0e062!2sBusiness%20center%2093!5e0!3m2!1ses-419!2sco!4v1768488991782"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.539355655495!2d-74.0541315259194!3d4.67610834211158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a931ebe1a1d%3A0x1d267cdfe5b0e062!2sBC%20-%20Business%20Center%2093!5e0!3m2!1sen!2sco!4v1716499898101!5m2!1sen!2sco"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />

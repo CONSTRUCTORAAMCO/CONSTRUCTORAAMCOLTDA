@@ -84,7 +84,7 @@ export const proyectos = [
   {
     id: 1,
     title: "Bodega Popular Corabastos",
-    description: "La Bodega Popular Corabastos es una obra que refleja nuestro compromiso con la calidad y la funcionalidad. Este proyecto cuenta con una estructura robusta, diseñada para optimizar el flujo de mercancías y garantizar la seguridad de los productos incluyen amplias áreas de almacenamiento, espacios de carga y descarga eficientes, y una distribución estratégica que facilita el acceso tanto para comerciantes como para clientes. Utilizando materiales de alta durabilidad y tecnologías sostenibles, esta bodega no solo potencia el comercio local, sino que también contribuye al desarrollo económico de la región.",
+    description: "Construcción de la Bodega Popular en Corabastos, Bogotá. Un proyecto de infraestructura logística clave con una estructura de concreto y acero, diseñada para optimizar el flujo de mercancías con amplias áreas de almacenamiento, zonas de carga y descarga para tractocamiones y una distribución estratégica para el mercado mayorista. Se emplearon materiales de alta durabilidad y un diseño enfocado en la eficiencia operativa para potenciar el comercio y el desarrollo económico de la principal central de abastos de Colombia.",
     image: imgCorabastos,
   },
   {

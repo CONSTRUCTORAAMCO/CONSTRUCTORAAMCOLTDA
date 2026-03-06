@@ -1,6 +1,7 @@
 // ================= IMPORTS =================
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 // Local Components & Data
@@ -23,6 +24,10 @@ const VistaProyecto = () => {
   // Buscar proyecto por ID (convirtiendo ambos a String para seguridad)
   const proyecto = proyectos?.find((p) => String(p.id) === String(id));
 
+  // Extraer textos traducidos
+  const projectTitle = t(`data_proyectos.${proyecto?.id}.title`) || proyecto?.title;
+  const projectDescription = t(`data_proyectos.${proyecto?.id}.description`) || proyecto?.description;
+
   // Manejo de caso: Proyecto no encontrado
   if (!proyecto) {
     return (
@@ -43,6 +48,16 @@ const VistaProyecto = () => {
 
   return (
     <section className="relative min-h-screen flex justify-center px-3 sm:px-6 pt-24 sm:pt-40 md:pt-48 pb-16 sm:pb-20 overflow-hidden bg-black">
+      {/* SEO METADATA */}
+      <Helmet>
+        <title>{`${projectTitle} | Proyecto de Constructora AMCO`}</title>
+        <meta
+          name="description"
+          content={projectDescription?.substring(0, 155) + '...'}
+        />
+        <link rel="canonical" href={`https://www.amcoltda.com/proyecto/${id}`} />
+      </Helmet>
+
       {/* FONDO */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div
@@ -69,11 +84,11 @@ const VistaProyecto = () => {
 
           <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
             <h1 className="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight">
-              {t(`data_proyectos.${proyecto.id}.title`) || proyecto.title}
+              {projectTitle}
             </h1>
 
             <p className="text-gray-300 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 leading-relaxed">
-              {t(`data_proyectos.${proyecto.id}.description`) || proyecto.description}
+              {projectDescription}
             </p>
           </div>
         </div>

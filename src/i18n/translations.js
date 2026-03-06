@@ -12,6 +12,10 @@ export const translations = {
       constructora: "Constructora",
       scroll: "SCROLL"
     },
+    home: {
+      meta_title: "Constructora AMCO | Más de 50 Años Construyendo en Colombia",
+      meta_description: "Constructora AMCO Ltda. Líder en construcción de obras civiles, infraestructura y proyectos inmobiliarios en Colombia. Conoce nuestra trayectoria y proyectos."
+    },
     history: {
       experience: "Años de experiencia en el<br/>sector de la construcción",
       built: "Construidos en proyectos residenciales y comerciales",
@@ -84,6 +88,10 @@ export const translations = {
       info_p1: "Esta página web es una plataforma informativa dedicada al proyecto TORRE ENTRECALLES EMERALD TOWER. Toda la información presentada aquí corresponde al estado actual del desarrollo y está sujeta a actualizaciones periódicas a medida que avanza el proyecto.",
       info_p2: "Cada proceso, avance o modificación en el desarrollo se irá actualizando en esta plataforma, manteniendo a todos los interesados informados sobre el progreso de esta obra que marcará un hito en la arquitectura colombiana.",
       info_update: "Agradecemos su interés en el proyecto y los invitamos a mantenerse conectados para futuras actualizaciones. Última Actualización: 30/01/2026",
+      meta: {
+        title: "Entrecalles Emerald Tower - Proyecto Insignia de AMCO en Bogotá",
+        description: "Conoce Entrecalles, el rascacielos que transformará el centro de Bogotá. Un proyecto de uso mixto con 500m de altura, apartamentos de lujo, oficinas y más."
+      },
       gallery_images: {
         img1_title: "Vista Principal del Edificio (Derechos de autor Bher President @Quantum-AIP LLC)",
         img1_desc: "Diseño arquitectónico innovador con tecnología 3D y materiales de vanguardia",
@@ -143,6 +151,10 @@ export const translations = {
       ]
     },
     nosotros: {
+      meta: {
+        title: "Nuestra Historia - Constructora AMCO Ltda.",
+        description: "Descubre la historia y valores de Constructora AMCO. Más de 50 años de experiencia, compromiso y excelencia en el sector de la construcción en Colombia."
+      },
       hero: {
         name: "NOSOTROS",
         title: "Construyendo el Futuro de Colombia",
@@ -225,6 +237,10 @@ export const translations = {
       }
     },
     proyectos: {
+      meta: {
+        title: "Proyectos de Construcción Realizados - AMCO Ltda.",
+        description: "Explora el portafolio de proyectos de Constructora AMCO. Obras de infraestructura, residenciales, comerciales e institucionales ejecutadas con éxito en toda Colombia."
+      },
       typewriter: "Proyectos",
       results: "Resultados",
       highlighted: "Proyectos Destacados",
@@ -249,6 +265,10 @@ export const translations = {
       title: "Proyectos Ejecutados"
     },
     formulario: {
+      meta: {
+        title: "Contacto - Constructora AMCO Ltda.",
+        description: "Contáctanos para tus proyectos de construcción. Ubicados en Bogotá, estamos listos para asesorarte. Llámanos o envíanos un mensaje."
+      },
       hero_title: "CONTACTO",
       company_subtitle: "CONSTRUCTORA AMCO LTDA",
       hero_slogan: "Construyendo el Futuro de Colombia",
@@ -321,6 +341,10 @@ export const translations = {
       description: "Constructora AMCO Ltda. se dedica a la planeación, diseño, desarrollo, gerencia y ejecución de proyectos de construcción en los sectores de vivienda, oficinas, comercio, institucional e industrial, bajo estrictas normas técnicas y de calidad, contribuyendo al desarrollo urbano sostenible de Colombia."
     },
     politicaprivacidad: {
+      meta: {
+        title: "Política de Privacidad - Constructora AMCO Ltda.",
+        description: "Consulta nuestra política de tratamiento de datos personales. En Constructora AMCO protegemos tu información de acuerdo con la ley colombiana."
+      },
       title: "POLÍTICA DE PRIVACIDAD",
       subtitle: "CONSTRUCTORA AMCO LTDA",
       intro_1: "Constructora <strong>AMCO LTDA</strong>, con domicilio en Bogotá D.C., Colombia, en cumplimiento de lo dispuesto en la Ley 1581 de 2012, el Decreto 1377 de 2013 y demás normas que regulan la protección de datos personales, informa a los usuarios de su sitio web la presente Política de Tratamiento de Datos Personales.",
@@ -339,6 +363,10 @@ export const translations = {
       }
     },
     tyc: {
+      meta: {
+        title: "Términos y Condiciones - Constructora AMCO Ltda.",
+        description: "Lee los términos y condiciones de uso de nuestro sitio web. Conoce las normativas sobre propiedad intelectual y uso de la información."
+      },
       title: "TÉRMINOS Y CONDICIONES DE USO",
       subtitle: "CONSTRUCTORA AMCO LTDA",
       sections: {
@@ -393,7 +421,7 @@ export const translations = {
       }
     },
     data_proyectos: {
-      1: { title: "Bodega Popular Corabastos", category: "Infraestructura", location: "Bogotá", description: "La Bodega Popular Corabastos es una obra que refleja nuestro compromiso con la calidad y la funcionalidad. Este proyecto cuenta con una estructura robusta, diseñada para optimizar el flujo de mercancías y garantizar la seguridad de los productos incluyen amplias áreas de almacenamiento, espacios de carga y descarga eficientes, y una distribución estratégica que facilita el acceso tanto para comerciantes como para clientes." },
+      1: { title: "Bodega Popular Corabastos", category: "Infraestructura", location: "Bogotá", description: "Construcción de infraestructura logística en Corabastos, Bogotá. Estructura de concreto y acero diseñada para optimizar el flujo de mercancías con amplias áreas de almacenamiento, zonas de carga y descarga para tractocamiones y una distribución estratégica para el mercado mayorista." },
       2: { title: "Cárcel de San Ángel", category: "Infraestructura", location: "Sabanas de San Ángel", description: "Es un proyecto arquitectónico que combina seguridad y funcionalidad. Esta obra fue diseñada para cumplir con los más altos estándares de infraestructura penitenciaria, incorporando espacios adecuados para la rehabilitación y reintegración de los internos." },
       3: { title: "Centro Comercial Cedritos 151", category: "Comercial", location: "Bogotá", description: "Este centro comercial ofrece una variedad de espacios comerciales, áreas de entretenimiento y Zonas de descanso, creando un ambiente vibrante para los visitantes. La construcción destaca por su estructura amplia y luminosa, con materiales de alta calidad que garantizan durabilidad y sostenibilidad." },
       4: { title: "SENA Bronx", category: "Residencial", location: "Bogotá", description: "El Centro de Formación Sena de Bronx es un proyecto innovador que combina funcionalidad y diseño moderno, creado para brindar oportunidades educativas a la comunidad. Esta obra destaca por sus espacios amplios y luminosos, construidos con materiales sostenibles y tecnología avanzada." },
@@ -468,13 +496,17 @@ export const translations = {
       home: "Home",
       about: "About us",
       projects: "Projects",
-      entrecalles: "Between streets",
+      entrecalles: "Entrecalles",
       contact: "Contact",
       search: "Search..."
     },
     hero: {
       constructora: "Builder",
       scroll: "SCROLL"
+    },
+    home: {
+      meta_title: "AMCO Construction | Over 50 Years Building in Colombia",
+      meta_description: "AMCO Construction Ltd. Leader in civil works, infrastructure, and real estate projects in Colombia. Discover our history and projects."
     },
     history: {
       experience: "Years of experience in the<br/>construction sector",
@@ -499,31 +531,31 @@ export const translations = {
       ]
     },
     objective: {
-      name: "BETWEEN STREETS",
+      name: "ENTRECALLES",
       title: "CORPORATE PURPOSE",
       paragraph: "AMCO Construction Ltd. is dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors, under strict technical and quality standards, contributing to the sustainable urban development of Colombia."
     },
     entrecalles: {
-      name: "BETWEEN STREETS",
+      name: "ENTRECALLES",
       badge: "PROJECT IN DEVELOPMENT",
-      title: "BETWEEN STREETS EMERALD TOWER",
+      title: "ENTRECALLES EMERALD TOWER",
       description: "At the intersection of Avenue 19 and the Royal Street of Commerce, better known as Carrera Septima; a project takes flight that will renew the face of downtown Bogota and all of Colombia.",
       video_label: "Project Video",
-      video_title: "Between streets: The future of Bogotá",
+      video_title: "Entrecalles: The future of Bogotá",
       video_description: "Discover the skyscraper that will transform the city center",
       height: "meters high",
       location: "Location",
       modal_title: "Project Video",
-      iframe_title: "Between streets - Project",
+      iframe_title: "Entrecalles - Project",
       hero_title: "Building the Future of Colombia",
       hero_subtitle: "More than 50 years of experience, innovation and excellence in construction",
       unique_msg: "The backbone of a new center.",
-      img_main_title: "BETWEEN STREETS EMERALD TOWER",
+      img_main_title: "ENTRECALLES EMERALD TOWER",
       img_copyright: "Original image copyright Bher President @Quantum-AIP LLC",
       history_title: "Project History",
-      history_subtitle: "BETWEEN STREETS EMERALD TOWER: A Two-Decade Dream",
-      history_p1: "<strong>Between Streets Tower was born over twenty years ago</strong> as a vision to transform Bogotá's historic center. At that time, we visualized a future where modern developments would integrate perfectly with urban heritage, creating a balance between innovation and tradition.",
-      history_p2: "Today, Between Streets Tower consolidates itself as the redesign of the urban space our beloved center needs. This high-rise landmark, unique in its kind and mixed-use, will not only raise the standard for real estate development in the region, but will satisfy the pent-up demand for vibrant spaces where living, working and enjoying are a constant harmonious and pleasant constant.",
+      history_subtitle: "ENTRECALLES EMERALD TOWER: A Two-Decade Dream",
+      history_p1: "<strong>Entrecalles Tower was born over twenty years ago</strong> as a vision to transform Bogotá's historic center. At that time, we visualized a future where modern developments would integrate perfectly with urban heritage, creating a balance between innovation and tradition.",
+      history_p2: "Today, Entrecalles Tower consolidates itself as the redesign of the urban space our beloved center needs. This high-rise landmark, unique in its kind and mixed-use, will not only raise the standard for real estate development in the region, but will satisfy the pent-up demand for vibrant spaces where living, working and enjoying are a constant harmonious and pleasant constant.",
       stats_years: "Years of strategic planning",
       stats_height: "Total architectural height",
       stats_levels: "Levels of innovation",
@@ -542,12 +574,16 @@ export const translations = {
       specs_main: "Main Data",
       specs_amenities: "Premium Amenities",
       specs_sustain: "Sustainability and Technology",
-      video_section_title: "BETWEEN STREETS EMERALD TOWER: The Future of Bogotá",
+      video_section_title: "ENTRECALLES EMERALD TOWER: The Future of Bogotá",
       video_section_desc: "Discover in this exclusive video the magnitude, vision and technology behind the project that will redefine the Colombian capital's skyline.",
       info_title: "Project Information",
-      info_p1: "This website is an information platform dedicated to the BETWEEN STREETS EMERALD TOWER project. All information presented here corresponds to the current state of development and is subject to periodic updates as the project progresses.",
+      info_p1: "This website is an information platform dedicated to the ENTRECALLES EMERALD TOWER project. All information presented here corresponds to the current state of development and is subject to periodic updates as the project progresses.",
       info_p2: "Each process, progress or modification in the development will be updated on this platform, keeping all interested parties informed about the progress of this work that will mark a milestone in Colombian architecture.",
       info_update: "We appreciate your interest in the project and invite you to stay connected for future updates. Last Update: 01/30/2026",
+      meta: {
+        title: "Entrecalles Emerald Tower - AMCO Flagship Project in Bogotá",
+        description: "Discover Entrecalles, the skyscraper that will transform downtown Bogotá. A 500m tall mixed-use project with luxury apartments, offices, and more."
+      },
       gallery_images: {
         img1_title: "Main Building View (Copyright Bher President @Quantum-AIP LLC)",
         img1_desc: "Innovative architectural design with 3D technology and cutting-edge materials",
@@ -607,6 +643,10 @@ export const translations = {
       ]
     },
     nosotros: {
+      meta: {
+        title: "Our History - AMCO Construction Ltd.",
+        description: "Discover the history and values of AMCO Construction. Over 50 years of experience, commitment, and excellence in the Colombian construction sector."
+      },
       hero: {
         name: "ABOUT US",
         title: "Building the Future of Colombia",
@@ -689,6 +729,10 @@ export const translations = {
       }
     },
     proyectos: {
+      meta: {
+        title: "Completed Construction Projects - AMCO Ltd.",
+        description: "Explore AMCO Construction's project portfolio. Successfully executed infrastructure, residential, commercial, and institutional works throughout Colombia."
+      },
       typewriter: "Projects",
       results: "Results",
       highlighted: "Featured Projects",
@@ -713,6 +757,10 @@ export const translations = {
       title: "Executed Projects"
     },
     formulario: {
+      meta: {
+        title: "Contact - AMCO Construction Ltd.",
+        description: "Contact us for your construction projects. Located in Bogotá, we are ready to advise you. Call us or send us a message."
+      },
       hero_title: "CONTACT",
       company_subtitle: "AMCO CONSTRUCTION LTD",
       hero_slogan: "Building the Future of Colombia",
@@ -785,6 +833,10 @@ export const translations = {
       description: "AMCO Construction Ltd. is dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors, under strict technical and quality standards, contributing to the sustainable urban development of Colombia."
     },
     politicaprivacidad: {
+      meta: {
+        title: "Privacy Policy - AMCO Construction Ltd.",
+        description: "Consult our personal data treatment policy. At AMCO Construction, we protect your information in accordance with Colombian law."
+      },
       title: "PRIVACY POLICY",
       subtitle: "AMCO CONSTRUCTION LTD",
       intro_1: "AMCO CONSTRUCTION LTD, domiciled in Bogotá D.C., Colombia, in compliance with the provisions of Law 1581 of 2012, Decree 1377 of 2013 and other regulations governing the protection of personal data, informs users of its website of this Personal Data Treatment Policy.",
@@ -803,6 +855,10 @@ export const translations = {
       }
     },
     tyc: {
+      meta: {
+        title: "Terms and Conditions - AMCO Construction Ltd.",
+        description: "Read the terms and conditions of use for our website. Learn about regulations on intellectual property and information use."
+      },
       title: "TERMS AND CONDITIONS OF USE",
       subtitle: "AMCO CONSTRUCTION LTD",
       sections: {
@@ -892,13 +948,13 @@ export const translations = {
       home: "Home",
       about: "About Us",
       projects: "Projects",
-      entrecalles: "Between Streets",
+      entrecalles: "Entrecalles",
       contact: "Contact",
       keywords: {
         home: ["home", "main", "start"],
         about: ["us", "company", "who we are", "history"],
         projects: ["projects", "works", "constructions"],
-        entrecalles: ["between streets", "blog", "news"],
+        entrecalles: ["entrecalles", "emerald tower", "bogota", "skyscraper"],
         contact: ["contact", "email", "phone"]
       }
     },

@@ -41,7 +41,6 @@ function App() {
           <Route path="/politicaprivacidad" element={<Politicaprivacidad />} />
           <Route path="/tyc" element={<Tyc />} />
           <Route path="/proyecto/:id" element={<VistasProyecto />} />
-          <Route path="/vistaproyecto/:id" element={<VistasProyecto />} />
         </Route>
       </Routes>
     </Suspense>
