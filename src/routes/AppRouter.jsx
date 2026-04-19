@@ -5,7 +5,6 @@ import MainLayout from "../assets/components/layout/MainLayout";
 import ScrollToTop from "../assets/components/scrolltotop/ScrollToTop";
 
 // ================= LAZY LOADING =================
-// Carga diferida de componentes para mejorar el rendimiento inicial
 const Home = lazy(() => import("../pages/Home"));
 const Nosotros = lazy(() => import("../pages/Nosotros"));
 const Entrecalles = lazy(() => import("../pages/Entrecalles"));
@@ -13,6 +12,7 @@ const Contacto = lazy(() => import("../pages/Contacto"));
 const Proyectos = lazy(() => import("../pages/Proyectos"));
 const Politicaprivacidad = lazy(() => import("../pages/Politicaprivacidad"));
 const Tyc = lazy(() => import("../pages/Tyc"));
+
 const VistasProyecto = lazy(() =>
   import("../assets/modules/vistasproyectos/vistaproyecto").then((module) => ({
     default: module.default,
@@ -25,13 +25,19 @@ const ComunidadesCarousel = lazy(() =>
   }))
 );
 
+// 👇 404 PAGE
+const Error404 = lazy(() => import("../pages/Error404.jsx"));
+
 // ================= COMPONENT =================
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <ScrollToTop />
+
       <Routes>
         <Route element={<MainLayout />}>
+
+          {/* ===== RUTAS PRINCIPALES ===== */}
           <Route path="/" element={<Home />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
@@ -41,6 +47,10 @@ function App() {
           <Route path="/politicaprivacidad" element={<Politicaprivacidad />} />
           <Route path="/tyc" element={<Tyc />} />
           <Route path="/proyecto/:id" element={<VistasProyecto />} />
+
+          {/* 🚨 404 CATCH ALL (IMPORTANTE) */}
+          <Route path="*" element={<Error404 />} />
+
         </Route>
       </Routes>
     </Suspense>
