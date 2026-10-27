@@ -3,14 +3,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-      playfair: ['"Playfair Display"', 'serif'],
+        playfair: ['"Playfair Display"', "serif"],
       },
-    },
-  },
-};
-module.exports = {
-  theme: {
-    extend: {
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0, transform: 'translateY(-10px)' },

@@ -1,367 +1,610 @@
-// ================= IMPORTS =================
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Select from "react-select";
-// UI Components (MUI)
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-// Local Data & Assets
-import { proyectos as PROJECTS } from "./dataProyectos.js";
-import { useLanguage } from "../../../i18n/LanguageContext";
-import imgUniversidadLibre from "../../img/bogota-proyectos.jpg";
-import styles from "./sesioProy.module.css";
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { proyectos } from './dataProyectos';
+import { ubicaciones, departamentoDe } from './ubicaciones';
+import { detalles } from './detalles';
+import { useLanguage } from '../../../i18n/LanguageContext';
+import heroBogota from '../../img/heroBogota.svg';
+import Select from 'react-select';
+import { MapPin, ArrowUpRight, SearchX, Building2 } from 'lucide-react';
 
-// ================= DATA =================
-const ACTIVITIES = ["Todas", "Residencial", "Comercial", "Infraestructura"];
-const PAGE_SIZE = 6;
-const activityOptions = ACTIVITIES.map(a => ({ value: a, label: a }));
+// Proyectos enriquecidos
+const proyectosFull = proyectos.map((p) => ({
+  ...p,
+  ...(detalles[p.id] || {}),
+  departamento: departamentoDe[p.ubicacion] || null,
+  direccion: ubicaciones[p.id]?.direccion || null,
+  lat: ubicaciones[p.id]?.lat,
+  lng: ubicaciones[p.id]?.lng,
+  sinUbicacion: !p.ubicacion || p.ubicacion === 'Por definir',
+}));
 
-// ================= React Select Styles =================
-const customStyles = {
-  container: (base) => ({ ...base, width: "310px", margin: "0 auto" }),
+const mostrarEstado = proyectosFull.every((p) => p.estado);
+const mostrarEntidad = proyectosFull.every((p) => p.entidad);
+const mostrarDato = proyectosFull.every((p) => p.dato);
+
+const unicos = (arr) => [...new Set(arr.filter(Boolean))].sort((a, b) => a.localeCompare(b, 'es'));
+const normalizarNombre = (nombre) =>
+  String(nombre || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\s+d\.?c\.?$/, '')
+    .trim();
+const unicosPorNombre = (nombres) => {
+  const vistos = new Set();
+  return nombres.filter((nombre) => {
+    const clave = normalizarNombre(nombre);
+    if (!clave || vistos.has(clave)) return false;
+    vistos.add(clave);
+    return true;
+  }).sort((a, b) => a.localeCompare(b, 'es'));
+};
+const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+
+const todosLosDepartamentos = { value: 'todos', label: 'Todos los departamentos' };
+const todasLasCiudades = { value: 'todas', label: 'Todas las ciudades' };
+const departamentosLocales = unicos(proyectosFull.map((p) => p.departamento)).map((nombre) => ({
+  value: nombre,
+  label: nombre,
+}));
+const ciudadesLocales = unicosPorNombre(
+  proyectosFull.filter((p) => !p.sinUbicacion).map((p) => p.ubicacion)
+);
+const categoriasBase = [
+  { value: 'todas', label: 'Todas las categorías' },
+  ...unicos(proyectosFull.map((p) => p.categoria)).map((c) => ({ value: c, label: cap(c) })),
+];
+
+// Estilos PREMIUM de react-select
+const selectStyles = {
   control: (base, state) => ({
     ...base,
-    minHeight: "36px",
-    height: "36px",
-    borderRadius: "9999px",
-    fontSize: "13px",
-    paddingLeft: "6px",
-    borderColor: state.isFocused ? "#f6c400" : "#e5e7eb",
-    boxShadow: "none",
-    "&:hover": {
-      borderColor: state.isFocused ? "#f6c400" : "#cbd5e1",
-    },
+    minHeight: 44,
+    borderRadius: 12,
+    borderColor: state.isFocused ? '#f59e0b' : 'transparent',
+    boxShadow: state.isFocused ? '0 0 0 4px rgba(245,158,11,.15)' : 'none',
+    backgroundColor: state.isFocused ? '#ffffff' : '#f8fafc',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    '&:hover': { backgroundColor: '#f1f5f9' },
   }),
-  valueContainer: (base) => ({ ...base, padding: "0 12px" }),
-  indicatorsContainer: (base) => ({ ...base, height: "36px" }),
-  dropdownIndicator: (base) => ({ ...base, padding: "6px" }),
-  menu: (base) => ({ ...base, borderRadius: "18px", overflow: "hidden", marginTop: "8px" }),
-  menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+  valueContainer: (base) => ({ ...base, padding: '2px 12px' }),
+  singleValue: (base) => ({ ...base, color: '#0f172a', fontWeight: 600, fontSize: 14 }),
+  indicatorSeparator: () => ({ display: 'none' }),
+  dropdownIndicator: (base) => ({ ...base, color: '#94a3b8', paddingRight: 12 }),
+  menu: (base) => ({
+    ...base,
+    borderRadius: 14,
+    overflow: 'hidden',
+    border: '1px solid #e2e8f0',
+    boxShadow: '0 14px 28px -12px rgba(15,23,42,.28)',
+    marginTop: 5,
+  }),
+  menuList: (base) => ({
+    ...base,
+    maxHeight: 160,
+    padding: 5,
+  }),
+  menuPortal: (base) => ({ ...base, zIndex: 1000 }),
   option: (base, state) => ({
     ...base,
-    borderRadius: "12px",
-    fontSize: "13px",
-    padding: "8px 12px",
-    backgroundColor: state.isSelected ? "#111827" : state.isFocused ? "#f3f4f6" : "transparent",
-    color: state.isSelected ? "#ffffff" : "#111827",
+    fontSize: 13,
+    minHeight: 32,
+    padding: '7px 10px',
+    margin: '2px 0',
+    borderRadius: 8,
+    cursor: 'pointer',
+    color: state.isSelected ? '#0f172a' : '#475569',
+    fontWeight: state.isSelected ? 700 : 500,
+    backgroundColor: state.isSelected ? '#fde68a' : state.isFocused ? '#fff7ed' : '#fff',
+    transition: 'background-color 0.15s ease',
   }),
 };
 
-export default function ProjectsSection2028() {
-  // ================= HOOKS & STATE =================
-  const navigate = useNavigate();
-  const { t, language } = useLanguage(); // Obtener el idioma para forzar re-render si cambia
+const dosLineas = { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' };
 
-  // Estados para filtros
-  const [region, setRegion] = useState("Todos");
-  const [city, setCity] = useState("Todos");
-  const [activity, setActivity] = useState("Todas");
-  
-  // Estados de UI
-  const [page, setPage] = useState(1);
-  const [showFilters, setShowFilters] = useState(false);
-  const [regionOptionsState, setRegionOptionsState] = useState([{ value: 'Todos', label: 'Departamentos' }]);
-  const [scrollY, setScrollY] = useState(0);
-  
-  // Estado para efecto Typewriter
-  const fullText = t('nav.projects'); // "Proyectos" translated
-  const [displayText, setDisplayText] = useState("");
+const urlMapa = (p) => {
+  let consulta;
+  if (p.lat && p.lng) consulta = `${p.lat},${p.lng}`;
+  else if (p.direccion) consulta = [p.direccion, p.ubicacion, 'Colombia'].filter(Boolean).join(', ');
+  else consulta = [p.nombre, p.ubicacion, 'Colombia'].filter(Boolean).join(', ');
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(consulta)}`;
+};
 
-  // ================= LOGIC: DATA PROCESSING =================
-  // Hidratar proyectos con traducciones actuales
-  const translatedProjects = PROJECTS.map(p => ({
-    ...p,
-    title: t(`data_proyectos.${p.id}.title`),
-    category: t(`data_proyectos.${p.id}.category`),
-    location: t(`data_proyectos.${p.id}.location`),
-    description: t(`data_proyectos.${p.id}.description`),
-  }));
+const Flecha = ({ dir }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
+    <path d={dir === 'izq' ? 'M15 18l-6-6 6-6' : 'M9 18l6-6-6-6'} />
+  </svg>
+);
 
-  // Generar opciones dinámicas para los selectores basadas en los datos
-  const allCitiesLabel = t('proyectos.filters.all_cities') || "Ciudades"; // Ensure these keys exist or fallback
-  const cityOptions = [
-    { value: 'Todos', label: allCitiesLabel },
-    ...Array.from(new Set(translatedProjects.map(p => p.location))).sort().map(c => ({ value: c, label: c }))
-  ];
-
-  const allCategoriesLabel = "Categorías"; // Or translate if key exists
-  const activityOptions = [
-    { value: 'Todas', label: allCategoriesLabel },
-    ...Array.from(new Set(translatedProjects.map(p => p.category))).sort().map(a => ({ value: a, label: a }))
-  ];
-
-  // Lógica de filtrado principal
-  const filtered = translatedProjects.filter((p) => {
-    const matchesActivity = activity === "Todas" || p.category === activity;
-    const matchesRegion = region === 'Todos' || p.location.toLowerCase().includes(region.toLowerCase());
-    const matchesCity = city === 'Todos' || p.location.toLowerCase().includes(city.toLowerCase());
-    return matchesActivity && matchesRegion && matchesCity;
+const paginasVisibles = (actual, total) => {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const base = [...new Set([1, total, actual - 1, actual, actual + 1])]
+    .filter((n) => n >= 1 && n <= total)
+    .sort((a, b) => a - b);
+  const salida = [];
+  base.forEach((n, i) => {
+    if (i > 0 && n - base[i - 1] > 1) salida.push('…');
+    salida.push(n);
   });
+  return salida;
+};
 
-  // Paginación: Calcular total de páginas y slice de datos visibles
-  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
-  const visible = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+const SesioProy = () => {
+  const navigate = useNavigate();
+  const { t } = useLanguage();
+  const departamentoPredeterminado = useMemo(
+    () => ({ ...todosLosDepartamentos, label: t('proyectos.directory.filters.all_departments') }),
+    [t]
+  );
+  const ciudadPredeterminada = useMemo(
+    () => ({ ...todasLasCiudades, label: t('proyectos.directory.filters.all_cities') }),
+    [t]
+  );
+  const [paginaActual, setPaginaActual] = useState(1);
+  const [departamentosApi, setDepartamentosApi] = useState([]);
+  const [ciudadesApi, setCiudadesApi] = useState([]);
+  const [cargandoUbicaciones, setCargandoUbicaciones] = useState(true);
+  const [errorUbicaciones, setErrorUbicaciones] = useState('');
+  const [departamento, setDepartamento] = useState(departamentoPredeterminado);
+  const [ciudad, setCiudad] = useState(ciudadPredeterminada);
+  const [categoria, setCategoria] = useState(categoriasBase[0]);
+  const galeriaRef = useRef(null);
+  const tarjetasRef = useRef(null);
+  const proyectosPorPagina = 9;
 
-  // Escala para el efecto zoom en el hero
-  const heroScale = 1 + scrollY * 0.0005;
-
-  // ================= EFFECTS =================
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    const controller = new AbortController();
 
-    // Lógica del efecto de máquina de escribir (Typewriter)
-    let i = 0;
-    setDisplayText(""); // Reset typewriter on language change
-    const interval = setInterval(() => {
-      // Simple logic to just show the text, avoiding complex slicing issues for now with re-renders
-      if (i < fullText.length) {
-        setDisplayText(prev => fullText.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 120);
-
-    // Fetch de departamentos de Colombia (API externa)
-    fetch('https://api-colombia.com/api/v1/Department')
-      .then(res => res.json())
-      .then(json => {
-        if (Array.isArray(json)) {
-          const apiRegions = json.map(d => ({ value: d.name, label: d.name }));
-          const allDeptsLabel = t('proyectos.filters.all_depts') || 'Departamentos';
-          const merged = [{ value: 'Todos', label: allDeptsLabel }, ...apiRegions];
-          setRegionOptionsState(merged);
-        }
+    const cargarEndpoint = async (recurso) => {
+      const response = await fetch(`https://api-colombia.com/api/v1/${recurso}`, {
+        signal: controller.signal,
       });
-
-    // Inyectar estilos dinámicos para animaciones de entrada
-    const styleTag = document.createElement('style');
-    styleTag.innerHTML = `
-      .inview { opacity: 1 !important; transform: translateY(0) !important; transition: 0.5s; }
-    `;
-    document.head.appendChild(styleTag);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearInterval(interval);
-      if (styleTag.parentNode) styleTag.parentNode.removeChild(styleTag);
+      if (!response.ok) throw new Error(`La API respondió con estado ${response.status} al cargar ${recurso}.`);
+      const data = await response.json();
+      if (!Array.isArray(data)) throw new Error(`La respuesta de ${recurso} no tiene el formato esperado.`);
+      return data;
     };
-  }, [fullText, t]); // Re-run effect when fullText changes (language change)
 
-  // Observer para animar las tarjetas cuando entran en pantalla
+    const cargarUbicaciones = async () => {
+      try {
+        const [departamentos, ciudades] = await Promise.all([
+          cargarEndpoint('Department'),
+          cargarEndpoint('City'),
+        ]);
+        setDepartamentosApi(departamentos.filter((item) => item?.id && item?.name));
+        setCiudadesApi(ciudades.filter((item) => item?.name && item?.departmentId));
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+        setErrorUbicaciones(
+          true
+        );
+      } finally {
+        if (!controller.signal.aborted) setCargandoUbicaciones(false);
+      }
+    };
+
+    cargarUbicaciones();
+    return () => controller.abort();
+  }, []);
+
   useEffect(() => {
+    const reiniciarVista = () => {
+      setPaginaActual(1);
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener('pageshow', reiniciarVista);
+    window.addEventListener('popstate', reiniciarVista);
+    return () => {
+      window.removeEventListener('pageshow', reiniciarVista);
+      window.removeEventListener('popstate', reiniciarVista);
+    };
+  }, []);
+
+  const opcionesDepartamentos = useMemo(
+    () => [
+      departamentoPredeterminado,
+      ...(departamentosApi.length
+        ? departamentosApi.map((item) => ({ value: item.name, label: item.name, id: item.id }))
+        : departamentosLocales),
+    ],
+    [departamentosApi, departamentoPredeterminado]
+  );
+
+  const opcionesCategorias = useMemo(
+    () =>
+      categoriasBase.map((opcion) => ({
+        ...opcion,
+        label:
+          opcion.value === 'todas'
+            ? t('proyectos.directory.filters.all_categories')
+            : t(`proyectos.directory.category.${opcion.value}`),
+      })),
+    [t]
+  );
+
+  const opcionesCiudades = useMemo(() => {
+    const ciudadesDelDepartamento = ciudadesApi
+      .filter((item) => departamento.value === 'todos' || String(item.departmentId) === String(departamento.id))
+      .map((item) => item.name);
+    const ciudadesDeProyectos = proyectosFull
+      .filter((proyecto) => !proyecto.sinUbicacion && (departamento.value === 'todos' || proyecto.departamento === departamento.label))
+      .map((proyecto) => proyecto.ubicacion);
+    const ciudades = unicosPorNombre([...ciudadesDeProyectos, ...ciudadesDelDepartamento, ...(!ciudadesApi.length ? ciudadesLocales : [])])
+      .map((nombre) => ({ value: nombre, label: nombre }));
+
+    return [{ ...todasLasCiudades, label: t('proyectos.directory.filters.all_cities') }, ...ciudades];
+  }, [ciudadesApi, departamento, t]);
+
+  const filtrados = useMemo(
+    () =>
+      proyectosFull.filter((p) => {
+        if (departamento.value !== 'todos' && p.departamento !== departamento.label) return false;
+        if (ciudad.value !== 'todas' && normalizarNombre(p.ubicacion) !== normalizarNombre(ciudad.value)) return false;
+        if (categoria.value !== 'todas' && p.categoria !== categoria.value) return false;
+        return true;
+      }),
+    [departamento, ciudad, categoria]
+  );
+
+  const totalPaginas = Math.ceil(filtrados.length / proyectosPorPagina);
+  const inicio = (paginaActual - 1) * proyectosPorPagina;
+  const proyectosActuales = filtrados.slice(inicio, inicio + proyectosPorPagina);
+  const idsProyectosActuales = proyectosActuales.map((proyecto) => proyecto.id).join(',');
+  const hayFiltros = departamento.value !== 'todos' || ciudad.value !== 'todas' || categoria.value !== 'todas';
+
+  const totalUbicaciones = ciudadesLocales.length;
+  const totalCategorias = categoriasBase.length - 1;
+
+  useEffect(() => {
+    const tarjetas = tarjetasRef.current?.querySelectorAll('[data-project-card]');
+    if (!tarjetas?.length) return undefined;
+
+    if (typeof IntersectionObserver === 'undefined') {
+      tarjetas.forEach((tarjeta) => tarjeta.classList.remove('project-card-pending'));
+      return undefined;
+    }
+
+    const reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('inview');
+      (entradas, observador) => {
+        entradas.forEach((entrada) => {
+          if (!entrada.isIntersecting) return;
+          entrada.target.classList.remove('project-card-pending');
+          if (!reducirMovimiento) {
+            entrada.target.classList.add('project-card-enter');
+            entrada.target.addEventListener('animationend', () => entrada.target.classList.remove('project-card-enter'), { once: true });
           }
+          observador.unobserve(entrada.target);
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.12, rootMargin: '0px 0px -32px 0px' }
     );
 
-    const elements = document.querySelectorAll('[data-sr]');
-    elements.forEach((el) => observer.observe(el));
+    tarjetas.forEach((tarjeta) => {
+      tarjeta.classList.remove('project-card-enter');
+      tarjeta.classList.add('project-card-pending');
+      observer.observe(tarjeta);
+    });
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [visible]);
+    return () => observer.disconnect();
+  }, [idsProyectosActuales]);
+
+  const irAPagina = (n) => {
+    setPaginaActual(n);
+    galeriaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const cambiar = (setter, opcionPredeterminada) => (op) => {
+    setter(op || opcionPredeterminada);
+    setPaginaActual(1);
+  };
+
+  const cambiarDepartamento = (opcion) => {
+    setDepartamento(opcion || departamentoPredeterminado);
+    setCiudad(ciudadPredeterminada);
+    setPaginaActual(1);
+  };
+
+  const limpiar = () => {
+    setDepartamento(departamentoPredeterminado);
+    setCiudad(ciudadPredeterminada);
+    setCategoria(categoriasBase[0]);
+    setPaginaActual(1);
+  };
+
+  const stats = [
+    { n: proyectos.length, key: 'projects' },
+    { n: totalUbicaciones, key: 'cities' },
+    { n: totalCategorias, key: 'business_lines' },
+  ].filter((s) => s.n > 0);
 
   return (
-    <>
-      {/* HERO */}
-      <section className="relative h-screen overflow-hidden flex items-center justify-center">
-        {/* IMAGEN */}
-        <div
-          className="absolute inset-0 bg-cover bg-center will-change-transform"
-          style={{
-            backgroundImage: `url(${imgUniversidadLibre})`,
-            transform: `scale(${1 + scrollY * 0.00025})`
-          }}
+    <div className="!w-full !min-h-screen !bg-slate-50 !pb-24 !flex !flex-col !font-sans !overflow-x-hidden">
+      {/* HERO SECTION ULTRA PREMIUM Y RESPONSIVO */}
+      <section className="!relative !w-full !min-h-[520px] md:!min-h-[640px] !pt-[100px] md:!pt-[120px] !bg-black !flex !items-center !justify-center !overflow-hidden">
+        <img
+          src={heroBogota}
+          alt=""
+          aria-hidden="true"
+          className="!absolute !inset-0 !w-full !h-full !object-cover !object-center !opacity-40 !mix-blend-luminosity"
         />
+        <div className="!absolute !inset-0 !bg-gradient-to-b from-black/95 via-neutral-950/65 to-slate-50" />
+        <div className="!absolute !top-1/4 !left-1/2 !-translate-x-1/2 !w-full !max-w-[600px] !h-[400px] !bg-amber-500/20 !blur-[120px] !rounded-full !pointer-events-none" />
 
-        {/* OSCURECER GENERAL */}
-        <div className="absolute inset-0 bg-black/25" />
-
-        {/* DEGRADADO SOLO BORDES LIGERO */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black/50 to-transparent" />
-          <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black/50 to-transparent" />
-          <div className="absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-black/40 to-transparent" />
-          <div className="absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-black/40 to-transparent" />
-        </div>
-
-        {/* CONTENIDO */}
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl font-bold text-white mb-6">
-            <span style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}>
-              {displayText}
-            </span>
-            <span className="animate-pulse">|</span>
+        <div className="!relative !z-10 !w-full !max-w-[1000px] !mx-auto !text-center !px-4 sm:!px-6 !pt-8 !pb-24 md:!pb-32 !flex !flex-col !items-center">
+          <span className="!inline-flex !items-center !gap-2 !rounded-full !border !border-white/10 !bg-white/5 !backdrop-blur-md !px-5 !py-2 !text-xs sm:!text-sm !font-medium !text-slate-100 !mb-8 md:!mb-10 !shadow-lg">
+            <span className="!w-2 !h-2 !rounded-full !bg-amber-400 !animate-pulse" />
+            {t('proyectos.directory.badge')}
+          </span>
+          
+          <h1 className="!text-4xl sm:!text-5xl md:!text-7xl !font-extrabold !text-white !tracking-tighter !leading-[1.1] !mb-6 !drop-shadow-sm">
+            {t('proyectos.directory.headline')} <br className="md:!hidden" />
+            <span className="!text-transparent !bg-clip-text !bg-gradient-to-r !from-amber-400 !to-amber-200">{t('proyectos.directory.headline_highlight')}</span>
           </h1>
+          
+          <p className="!text-base sm:!text-lg md:!text-xl !text-slate-300 !max-w-2xl !leading-relaxed !font-light">
+            {t('proyectos.directory.description')}
+          </p>
+
+          {stats.length > 0 && (
+  <dl className="!mt-10 md:!mt-14 !w-full sm:!w-auto !grid !grid-cols-1 sm:!grid-cols-3 !divide-y sm:!divide-y-0 sm:!divide-x !divide-white/10 !rounded-3xl sm:!rounded-[2rem] !border !border-white/10 !bg-white/5 !backdrop-blur-xl !shadow-2xl !overflow-hidden">
+    {stats.map((s) => (
+      <div key={s.t} className="!px-6 !py-5 sm:!px-8 lg:!px-12 !text-center hover:!bg-white/5 !transition-colors !duration-300">
+        <dd className="!text-3xl sm:!text-4xl !font-bold !text-white !tabular-nums !tracking-tight">{s.n}</dd>
+        <dt className="!text-sm sm:!text-base !font-bold !text-white !mt-1">{t(`proyectos.directory.stats.${s.key}`)}</dt>
+      </div>
+    ))}
+  </dl>
+)}
         </div>
       </section>
 
-      {/* CONTENT */}
-      <section className="py-24 bg-gray-50">
-        <div className={`${styles.projectContentWrapper} max-w-7xl mx-auto px-6`}>
-          <br /><br /><br /><br />
-
-          {/* MOBILE FILTER BUTTON */}
-          <div className="md:hidden flex justify-center mb-8">
-            <button onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center justify-between w-fit min-w-[220px] px-5 py-2.5 border border-black text-black text-sm font-medium transition shadow-none"
-              style={{ borderRadius: '15px', backgroundColor: 'transparent' }}>
-              <span>{showFilters ? 'Hide filters' : 'Show filters'}</span>
-              <i className="ri-filter-3-line text-lg ml-4 text-black"></i>
-            </button>
-          </div>
-
-          {/* FILTERS */}
-          <div
-            className={`${showFilters ? "grid" : "hidden"} md:grid mx-auto`}
-            style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '24px',
-              maxWidth: '1024px',
-              margin: '0 auto',
-              justifyItems: 'center',
-            }}
-          >
-            <Select menuPortalTarget={document.body} classNamePrefix="rs"
-              value={regionOptionsState.find(o => o.value === region)}
-              onChange={(o) => { setRegion(o.value); setPage(1); }}
-              options={regionOptionsState} styles={customStyles} placeholder="Departamentos" />
-            <Select menuPortalTarget={document.body} classNamePrefix="rs"
-              value={cityOptions.find(o => o.value === city)}
-              onChange={(o) => { setCity(o.value); setPage(1); }}
-              options={cityOptions} styles={customStyles} placeholder="Ciudades" />
-            <Select menuPortalTarget={document.body} classNamePrefix="rs"
-              value={activityOptions.find(o => o.value === activity)}
-              onChange={(o) => { setActivity(o.value); setPage(1); }}
-              options={activityOptions} styles={customStyles} placeholder="Categorías" />
-          </div>
-
-          <br /><br />
-
-          {/* RESULTS */}
-          <div className="flex items-center justify-between text-sm text-gray-600 max-w-6xl mx-auto mt-10">
-            <span>{filtered.length} Resultados</span>
-            <span className="uppercase tracking-wide">Proyectos Destacados</span>
-          </div>
-
-          {/* PROJECT GRID */}
-          <div className={`mt-10 ${styles.projectsGrid}`}>
-            {visible.map((project, index) => (
-              <Card
-                key={project.id}
-                data-sr
-                className={`${styles.projectCard} ${index % 2 === 0 ? styles.fromLeft : styles.fromRight
-                  }`}
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between'
-                }}
-              >
-                {/* Contenedor de imagen con altura fija */}
-                <div className={styles.imageContainer}>
-                  <CardMedia
-                    component="img"
-                    image={project.image}
-                    alt={project.title}
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block'
-                    }}
-                  />
-                </div>
-
-                <CardContent className={styles.cardContent}>
-                  <Typography gutterBottom variant="h6" component="div" className={styles.cardTitle}>
-                    {project.title}
-                  </Typography>
-
-                  <Typography variant="body2" color="text.secondary" component="div">
-                    <div className="flex items-center gap-2 mb-2">
-                      <i className="ri-briefcase-line text-lg" />
-                      <span><strong>Categoría:</strong> {project.category}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <i className="ri-map-pin-line text-lg" />
-                      <span><strong>Ubicación:</strong> {project.location}</span>
-                    </div>
-                  </Typography>
-                </CardContent>
-
-                <div style={{ padding: "0 16px 16px" }}>
-                  <Button
-                    variant="outlined"
-                    fullWidth
-                    onClick={() => navigate(`/proyecto/${project.id}`)}
-                    sx={{
-                      color: 'black',
-                      borderColor: '#f6c400',
-                      '&:hover': {
-                        borderColor: '#f6c400',
-                        backgroundColor: 'rgba(246, 196, 0, 0.08)',
-                      },
-                    }}
-                  >
-                    Ver más
-                  </Button>
-                </div>
-              </Card>
+      <main className="!w-full !max-w-[1360px] !mx-auto !px-4 sm:!px-6 lg:!px-8 !relative !z-20 !-mt-12 md:!-mt-20">
+        {/* FILTROS FLOTANTES RESPONSIVOS */}
+        <div className="!w-full !bg-white/90 !backdrop-blur-2xl !rounded-[2rem] !shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] !p-5 sm:!p-6 md:!p-8 !mb-12 md:!mb-16 !border !border-white !ring-1 !ring-slate-100">
+          <div className="!flex !flex-col md:!flex-row !gap-4 md:!gap-6">
+            {[
+              ['department', opcionesDepartamentos, departamento, cambiarDepartamento, departamentoPredeterminado],
+              ['city', opcionesCiudades, ciudad, setCiudad, ciudadPredeterminada],
+              ['category', opcionesCategorias, categoria, setCategoria, categoriasBase[0]],
+            ].map(([label, opciones, valor, setter, opcionPredeterminada]) => (
+              <div key={label} className="!flex-1 !min-w-0">
+                <label className="!block !text-sm !font-bold !text-slate-700 !mb-2.5 !ml-1">{t(`proyectos.directory.filters.${label}`)}</label>
+                <Select
+                  options={opciones}
+                  value={opciones.find((opcion) => opcion.value === valor.value) || valor}
+                  onChange={cambiar(setter, opcionPredeterminada)}
+                  isSearchable
+                  isLoading={cargandoUbicaciones}
+                  menuPlacement="bottom"
+                  menuPosition="fixed"
+                  menuPortalTarget={document.body}
+                  maxMenuHeight={160}
+                  menuShouldScrollIntoView={false}
+                  styles={selectStyles}
+                  placeholder={t('proyectos.directory.filters.select')}
+                />
+              </div>
             ))}
           </div>
-
-          <br /><br />
-
-          {/* PAGINATION */}
-          <div className="flex justify-center mt-12">
-            <Stack spacing={2}>
-              <Pagination
-                count={totalPages}
-                page={page}
-                onChange={(e, value) => setPage(value)}
-                shape="rounded"
-                sx={{
-                  "& .MuiPaginationItem-root": {
-                    borderRadius: "12px",
-                    backgroundColor: "#ffffff",
-                    color: "#000000",
-                    fontWeight: 500,
-                    transition: "all 0.3s ease",
-                  },
-                  "& .MuiPaginationItem-root:hover": {
-                    backgroundColor: "#d4d4d4",
-                  },
-                  "& .MuiPaginationItem-root.Mui-selected": {
-                    backgroundColor: "#000000",
-                    color: "#ffffff",
-                  },
-                  "& .MuiPaginationItem-root.Mui-selected:hover": {
-                    backgroundColor: "#000000",
-                  },
-                }}
-              />
-            </Stack>
+          
+          <div className="!flex !flex-col sm:!flex-row !items-center !justify-between !mt-6 !gap-4">
+            <div className="!w-full sm:!w-auto !flex-1">
+              {errorUbicaciones && (
+                <p role="status" className="!text-xs sm:!text-sm !font-medium !text-red-500 !bg-red-50 !px-4 !py-2 !rounded-xl !block sm:!inline-block">
+                  {t('proyectos.directory.locations_error')}
+                </p>
+              )}
+            </div>
+            {hayFiltros && (
+              <button
+                onClick={limpiar}
+                className="!w-full sm:!w-auto !text-sm !font-bold !text-slate-600 hover:!text-slate-900 !bg-slate-100 hover:!bg-slate-200 !px-6 !py-3 !rounded-full !cursor-pointer !transition-colors !border-0"
+              >
+                {t('proyectos.directory.filters.clear')}
+              </button>
+            )}
           </div>
         </div>
-      </section>
-      <br />
-    </>
+
+        {/* TÍTULO DE SECCIÓN */}
+        <div ref={galeriaRef} className="!w-full !flex !flex-col md:!flex-row !items-start md:!items-end !justify-between !mb-8 md:!mb-10 !scroll-mt-32 !gap-3">
+          <div>
+            <h2 className="!text-2xl sm:!text-3xl md:!text-4xl !font-extrabold !text-slate-900 !tracking-tight !mb-1 md:!mb-2">
+              {t('proyectos.directory.gallery_title')}
+            </h2>
+            <p className="!text-slate-500 !text-base sm:!text-lg !font-medium">
+              {t('proyectos.directory.showing')} <span className="!text-amber-600 !font-bold">{proyectosActuales.length}</span> {t('proyectos.directory.of')} {filtrados.length} {t('proyectos.directory.results')}
+            </p>
+          </div>
+          <div className="!hidden md:!block !h-1.5 !w-16 !bg-amber-400 !rounded-full !mb-2" />
+        </div>
+
+        {/* GRILLA DE TARJETAS TIPO APP */}
+        {proyectosActuales.length === 0 ? (
+          <div className="!w-full !flex !flex-col !items-center !justify-center !bg-white !rounded-[2rem] !border !border-slate-100 !py-20 md:!py-32 !px-4 !text-center !shadow-sm">
+            <div className="!w-16 !h-16 md:!w-20 md:!h-20 !bg-slate-50 !rounded-full !flex !items-center !justify-center !mb-6">
+              <SearchX className="!w-8 !h-8 md:!w-10 md:!h-10 !text-slate-300" />
+            </div>
+            <p className="!text-xl md:!text-2xl !font-bold !text-slate-800 !mb-2">{t('proyectos.directory.empty_title')}</p>
+            <p className="!text-sm md:!text-base !font-medium !text-slate-500">{t('proyectos.directory.empty_description')}</p>
+          </div>
+        ) : (
+          <div ref={tarjetasRef} className="!w-full !grid !grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3 !gap-6 md:!gap-8">
+            {proyectosActuales.map((proyecto) => {
+              const entregado = proyecto.estado === 'Entregado';
+              const categoriaKey = proyecto.categoria || 'featured';
+              const categoriaTraducida = t(`proyectos.directory.category.${categoriaKey}`);
+              const categoriaLabel =
+                categoriaTraducida === `proyectos.directory.category.${categoriaKey}`
+                  ? categoriaKey === 'featured'
+                    ? t('proyectos.directory.featured')
+                    : cap(categoriaKey)
+                  : categoriaTraducida;
+              const descripcionTraducida = t(`proyectos.directory.items.${proyecto.id}.description`);
+              const estadoTraducido = t(`proyectos.directory.status.${entregado ? 'delivered' : 'in_progress'}`);
+              const etiquetaDato =
+                proyecto.id === 4
+                  ? t('proyectos.directory.data.daily_students')
+                  : proyecto.dato?.etiqueta;
+              return (
+                <article
+                  key={proyecto.id}
+                  data-project-card
+                  className="group !bg-white !rounded-[2rem] !p-2 !border !border-slate-100 !shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:!shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:!-translate-y-2 !transition-all !duration-500 motion-reduce:!transition-none !flex !flex-col !h-full"
+                >
+                  <div className="!relative !h-56 sm:!h-64 !rounded-[1.5rem] !overflow-hidden !bg-slate-100 !transform !translate-z-0">
+                    <img
+                      src={proyecto.image}
+                      alt={proyecto.nombre}
+                      loading="lazy"
+                      decoding="async"
+                      className="!w-full !h-full !object-cover group-hover:!scale-105 !transition-transform !duration-700 !ease-out motion-reduce:!transition-none"
+                    />
+                    <div className="!absolute !inset-0 !bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent !opacity-80" />
+
+                    <span className="!absolute !top-4 !left-4 !bg-white/95 !backdrop-blur-md !text-slate-800 !text-[11px] sm:!text-xs !font-bold !px-3 sm:!px-4 !py-1.5 sm:!py-2 !rounded-full !shadow-sm">
+                      {categoriaLabel}
+                    </span>
+
+                    {!proyecto.sinUbicacion && (
+                      <a
+                        href={urlMapa(proyecto)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={t('proyectos.directory.map_aria').replace('{name}', proyecto.nombre)}
+                        title={t('proyectos.directory.map_title')}
+                        className="!absolute !top-4 !right-4 !w-10 !h-10 sm:!w-12 sm:!h-12 !rounded-full !bg-white/20 hover:!bg-amber-400 !backdrop-blur-md !text-white hover:!text-slate-900 !flex !items-center !justify-center !transition-all !duration-300 motion-reduce:!transition-none focus-visible:!outline-none !border !border-white/30 hover:!border-amber-400"
+                      >
+                        <MapPin className="!w-4 !h-4 sm:!w-5 sm:!h-5" />
+                      </a>
+                    )}
+
+                    {mostrarEstado && (
+                      <span className="!absolute !bottom-4 !left-4 !inline-flex !items-center !gap-2 !bg-white/10 !backdrop-blur-md !border !border-white/20 !text-white !text-[11px] sm:!text-xs !font-bold !px-3 !py-1.5 sm:!py-2 !rounded-full">
+                        <span className={`!w-2 !h-2 !rounded-full !shadow-sm ${entregado ? '!bg-emerald-400' : '!bg-amber-400'}`} />
+                        {estadoTraducido}
+                        {proyecto.anio ? <span className="!opacity-70 !font-medium">· {proyecto.anio}</span> : ''}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="!px-4 sm:!px-5 !pt-5 sm:!pt-6 !pb-4 sm:!pb-5 !flex !flex-col !flex-grow">
+                    <h3 className="!text-lg sm:!text-xl !font-extrabold !text-slate-900 !leading-tight !mb-2 sm:!mb-3 !min-h-[3.5rem]" style={dosLineas}>
+                      {proyecto.nombre}
+                    </h3>
+
+                    <p className="!text-xs sm:!text-sm !font-medium !text-slate-500 !leading-relaxed !mb-4 sm:!mb-5 !min-h-[2.75rem]" style={dosLineas}>
+                      {descripcionTraducida === `proyectos.directory.items.${proyecto.id}.description`
+                        ? proyecto.descripcion
+                        : descripcionTraducida}
+                    </p>
+
+                    {mostrarDato && proyecto.dato && (
+                      <div className="!flex !items-center !gap-3 !bg-slate-50 !rounded-2xl !px-4 sm:!px-5 !py-2.5 sm:!py-3 !mb-4 sm:!mb-5">
+                        <span className="!text-xl sm:!text-2xl !font-black !text-slate-900 !tabular-nums !tracking-tight">{proyecto.dato.valor}</span>
+                        <span className="!text-[10px] sm:!text-xs !font-bold !text-slate-500 !uppercase !tracking-wide !leading-tight">
+                          {etiquetaDato}
+                        </span>
+                      </div>
+                    )}
+
+                    {mostrarEntidad && proyecto.entidad && (
+                      <div className="!flex !items-center !gap-2.5 !text-xs sm:!text-sm !font-semibold !text-slate-600 !mb-3 sm:!mb-4">
+                        <Building2 className="!w-4 !h-4 !text-slate-400" />
+                        {proyecto.entidad}
+                      </div>
+                    )}
+
+                    {proyecto.sinUbicacion ? (
+                      <span className="!inline-flex !items-center !gap-2 !text-slate-400 !mb-5 sm:!mb-6 !mt-auto !text-xs sm:!text-sm !font-semibold">
+                        <MapPin className="!w-4 !h-4" /> {t('proyectos.directory.location_undefined')}
+                      </span>
+                    ) : (
+                      <a
+                        href={urlMapa(proyecto)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="!inline-flex !items-start !gap-2 !text-slate-600 hover:!text-amber-600 !transition-colors !mb-5 sm:!mb-6 !mt-auto !group/map"
+                      >
+                        <MapPin className="!w-4 !h-4 !mt-0.5 !text-amber-500 group-hover/map:!scale-110 !transition-transform" />
+                        <span className="!text-xs sm:!text-sm !font-bold">{proyecto.ubicacion}</span>
+                      </a>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={() => navigate(`/proyecto/${proyecto.id}`)}
+                      className="!w-full !flex !items-center !justify-between !p-3 sm:!p-4 !bg-slate-50 hover:!bg-amber-400 !rounded-2xl !text-slate-900 !font-bold !text-xs sm:!text-sm !cursor-pointer !transition-colors !duration-300 !border-0"
+                    >
+                      {t('proyectos.directory.explore')}
+                      <span className="!w-7 !h-7 sm:!w-8 sm:!h-8 !rounded-full !bg-white !flex !items-center !justify-center !shadow-sm !overflow-hidden">
+                        <ArrowUpRight className="!w-3 !h-3 sm:!w-4 sm:!h-4 !transition-transform !duration-300 group-hover:!translate-x-0.5 group-hover:!-translate-y-0.5" />
+                      </span>
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        )}
+
+        {/* PAGINACIÓN MODERNA Y RESPONSIVA */}
+        {totalPaginas > 1 && (
+          <div className="!w-full !mt-12 sm:!mt-20 !pb-10 !flex !flex-col !items-center !gap-4">
+            <nav aria-label="Paginación" className="!inline-flex !items-center !gap-1 sm:!gap-2 !p-1.5 sm:!p-2 !bg-white !rounded-full !shadow-[0_8px_30px_rgb(0,0,0,0.06)] !border !border-slate-100">
+              <button
+                onClick={() => irAPagina(Math.max(1, paginaActual - 1))}
+                disabled={paginaActual === 1}
+                aria-label={t('proyectos.directory.previous')}
+                className="!h-9 sm:!h-11 !flex !items-center !gap-1 sm:!gap-2 !pl-3 sm:!pl-4 !pr-3 sm:!pr-5 !rounded-full !border-0 !bg-transparent !text-xs sm:!text-sm !font-bold !text-slate-600 hover:!bg-slate-50 hover:!text-slate-900 disabled:!opacity-30 disabled:!cursor-not-allowed !cursor-pointer !transition-colors"
+              >
+                <Flecha dir="izq" />
+                <span className="!hidden md:!inline">{t('proyectos.directory.previous')}</span>
+              </button>
+
+              <div className="!flex !items-center !gap-1 !px-1 sm:!px-2 !border-x !border-slate-100">
+                {paginasVisibles(paginaActual, totalPaginas).map((n, i) =>
+                  n === '…' ? (
+                    <span key={`p${i}`} className="!w-6 sm:!w-8 !text-center !text-slate-400 !font-bold !select-none">…</span>
+                  ) : (
+                    <button
+                      key={n}
+                      onClick={() => irAPagina(n)}
+                      aria-current={paginaActual === n ? 'page' : undefined}
+                      className={`!w-9 !h-9 sm:!w-11 sm:!h-11 !rounded-full !border-0 !text-xs sm:!text-sm !font-bold !cursor-pointer !transition-all !duration-300 ${
+                        paginaActual === n
+                          ? '!bg-amber-400 !text-slate-900 !shadow-md !scale-105'
+                          : '!bg-transparent !text-slate-600 hover:!bg-slate-100'
+                      }`}
+                    >
+                      {n}
+                    </button>
+                  )
+                )}
+              </div>
+
+              <button
+                onClick={() => irAPagina(Math.min(totalPaginas, paginaActual + 1))}
+                disabled={paginaActual === totalPaginas}
+                aria-label={t('proyectos.directory.next')}
+                className="!h-9 sm:!h-11 !flex !items-center !gap-1 sm:!gap-2 !pl-3 sm:!pl-5 !pr-3 sm:!pr-4 !rounded-full !border-0 !bg-transparent !text-xs sm:!text-sm !font-bold !text-slate-600 hover:!bg-slate-50 hover:!text-slate-900 disabled:!opacity-30 disabled:!cursor-not-allowed !cursor-pointer !transition-colors"
+              >
+                <span className="!hidden md:!inline">{t('proyectos.directory.next')}</span>
+                <Flecha dir="der" />
+              </button>
+            </nav>
+            <p className="!text-xs sm:!text-sm !font-medium !text-slate-500">
+              {t('proyectos.directory.page')} <span className="!text-slate-900 !font-bold">{paginaActual}</span> {t('proyectos.directory.of')} {totalPaginas}
+            </p>
+          </div>
+        )}
+      </main>
+    </div>
   );
-}
+};
+
+export default SesioProy;

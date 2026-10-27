@@ -1,6 +1,6 @@
 // ================= IMPORTS =================
 // React y Hooks
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 // Iconos
 import { Building2, Target, Users, Award, Clock, ChevronRight, CheckCircle, Calendar, X, ChevronLeft, ChevronRight as RightIcon, Info } from "lucide-react";
@@ -20,11 +20,9 @@ import styles from "./Entrecalles.module.css";
 const EntreCalles = () => {
   // ================= REFS =================
   // Referencias para manipular el DOM directamente (animaciones)
-  const nameRef = useRef(null);
   const sectionsRef = useRef([]);
   const mainTitleRef = useRef(null);
   const statsRef = useRef(null);
-  const containerRef = useRef(null);
   const imageRef = useRef(null);
 
   // ================= STATE =================
@@ -148,6 +146,8 @@ const EntreCalles = () => {
     }
   ];
 
+  const projectImageCount = projectImages.length;
+
   // ================= HANDLERS (FUNCIONES) =================
   
   /** Abre el modal con la imagen seleccionada y bloquea el scroll del body */
@@ -155,36 +155,45 @@ const EntreCalles = () => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
     setModalImageLoaded(false);
-    document.body.style.overflow = 'hidden';
   };
 
   /** Cierra el modal y restaura el scroll del body */
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setModalImageLoaded(false);
-    document.body.style.overflow = 'auto';
-  };
+  }, []);
 
   /** Navega a la imagen anterior en el modal (cíclico) */
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setModalImageLoaded(false);
     setSelectedImageIndex(prev =>
-      prev === 0 ? projectImages.length - 1 : prev - 1
+      prev === 0 ? projectImageCount - 1 : prev - 1
     );
-  };
+  }, [projectImageCount]);
 
   /** Navega a la siguiente imagen en el modal (cíclico) */
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setModalImageLoaded(false);
     setSelectedImageIndex(prev =>
-      prev === projectImages.length - 1 ? 0 : prev + 1
+      prev === projectImageCount - 1 ? 0 : prev + 1
     );
-  };
+  }, [projectImageCount]);
 
   /** Callback cuando la imagen del modal termina de cargar */
   const handleImageLoad = () => {
     setModalImageLoaded(true);
   };
+
+  useEffect(() => {
+    if (!isModalOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isModalOpen]);
 
   /** Manejador de eventos de teclado para accesibilidad (ESC, Flechas) */
   useEffect(() => {
@@ -207,7 +216,7 @@ const EntreCalles = () => {
     return () => {
       document.removeEventListener('keydown', handleEscKey);
     };
-  }, [isModalOpen]);
+  }, [isModalOpen, closeModal, goToNext, goToPrevious]);
 
   return (
     <>

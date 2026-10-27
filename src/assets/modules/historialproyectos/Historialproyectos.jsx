@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Counter from "./Counter";
 import styles from "./Historial.module.css";
 import { useLanguage } from "../../../i18n/LanguageContext";

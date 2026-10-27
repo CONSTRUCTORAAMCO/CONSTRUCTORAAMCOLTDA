@@ -74,15 +74,23 @@ const VistaProyecto = () => {
         {/* IMAGEN PRINCIPAL Y TEXTO */}
         <div className="w-full flex flex-col md:flex-row items-center gap-10">
           
-          <div className="w-full md:w-1/2 flex justify-center">
+          <div className="w-full md:w-1/2 flex justify-center relative group">
+            {/* Efecto de brillo de fondo sutil para la imagen principal */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/20 to-amber-500/0 rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition duration-500"></div>
             <img
               src={proyecto.image}
               alt={proyecto.title}
-              className="w-full max-h-[180px] sm:max-h-[280px] md:max-h-[420px] object-contain rounded-lg sm:rounded-xl shadow-xl shadow-yellow-500/10 transition-transform duration-500 md:hover:scale-105"
+              className="relative w-full max-h-[180px] sm:max-h-[280px] md:max-h-[420px] object-contain rounded-lg sm:rounded-xl shadow-xl shadow-yellow-500/10 transition-transform duration-500 md:hover:scale-105 border border-white/5 bg-neutral-900/40 p-2"
             />
           </div>
 
           <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
+            {/* Badge estético superior */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs sm:text-sm font-medium w-fit mb-4 mx-auto md:mx-0 shadow-sm">
+              <i className="ri-building-2-line"></i>
+              <span>{t("proyectos.detail.badge")}</span>
+            </div>
+
             <h1 className="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight">
               {projectTitle}
             </h1>
@@ -93,105 +101,129 @@ const VistaProyecto = () => {
           </div>
         </div>
 
-        {/* VIDEO */}
+        {/* VIDEO (Enmarcado con estilo moderno) */}
         {proyecto.video && (
           <div className="w-full flex justify-center">
-            <VideoPlayer src={proyecto.video} title={proyecto.title} />
+            <div className="w-full max-w-4xl p-3 sm:p-4 rounded-2xl bg-neutral-950/60 border border-white/10 shadow-2xl backdrop-blur-md">
+              <VideoPlayer src={proyecto.video} title={proyecto.title} />
+            </div>
           </div>
         )}
-{/* GALERÍA */}
-{hasGallery && (
-  <div className="w-full flex justify-center">
-    <ImageList
-      sx={{ width: "100%", maxWidth: 1000 }}
-      variant="quilted"
-      cols={4}
-      rowHeight={130}
-      gap={12}
-    >
-      {itemData.map((item, index) => (
-        <ImageListItem
-          key={index}
-          className="group cursor-pointer overflow-hidden rounded-2xl"
-          onClick={() => setSelectedImg(item.img)}
-        >
-          <img
-            src={item.img}
-            alt={item.title}
-            loading="lazy"
+
+        {/* GALERÍA */}
+        {hasGallery && (
+          <div className="w-full flex flex-col items-center gap-6">
+            {/* Título de sección de galería para mayor orden visual */}
+            <div className="w-full max-w-5xl flex items-center gap-3 px-2">
+              <div className="h-px bg-white/10 flex-grow"></div>
+              <span className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest font-semibold flex items-center gap-2">
+                <i className="ri-image-line text-yellow-400"></i> {t("proyectos.detail.gallery_title")}
+              </span>
+              <div className="h-px bg-white/10 flex-grow"></div>
+            </div>
+
+            <div className="w-full flex justify-center">
+              <ImageList
+                sx={{ width: "100%", maxWidth: 1000 }}
+                variant="quilted"
+                cols={4}
+                rowHeight={130}
+                gap={12}
+              >
+                {itemData.map((item, index) => (
+                  <ImageListItem
+                    key={index}
+                    className="group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-neutral-900"
+                    onClick={() => setSelectedImg(item.img)}
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      loading="lazy"
+                      className="
+                        w-full h-full object-cover
+                        transition-all duration-500 ease-out
+                        group-hover:scale-110
+                        group-hover:brightness-110
+                        group-hover:contrast-110
+                      "
+                    />
+
+                    {/* Overlay futurista */}
+                    <div className="
+                      absolute inset-0
+                      bg-gradient-to-t from-black/60 via-black/10 to-transparent
+                      opacity-0 group-hover:opacity-100
+                      transition duration-500 flex items-end p-3
+                    ">
+                      <span className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-1">
+                        <i className="ri-zoom-in-line text-yellow-400"></i> Ampliar
+                      </span>
+                    </div>
+                  </ImageListItem>
+                ))}
+              </ImageList>
+            </div>
+          </div>
+        )}
+
+        {/* MODAL FUTURISTA */}
+        {selectedImg && (
+          <div
             className="
-              w-full h-full object-cover
-              transition-all duration-500 ease-out
-              group-hover:scale-110
-              group-hover:brightness-110
-              group-hover:contrast-110
+              fixed inset-0 z-[999]
+              bg-black/80 backdrop-blur-xl
+              flex items-center justify-center
+              p-4 overflow-auto
+              animate-fadeIn
             "
-          />
+            onClick={() => setSelectedImg(null)}
+          >
+            <div
+              className="
+                relative
+                max-w-6xl w-full
+                flex items-center justify-center
+                animate-popIn
+              "
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedImg}
+                alt="preview"
+                className="
+                  max-h-[90vh] w-auto
+                  rounded-3xl
+                  shadow-[0_20px_80px_rgba(0,0,0,0.8)]
+                  border border-white/20
+                  select-none
+                  bg-neutral-950
+                "
+              />
 
-          {/* Overlay futurista */}
-          <div className="
-            absolute inset-0
-            bg-gradient-to-t from-black/40 via-transparent to-transparent
-            opacity-0 group-hover:opacity-100
-            transition duration-500
-          " />
-        </ImageListItem>
-      ))}
-    </ImageList>
-  </div>
-)}
-{/* MODAL FUTURISTA */}
-{selectedImg && (
-  <div
-    className="
-      fixed inset-0 z-[999]
-      bg-black/70 backdrop-blur-xl
-      flex items-center justify-center
-      p-4 overflow-auto
-      animate-fadeIn
-    "
-    onClick={() => setSelectedImg(null)}
-  >
-    <div
-      className="
-        relative
-        max-w-6xl w-full
-        flex items-center justify-center
-        animate-popIn
-      "
-      onClick={(e) => e.stopPropagation()}
-    >
-      <img
-        src={selectedImg}
-        alt="preview"
-        className="
-          max-h-[90vh] w-auto
-          rounded-3xl
-          shadow-[0_20px_80px_rgba(0,0,0,0.6)]
-          border border-white/10
-          select-none
-        "
-      />
-
-      {/* Solo ícono Remix Icon */}
-      <i
-        className="
-          ri-close-line text-3xl text-white
-          absolute top-4 right-4
-          cursor-pointer
-          transition-transform duration-300
-          hover:scale-125 animate-bounce
-        "
-        onClick={() => setSelectedImg(null)}
-      ></i>
-    </div>
-  </div>
-)}
-</div> 
+              {/* Botón de cierre más estilizado */}
+              <button
+                className="
+                  absolute top-4 right-4
+                  w-10 h-10 rounded-full
+                  bg-black/60 border border-white/20
+                  flex items-center justify-center
+                  text-white text-xl
+                  cursor-pointer
+                  transition-all duration-300
+                  hover:bg-yellow-500 hover:text-black hover:scale-110
+                  shadow-lg
+                "
+                onClick={() => setSelectedImg(null)}
+              >
+                <i className="ri-close-line"></i>
+              </button>
+            </div>
+          </div>
+        )}
+      </div> 
     </section>
   );
 };
-
-
 
 export default VistaProyecto;

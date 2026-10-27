@@ -259,6 +259,87 @@ export const translations = {
         residential: "Residencial",
         commercial: "Comercial",
         infrastructure: "Infraestructura"
+      },
+      directory: {
+        badge: "Portafolio Corporativo",
+        headline: "Obras que",
+        headline_highlight: "construyen país",
+        description: "Infraestructura y desarrollo con presencia en todo el territorio nacional. Explore nuestra excelencia técnica y ubique cada proyecto.",
+        stats: {
+          projects: "Proyectos",
+          cities: "Ciudades",
+          business_lines: "Líneas de negocio"
+        },
+        filters: {
+          department: "Departamento",
+          city: "Ciudad",
+          category: "Línea de negocio",
+          all_departments: "Todos los departamentos",
+          all_cities: "Todas las ciudades",
+          all_categories: "Todas las categorías",
+          select: "Seleccionar...",
+          clear: "Limpiar filtros"
+        },
+        locations_error: "No se pudieron cargar las ubicaciones de Colombia. Se muestran las ubicaciones registradas en los proyectos.",
+        gallery_title: "Galería de proyectos",
+        showing: "Mostrando",
+        of: "de",
+        results: "resultados",
+        empty_title: "No se encontraron resultados",
+        empty_description: "Intente ajustando los filtros de búsqueda.",
+        map_aria: "Ver {name} en el mapa",
+        map_title: "Ver en el mapa",
+        featured: "Destacado",
+        location_undefined: "Ubicación por definir",
+        explore: "Explorar proyecto",
+        previous: "Anterior",
+        next: "Siguiente",
+        page: "Página",
+        status: {
+          delivered: "Entregado",
+          in_progress: "En ejecución"
+        },
+        category: {
+          infraestructura: "Infraestructura",
+          comercial: "Comercial",
+          residencial: "Residencial"
+        },
+        data: {
+          daily_students: "estudiantes por día"
+        },
+        items: {
+          1: { description: "Bodega comercial en el sector de Abastos, uno de los grandes polos de comercio de Bogotá." },
+          2: { description: "Obras de infraestructura carcelaria." },
+          3: { description: "Proyecto residencial en el sector de Cedritos, al norte de Bogotá." },
+          4: { description: "Sede multicampus del SENA en el antiguo Bronx, con 32 programas de formación en industrias culturales y creativas." },
+          5: { description: "Sede de comando de la Policía Nacional en Bogotá." },
+          6: { description: "Obra de infraestructura que se encuentra actualmente en ejecución." },
+          7: { description: "Infraestructura para la Escuela Militar de Aviación de la Fuerza Aérea Colombiana, en Cali." },
+          8: { description: "Obras en la sede de la Gobernación de Cundinamarca, en Bogotá." },
+          9: { description: "Obras para la Pontificia Universidad Javeriana en su campus de Bogotá." },
+          10: { description: "Infraestructura universitaria para la Universidad Libre en Bogotá." },
+          11: { description: "Sede de la Personería de Bogotá, entidad que defiende los derechos de la ciudadanía." },
+          12: { description: "Sede del SENA en Soacha, Cundinamarca, para formación técnica y tecnológica." },
+          13: { description: "Establecimiento penitenciario de máxima seguridad en Valledupar, Cesar." },
+          14: { description: "Obra de infraestructura ejecutada por el Consorcio Gibraltar en Bogotá." },
+          15: { description: "Plataforma de operaciones para una base de la Fuerza Aérea Colombiana." },
+          16: { description: "Obra de infraestructura ejecutada por el Consorcio Yopal, en Casanare." },
+          17: { description: "Centro de Desarrollo Comunitario en Tibabuyes, localidad de Suba, Bogotá." },
+          18: { description: "Fase III de construcción y dotación para un grupo aéreo de la Fuerza Aérea Colombiana." },
+          19: { description: "Sede de la Contraloría en Manizales, Caldas." },
+          20: { description: "Obras en el Aeropuerto Internacional El Edén, terminal aéreo de Armenia, Quindío." },
+          21: { description: "Proyecto residencial de vivienda." },
+          22: { description: "Proyecto residencial de vivienda." },
+          23: { description: "Proyecto residencial de vivienda." },
+          24: { description: "Proyecto residencial de vivienda." },
+          25: { description: "Centro de Medicina Aeroespacial de la Fuerza Aérea, dedicado a la salud en la aviación." },
+          26: { description: "Infraestructura en la base aérea de Leticia, Amazonas." },
+          27: { description: "Obra de infraestructura en el sector de El Tunal, al sur de Bogotá." }
+        }
+      },
+      detail: {
+        badge: "Proyecto Constructora AMCO",
+        gallery_title: "Galería del Proyecto"
       }
     },
     proposito: {
@@ -751,6 +832,87 @@ export const translations = {
         residential: "Residential",
         commercial: "Commercial",
         infrastructure: "Infrastructure"
+      },
+      directory: {
+        badge: "Corporate Portfolio",
+        headline: "Projects that",
+        headline_highlight: "build a nation",
+        description: "Infrastructure and development projects across the country. Explore our technical excellence and find each project.",
+        stats: {
+          projects: "Projects",
+          cities: "Cities",
+          business_lines: "Business lines"
+        },
+        filters: {
+          department: "Department",
+          city: "City",
+          category: "Business line",
+          all_departments: "All departments",
+          all_cities: "All cities",
+          all_categories: "All categories",
+          select: "Select...",
+          clear: "Clear filters"
+        },
+        locations_error: "Colombia's locations could not be loaded. Showing the locations registered for the projects.",
+        gallery_title: "Project gallery",
+        showing: "Showing",
+        of: "of",
+        results: "results",
+        empty_title: "No results found",
+        empty_description: "Try adjusting your search filters.",
+        map_aria: "View {name} on the map",
+        map_title: "View on map",
+        featured: "Featured",
+        location_undefined: "Location to be determined",
+        explore: "Explore project",
+        previous: "Previous",
+        next: "Next",
+        page: "Page",
+        status: {
+          delivered: "Completed",
+          in_progress: "In progress"
+        },
+        category: {
+          infraestructura: "Infrastructure",
+          comercial: "Commercial",
+          residencial: "Residential"
+        },
+        data: {
+          daily_students: "students per day"
+        },
+        items: {
+          1: { description: "Commercial warehouse in Bogotá's Abastos district, one of the city's major trade hubs." },
+          2: { description: "Correctional facility infrastructure works." },
+          3: { description: "Residential project in the Cedritos district, north of Bogotá." },
+          4: { description: "SENA multi-campus facility in the former Bronx district, featuring 32 training programs in the cultural and creative industries." },
+          5: { description: "National Police command headquarters in Bogotá." },
+          6: { description: "Infrastructure project currently under construction." },
+          7: { description: "Infrastructure for the Colombian Air Force Military Aviation School in Cali." },
+          8: { description: "Works at the Cundinamarca Governor's Office headquarters in Bogotá." },
+          9: { description: "Works for Pontificia Universidad Javeriana at its Bogotá campus." },
+          10: { description: "University infrastructure for Universidad Libre in Bogotá." },
+          11: { description: "Bogotá Ombudsman's Office headquarters, an agency that protects citizens' rights." },
+          12: { description: "SENA campus in Soacha, Cundinamarca, for technical and technological training." },
+          13: { description: "Maximum-security correctional facility in Valledupar, Cesar." },
+          14: { description: "Infrastructure project carried out by Consorcio Gibraltar in Bogotá." },
+          15: { description: "Operations platform for a Colombian Air Force base." },
+          16: { description: "Infrastructure project carried out by Consorcio Yopal in Casanare." },
+          17: { description: "Community Development Center in Tibabuyes, in Bogotá's Suba district." },
+          18: { description: "Phase III construction and equipment project for a Colombian Air Force air group." },
+          19: { description: "Comptroller's Office headquarters in Manizales, Caldas." },
+          20: { description: "Works at El Edén International Airport, the airport serving Armenia, Quindío." },
+          21: { description: "Residential housing project." },
+          22: { description: "Residential housing project." },
+          23: { description: "Residential housing project." },
+          24: { description: "Residential housing project." },
+          25: { description: "Colombian Air Force Aerospace Medicine Center, dedicated to aviation health." },
+          26: { description: "Infrastructure at the Leticia Air Base in Amazonas." },
+          27: { description: "Infrastructure project in the El Tunal district, south of Bogotá." }
+        }
+      },
+      detail: {
+        badge: "AMCO Construction Project",
+        gallery_title: "Project Gallery"
       }
     },
     proposito: {
@@ -1139,6 +1301,87 @@ export const translations = {
         residential: "Residencial",
         commercial: "Comercial",
         infrastructure: "Infraestrutura"
+      },
+      directory: {
+        badge: "Portfólio Corporativo",
+        headline: "Obras que",
+        headline_highlight: "constroem o país",
+        description: "Infraestrutura e desenvolvimento em todo o território nacional. Explore nossa excelência técnica e encontre cada projeto.",
+        stats: {
+          projects: "Projetos",
+          cities: "Cidades",
+          business_lines: "Linhas de negócio"
+        },
+        filters: {
+          department: "Departamento",
+          city: "Cidade",
+          category: "Linha de negócio",
+          all_departments: "Todos os departamentos",
+          all_cities: "Todas as cidades",
+          all_categories: "Todas as categorias",
+          select: "Selecionar...",
+          clear: "Limpar filtros"
+        },
+        locations_error: "Não foi possível carregar as localidades da Colômbia. Exibindo as localidades registradas nos projetos.",
+        gallery_title: "Galeria de projetos",
+        showing: "Exibindo",
+        of: "de",
+        results: "resultados",
+        empty_title: "Nenhum resultado encontrado",
+        empty_description: "Tente ajustar os filtros de busca.",
+        map_aria: "Ver {name} no mapa",
+        map_title: "Ver no mapa",
+        featured: "Destaque",
+        location_undefined: "Localização a definir",
+        explore: "Explorar projeto",
+        previous: "Anterior",
+        next: "Próxima",
+        page: "Página",
+        status: {
+          delivered: "Entregue",
+          in_progress: "Em execução"
+        },
+        category: {
+          infraestructura: "Infraestrutura",
+          comercial: "Comercial",
+          residencial: "Residencial"
+        },
+        data: {
+          daily_students: "estudantes por dia"
+        },
+        items: {
+          1: { description: "Armazém comercial no setor de Abastos, um dos grandes polos comerciais de Bogotá." },
+          2: { description: "Obras de infraestrutura penitenciária." },
+          3: { description: "Projeto residencial no setor de Cedritos, ao norte de Bogotá." },
+          4: { description: "Unidade multicampi do SENA no antigo Bronx, com 32 programas de formação nas indústrias culturais e criativas." },
+          5: { description: "Sede do comando da Polícia Nacional em Bogotá." },
+          6: { description: "Obra de infraestrutura atualmente em execução." },
+          7: { description: "Infraestrutura para a Escola Militar de Aviação da Força Aérea Colombiana, em Cali." },
+          8: { description: "Obras na sede do Governo de Cundinamarca, em Bogotá." },
+          9: { description: "Obras para a Pontificia Universidad Javeriana em seu campus de Bogotá." },
+          10: { description: "Infraestrutura universitária para a Universidad Libre em Bogotá." },
+          11: { description: "Sede da Personería de Bogotá, órgão que defende os direitos dos cidadãos." },
+          12: { description: "Unidade do SENA em Soacha, Cundinamarca, para formação técnica e tecnológica." },
+          13: { description: "Estabelecimento penitenciário de segurança máxima em Valledupar, Cesar." },
+          14: { description: "Obra de infraestrutura executada pelo Consorcio Gibraltar em Bogotá." },
+          15: { description: "Plataforma de operações para uma base da Força Aérea Colombiana." },
+          16: { description: "Obra de infraestrutura executada pelo Consorcio Yopal, em Casanare." },
+          17: { description: "Centro de Desenvolvimento Comunitário em Tibabuyes, distrito de Suba, Bogotá." },
+          18: { description: "Fase III de construção e equipamento para um grupo aéreo da Força Aérea Colombiana." },
+          19: { description: "Sede da Controladoria em Manizales, Caldas." },
+          20: { description: "Obras no Aeroporto Internacional El Edén, terminal aéreo de Armenia, Quindío." },
+          21: { description: "Projeto residencial." },
+          22: { description: "Projeto residencial." },
+          23: { description: "Projeto residencial." },
+          24: { description: "Projeto residencial." },
+          25: { description: "Centro de Medicina Aeroespacial da Força Aérea, dedicado à saúde na aviação." },
+          26: { description: "Infraestrutura na base aérea de Leticia, Amazonas." },
+          27: { description: "Obra de infraestrutura no setor de El Tunal, ao sul de Bogotá." }
+        }
+      },
+      detail: {
+        badge: "Projeto da Construtora AMCO",
+        gallery_title: "Galeria do Projeto"
       }
     },
     proposito: {
