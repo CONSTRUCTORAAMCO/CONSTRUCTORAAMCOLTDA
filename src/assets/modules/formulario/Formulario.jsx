@@ -311,7 +311,7 @@ const Formulario = () => {
                 <h3>
                   {t('formulario.info.email')} <RiMailLine size={18} />
                 </h3>
-                <p>constructoraamcoltda@gmail.com</p>
+                <p>administracion@amcoltda.com</p>
               </div>
 
               <div className={styles.cardHorizontal}>

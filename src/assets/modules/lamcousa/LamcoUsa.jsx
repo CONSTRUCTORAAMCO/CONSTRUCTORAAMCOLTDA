@@ -16,9 +16,15 @@ import imgAlcoba from "../../img/lamco/interior-alcoba.jpg";
 
 
 import imgLegado from "../../img/lamco/legado-interior.jpg";
-import imgLogo from "../../img/lamco/lamco-logo-white.svg";
+import imgLogo from "../../img/lamco/lamco-logo-transparent.svg";
 import imgPoster from "../../img/lamco/lamco-brand-poster.png";
 
+import imgMarshallFront from "../../img/lamco/leesburg-fachada.jpg";
+import imgMarshallKitchen from "../../img/lamco/marshall-3.jpg";
+import imgMarshallDining from "../../img/lamco/marshall-4.jpg";
+import imgMarshallLiving from "../../img/lamco/marshall-5.jpg";
+
+const marshallImages = [imgMarshallFront, imgMarshallKitchen, imgMarshallDining, imgMarshallLiving];
 const statIcons = [Calendar, MapPin, Cpu];
 const valueIcons = [ShieldCheck, Leaf, Lightbulb, Award];
 const featureIcons = [Compass, Sparkles, BadgeCheck];
@@ -45,10 +51,8 @@ export default function LamcoUsa() {
         <div className={styles.heroShade} />
         <Reveal className={styles.heroContent}>
           <span className={styles.heroKicker}>{t("lamco.hero.kicker")}</span>
-          <h1 className={styles.brandMark} aria-label="LAMCO USA">
-            <span className={styles.brandL}>L</span>
-            <span className={styles.brandAmco}>AMCO</span>
-            <span className={styles.brandUsa}>USA</span>
+          <h1 className={styles.brandMark}>
+            <img className={styles.heroLogo} src={imgLogo} alt="LAMCO USA" width="646" height="558" fetchPriority="high" />
           </h1>
           <p className={styles.heroSubtitle}>{t("lamco.hero.subtitle")}</p>
           <p className={styles.heroText}>{t("lamco.hero.text")}</p>
@@ -75,10 +79,7 @@ export default function LamcoUsa() {
           })}
         </Reveal>
 
-        <Reveal className={styles.introLogo}>
-          <img src={imgLogo} alt="LAMCO USA" loading="lazy" width="646" height="558" />
-        </Reveal>
-        {/* ===== EXPANSIÓN ===== */}
+{/* ===== EXPANSIÓN ===== */}
         <div className={styles.split}>
           <Reveal className={styles.splitText}>
             <div className={styles.sectionHeader}>
@@ -181,6 +182,22 @@ export default function LamcoUsa() {
             })}
           </div>
         </div>
+
+        <section className={styles.marshallProject} aria-labelledby="marshall-title">
+          <Reveal className={styles.projectHeader}>
+            <span className={styles.kicker}>{t("lamco.marshall.kicker")}</span>
+            <h2 id="marshall-title" className={styles.projectTitle}>1336 Marshall Dr</h2>
+            <p className={styles.projectAddress}><MapPin size={18} />Leesburg, Florida 34748</p>
+</Reveal>
+          <div className={styles.marshallGallery}>
+            {list("lamco.marshall.photos").map((label, i) => (
+              <Reveal as="figure" key={label} delay={i * 0.08} className={styles.marshallPhoto}>
+                <img src={marshallImages[i]} alt={label + " — 1336 Marshall Dr"} loading="lazy" width={i === 0 ? 960 : 576} height={i === 0 ? 720 : 432} />
+                <figcaption>{label}</figcaption>
+              </Reveal>
+            ))}
+          </div>
+        </section>
 
         {/* ===== INGENIERÍA + TRAYECTORIA ===== */}
         <div className={styles.cards}>

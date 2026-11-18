@@ -47,11 +47,15 @@ export const lamcoES = {
   project: {
     kicker: "Proyecto destacado",
     title: "Arquitectura Residencial y Confort Familiar",
-    address: "447 Rathburn St",
+    address: "813 BetBulevar",
     city: "Lehigh Acres, Florida",
     features: ["Diseño", "Innovación", "Garantía"],
     imageAlt1: "Fachada de vivienda unifamiliar LAMCO en Lehigh Acres",
     imageAlt2: "Patio con piscina de vivienda unifamiliar LAMCO en Lehigh Acres"
+  },
+  marshall: {
+    kicker: "Otro proyecto residencial en Florida",
+    photos: ["Fachada", "Cocina", "Cocina y comedor", "Sala"]
   },
   engineering: {
     title: "Ingeniería y Respaldo Tecnológico",
@@ -81,7 +85,7 @@ export const lamcoES = {
     kicker: "Nuestra identidad",
     posterAlt: "Aplicación de marca LAMCO USA con el mensaje Strong roots, Solid homes",
     posterCaption: "Aplicación de marca · Imagen de referencia publicitaria",
-    text: "El logo de LAMCO USA evoluciona la identidad original de AMCO integrando una \"L\" en su estructura y conservando la reconocible paleta amarilla. La \"L\" envuelve y sostiene la \"A\" original, representando fortaleza, orden y continuidad: la expansión al mercado estadounidense, armonizando herencia y crecimiento.",
+    text: "El logo de LAMCO USA evoluciona la identidad original de AMCO integrando una \"L\" en su estructura. La \"L\" envuelve y sostiene la \"A\" original, representando fortaleza, orden y continuidad: en la expansión al mercado estadounidense, armonizando herencia y crecimiento.",
     quote: "Construyendo sobre una base sólida para el éxito futuro."
   },
   cta: {
@@ -136,11 +140,15 @@ export const lamcoEN = {
   project: {
     kicker: "Featured project",
     title: "Residential Architecture and Family Comfort",
-    address: "447 Rathburn St",
+    address: "813 BetBulevar",
     city: "Lehigh Acres, Florida",
     features: ["Design", "Innovation", "Warranty"],
     imageAlt1: "Front of a LAMCO single-family home in Lehigh Acres",
     imageAlt2: "Pool patio of a LAMCO single-family home in Lehigh Acres"
+  },
+  marshall: {
+    kicker: "Another residential project in Florida",
+    photos: ["Exterior", "Kitchen", "Kitchen and dining area", "Living room"]
   },
   engineering: {
     title: "Engineering and Technological Backing",
@@ -170,7 +178,7 @@ export const lamcoEN = {
     kicker: "Our identity",
     posterAlt: "LAMCO USA brand application with the message Strong roots, Solid homes",
     posterCaption: "Brand application · Advertising reference image",
-    text: "The LAMCO USA logo evolves the original AMCO identity by integrating an \"L\" into its structure while preserving the recognizable yellow palette. The \"L\" wraps and supports the original \"A\", representing strength, order and continuity: the expansion into the U.S. market, harmonizing heritage with growth.",
+    text: "The LAMCO USA logo evolves the original AMCO identity by integrating an \"L\" into its structure. The \"L\" wraps and supports the original \"A\", representing strength, order and continuity in the expansion into the U.S. market, harmonizing heritage with growth.",
     quote: "Building upon a strong foundation for future success."
   },
   cta: {

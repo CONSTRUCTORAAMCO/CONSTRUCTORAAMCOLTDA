@@ -4,7 +4,7 @@
 
 vite v7.3.7 building client environment for production...
 transforming...
-✓ 2679 modules transformed.
+✓ 2683 modules transformed.
 rendering chunks...
 [plugin vite:reporter] 
 (!) C:/Users/AMCO-2/Desktop/CONSTRUCTORAAMCOLTDA/AMCO/src/assets/modules/whatsapp/WhatsAppWidget.jsx is dynamically imported by C:/Users/AMCO-2/Desktop/CONSTRUCTORAAMCOLTDA/AMCO/src/assets/components/layout/MainLayout.jsx but also statically imported by C:/Users/AMCO-2/Desktop/CONSTRUCTORAAMCOLTDA/AMCO/src/App.jsx, dynamic import will not move module into another chunk.
@@ -44,9 +44,12 @@ dist/assets/1-BASE-AEREA-LETICIA4-CdEA_1i3.jpg                                27
 dist/assets/PLATAFORMA BASE FAC2-EgeyEoKU.jpg                                 30.58 kB
 dist/assets/CONSTRUCCIÓN Y DOTACIÓN FASE III GRUPO AÉREO6-mJE-_7Wd.jpg        32.07 kB
 dist/assets/interior-sala-B8dKfXjK.jpg                                        32.27 kB
+dist/assets/marshall-4-B80HzDFi.jpg                                           35.08 kB
+dist/assets/marshall-5-DzaK2c4B.jpg                                           37.43 kB
 dist/assets/CONSTRUCCIÓN Y DOTACIÓN FASE III GRUPO AÉREO2-BMGDmtMS.jpg        37.96 kB
 dist/assets/AEROPUERTO INTERNACIONAL EL EDEN5-CzEMOVV7.jpg                    39.05 kB
 dist/assets/CONSTRUCCIÓN Y DOTACIÓN FASE III GRUPO AÉREO1-D06al9EZ.jpg        39.14 kB
+dist/assets/marshall-3-CbkR9aAb.jpg                                           41.68 kB
 dist/assets/behr-champana-Cqo_37hw.jpg                                        45.36 kB
 dist/assets/juan-esteban-munoz-4d5tdNUC.jpg                                   49.07 kB
 dist/assets/AEROPUERTO INTERNACIONAL EL EDEN13-C_2g-VZi.jpg                   50.79 kB
@@ -87,9 +90,10 @@ dist/assets/tunal7-BNWBHcjj.jpeg                                             141
 dist/assets/lamco-hero-BJCWQ5RV.jpg                                          142.17 kB
 dist/assets/AEROPUERTO INTERNACIONAL EL EDEN principal-DmeeLh2y.jpeg         145.24 kB
 dist/assets/javeriana-Bd24JI1b.jpg                                           150.91 kB
-dist/assets/lamco-logo-white-DXonqn1W.svg                                    161.83 kB │ gzip: 120.98 kB
+dist/assets/lamco-logo-transparent-DPc-z9bm.svg                              161.79 kB │ gzip: 120.97 kB
 dist/assets/AEROPUERTO INTERNACIONAL EL EDEN2-C7vpi9FV.jpg                   167.98 kB
 dist/assets/Sena-de-Soacha-Ey7oiL6D.jpg                                      168.53 kB
+dist/assets/leesburg-fachada-2wepRZoS.jpg                                    172.49 kB
 dist/assets/AEROPUERTO INTERNACIONAL EL EDEN3-qldZk9hc.jpg                   182.14 kB
 dist/assets/gilbartar-construccion-BLhDDlRp.jpg                              189.64 kB
 dist/assets/carcel de san angel-4vVzK5EQ.jpg                                 191.60 kB
@@ -137,31 +141,31 @@ dist/assets/Tyc-ChA_JWz3.css                                                   1
 dist/assets/index-kY2mxJAf.css                                                 2.22 kB │ gzip:   0.91 kB
 dist/assets/Proyectos-mmawHSDE.css                                             2.69 kB │ gzip:   1.01 kB
 dist/assets/Contacto-CWadLSFF.css                                              9.98 kB │ gzip:   2.64 kB
-dist/assets/LamcoUsa-DSNHORxb.css                                             13.30 kB │ gzip:   3.32 kB
+dist/assets/LamcoUsa-Da5Do03k.css                                             14.41 kB │ gzip:   3.50 kB
 dist/assets/Home-DjwxUoxq.css                                                 15.46 kB │ gzip:   3.73 kB
 dist/assets/Entrecalles-CgUXZVKq.css                                          20.80 kB │ gzip:   4.67 kB
 dist/assets/Nosotros-CNdl4Yjq.css                                             24.46 kB │ gzip:   5.13 kB
 dist/assets/index-ksj94fbv.css                                                75.91 kB │ gzip:  12.88 kB
-dist/assets/map-pin-CHDYbXjJ.js                                                0.27 kB │ gzip:   0.23 kB
-dist/assets/house-C6WCmdaH.js                                                  0.29 kB │ gzip:   0.23 kB
-dist/assets/building-2-C1SGstwN.js                                             0.40 kB │ gzip:   0.25 kB
-dist/assets/calendar-BRB8f0WJ.js                                               0.50 kB │ gzip:   0.33 kB
+dist/assets/map-pin-VBok-sCh.js                                                0.27 kB │ gzip:   0.23 kB
+dist/assets/house-DN5kudUI.js                                                  0.29 kB │ gzip:   0.23 kB
+dist/assets/building-2-CHeMwyI2.js                                             0.40 kB │ gzip:   0.25 kB
+dist/assets/calendar-iU_HEPFf.js                                               0.50 kB │ gzip:   0.33 kB
 dist/assets/javeriana-B0KYdiCH.js                                              0.50 kB │ gzip:   0.32 kB
-dist/assets/x-RqvmU_W5.js                                                      0.86 kB │ gzip:   0.43 kB
-dist/assets/quote-7Q7x0wjd.js                                                  0.97 kB │ gzip:   0.48 kB
-dist/assets/Tyc-CNDCCgWx.js                                                    1.06 kB │ gzip:   0.50 kB
-dist/assets/createLucideIcon-CYWA3Jx7.js                                       1.17 kB │ gzip:   0.69 kB
-dist/assets/index-B_AdiJ4Z.js                                                  2.59 kB │ gzip:   1.10 kB
-dist/assets/Error404-DRMQMNhE.js                                               2.62 kB │ gzip:   1.13 kB
-dist/assets/Politicaprivacidad-GuHFf36U.js                                     3.40 kB │ gzip:   0.52 kB
-dist/assets/Contacto-iwAaFS2h.js                                              11.56 kB │ gzip:   4.33 kB
-dist/assets/Home-C8NVFE2e.js                                                  12.70 kB │ gzip:   4.42 kB
-dist/assets/LamcoUsa-CvbWLbzS.js                                              13.89 kB │ gzip:   4.16 kB
-dist/assets/Entrecalles-_6IoaP5Y.js                                           16.13 kB │ gzip:   4.32 kB
-dist/assets/emotion-element-f0de968e.browser.esm-DoC4vvKp.js                  18.57 kB │ gzip:   7.74 kB
-dist/assets/Nosotros-BPGLiFYx.js                                              32.52 kB │ gzip:   9.13 kB
-dist/assets/vistaproyecto-C5_0Im07.js                                         90.92 kB │ gzip:  31.25 kB
-dist/assets/Proyectos-Dh-mFPVi.js                                             99.09 kB │ gzip:  33.91 kB
-dist/assets/Reveal-Cr-hrBh1.js                                               141.27 kB │ gzip:  48.24 kB
-dist/assets/index-BTCNGpmq.js                                                411.37 kB │ gzip: 130.99 kB
-✓ built in 8.07s
+dist/assets/x-BAcQdwLI.js                                                      0.86 kB │ gzip:   0.43 kB
+dist/assets/quote-Cl_O3RDG.js                                                  0.97 kB │ gzip:   0.48 kB
+dist/assets/Tyc-CGa6d941.js                                                    1.06 kB │ gzip:   0.50 kB
+dist/assets/createLucideIcon-DCWo-pvq.js                                       1.17 kB │ gzip:   0.69 kB
+dist/assets/index-Bqru2Aai.js                                                  2.59 kB │ gzip:   1.10 kB
+dist/assets/Error404-D8ADAH1u.js                                               2.62 kB │ gzip:   1.13 kB
+dist/assets/Politicaprivacidad-y2uBkpJT.js                                     3.40 kB │ gzip:   0.52 kB
+dist/assets/Contacto-C8_acHxF.js                                              11.56 kB │ gzip:   4.33 kB
+dist/assets/Home-CKxML1a2.js                                                  12.70 kB │ gzip:   4.42 kB
+dist/assets/LamcoUsa-LRr-ml43.js                                              14.62 kB │ gzip:   4.36 kB
+dist/assets/Entrecalles-lYzTaKr3.js                                           16.13 kB │ gzip:   4.32 kB
+dist/assets/emotion-element-f0de968e.browser.esm-BFywXuav.js                  18.57 kB │ gzip:   7.73 kB
+dist/assets/Nosotros-Ci76mJJ-.js                                              32.52 kB │ gzip:   9.13 kB
+dist/assets/vistaproyecto-mU-7JAO8.js                                         90.92 kB │ gzip:  31.25 kB
+dist/assets/Proyectos-Bz4K-1FF.js                                             99.09 kB │ gzip:  33.91 kB
+dist/assets/Reveal-DppMRhhg.js                                               141.27 kB │ gzip:  48.24 kB
+dist/assets/index-D2SDl37D.js                                                411.52 kB │ gzip: 130.99 kB
+✓ built in 8.02s

@@ -70,24 +70,7 @@
   font-weight: 800;
 }
 
-.brandL {
-  font-size: clamp(4rem, 12vw, 7.5rem);
-  color: #f2c200;
-}
-
-.brandAmco {
-  font-size: clamp(3.2rem, 10vw, 6rem);
-  letter-spacing: -1px;
-  color: #ffffff;
-}
-
-.brandUsa {
-  font-size: clamp(1rem, 2.6vw, 1.5rem);
-  letter-spacing: 0.3em;
-  color: #f2c200;
-  padding-bottom: 0.6rem;
-  margin-left: 0.4rem;
-}
+.heroLogo { display: block; width: clamp(210px, 26vw, 310px); height: auto; margin: 0 auto; }
 
 .heroSubtitle {
   font-size: clamp(1.4rem, 3.4vw, 2.2rem);
@@ -886,8 +869,6 @@
 }
 
 /* Photography and brand references */
-.introLogo { width: min(280px, 70%); margin: 0 auto 3rem; background: #fff; }
-.introLogo img { display: block; width: 100%; height: auto; }
 .expansionFigure { min-width: 0; }
 .posterBand { width: 100%; background: #000; padding: clamp(3rem, 6vw, 6rem) 0; margin-bottom: 5rem; }
 .standalonePoster { margin: 0 auto; max-width: 780px; }
@@ -899,6 +880,26 @@
 .standalonePoster img { display: block; width: 100%; height: auto; }
 .standalonePoster figcaption { padding: 1rem .5rem 0; color: #aaa; font-size: .75rem; text-align: center; }
 @media (max-width: 768px) {
- .introLogo { width: min(230px, 70%); margin-bottom: 2rem; }
- .posterBand { margin-bottom: 3rem; }
+  .posterBand { margin-bottom: 3rem; }
 }
+
+.marshallProject { padding: 3rem 0 4rem; }
+.marshallGallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.marshallPhoto { position: relative; margin: 0; overflow: hidden; border-radius: 20px; background: #111; box-shadow: 0 12px 30px rgb(0 0 0 / 9%); }
+.marshallPhoto:first-child { grid-column: 1 / -1; }
+.marshallPhoto img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .6s ease; }
+.marshallPhoto:first-child img { aspect-ratio: 16/9; object-position: center 58%; }
+.marshallPhoto:hover img { transform: scale(1.025); }
+.marshallPhoto::after { content: ''; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, rgb(0 0 0 / 55%)); pointer-events: none; }
+.marshallPhoto figcaption { position: absolute; z-index: 1; bottom: 1rem; left: 1rem; padding: .45rem .85rem; color: #fff; background: rgb(0 0 0 / 65%); border-left: 3px solid #f2c200; border-radius: 7px; font-size: .85rem; font-weight: 600; }
+@media (max-width: 768px) {
+ .marshallGallery { gap: 1rem; }
+ .marshallPhoto { border-radius: 14px; }
+ .marshallPhoto figcaption { bottom: .6rem; left: .6rem; font-size: .75rem; padding: .35rem .55rem; }
+}
+@media (max-width: 600px) {
+ .marshallGallery { grid-template-columns: 1fr; }
+ .marshallPhoto:first-child img { aspect-ratio: 4/3; }
+ .marshallProject { padding-top: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .marshallPhoto img { transition: none; } .marshallPhoto:hover img { transform: none; } }

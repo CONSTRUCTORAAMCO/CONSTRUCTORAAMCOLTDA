@@ -24,7 +24,7 @@ export default function Footer() {
 
           <p className={styles.item}>
             <RiMailLine size={18} />
-            <span>constructoraamcoltda@gmail.com</span>
+            <span>administracion@amcoltda.com</span>
           </p>
         </div>
         <br />
