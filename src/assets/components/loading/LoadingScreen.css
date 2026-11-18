@@ -1,0 +1,29 @@
+.amco-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 2rem;
+  background: #0b0b0b;
+}
+.amco-loading-mark { position: relative; display: grid; place-items: center; width: 160px; height: 160px; }
+.amco-loading-mark img {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  animation: amco-logo-pulse 1.6s ease-in-out infinite;
+}
+.amco-loading-halo { position: absolute; inset: 0; border: 1px solid #ffd60060; border-radius: 50%; animation: amco-halo-pulse 1.6s ease-out infinite; }
+.amco-loading-label { color: #ddd; font-size: .8rem; letter-spacing: .16em; }
+@keyframes amco-logo-pulse {
+  0%, 100% { transform: scale(.94); opacity: .75; filter: drop-shadow(0 0 0 transparent); }
+  50% { transform: scale(1.04); opacity: 1; filter: drop-shadow(0 0 18px #ffd60055); }
+}
+@keyframes amco-halo-pulse { from { transform: scale(.8); opacity: .7; } to { transform: scale(1.4); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .amco-loading-mark img, .amco-loading-halo { animation: none; }
+  .amco-loading-halo { opacity: .35; }
+}

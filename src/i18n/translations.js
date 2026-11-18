@@ -1,10 +1,18 @@
+import torreEsmeraldaPT from "./torreEsmeralda.pt";
+import { lamcoES, lamcoEN } from "./lamco";
+import { organigramaES, organigramaEN } from "./organigrama";
+
 export const translations = {
   ES: {
+    loading: "Cargando…",
+    lamco: lamcoES,
+    organigrama: organigramaES,
     nav: {
       home: "Inicio",
       about: "Nosotros",
       projects: "Proyectos",
-      entrecalles: "Entrecalles",
+      entrecalles: "Torre Esmeralda",
+      lamco: "LAMCO USA",
       contact: "Contacto",
       search: "Buscar..."
     },
@@ -39,36 +47,36 @@ export const translations = {
       ]
     },
     objective: {
-      name: "ENTRE CALLES",
+      name: "TORRE ESMERALDA",
       title: "OBJETO SOCIAL",
       paragraph: "Constructora AMCO Ltda. se dedica a la planeación, diseño, desarrollo, gerencia y ejecución de proyectos de construcción en los sectores de vivienda, oficinas, comercio, institucional e industrial, bajo estrictas normas técnicas y de calidad, contribuyendo al desarrollo urbano sostenible de Colombia."
     },
     entrecalles: {
-      name: "ENTRECALLES",
+      name: "TORRE ESMERALDA",
       badge: "PROYECTO EN DESARROLLO",
-      title: "ENTRECALLES EMERALD TOWER",
+      title: "TORRE ESMERALDA",
       description: "Sobre la intersección de la Avenida 19 con la Calle Real del Comercio, más conocida como Carrera Séptima; toma vuelo el proyecto que renovará la cara del centro de Bogotá y de Colombia entera.",
       video_label: "Video del proyecto",
-      video_title: "Entre Calles: El futuro de Bogotá",
+      video_title: "Torre Esmeralda: El futuro de Bogotá",
       video_description: "Descubre el rascacielos que transformará el centro de la ciudad",
       height: "metros de altura",
       location: "Localización",
       modal_title: "Video del Proyecto",
-      iframe_title: "Entre Calles - Proyecto",
+      iframe_title: "Torre Esmeralda - Proyecto",
       hero_title: "Construyendo el Futuro de Colombia",
       hero_subtitle: "Más de 50 años de experiencia, innovación y excelencia en construcción",
       unique_msg: "La columna vertebral de un nuevo centro.",
-      img_main_title: "ENTRECALLES EMERALD TOWER",
+      img_main_title: "TORRE ESMERALDA",
       img_copyright: "Derechos de autor de la imagen original Bher President @Quantum-AIP LLC",
       history_title: "Historia del Proyecto",
-      history_subtitle: "TORRE ENTRECALLES EMERALD TOWER: Un Sueño de Dos Décadas",
-      history_p1: "<strong>Torre Entrecalles nació hace más de veinte años</strong> como una visión para transformar el centro histórico de Bogotá. En ese momento, visualizamos un futuro donde los desarrollos modernos se integraran perfectamente con el patrimonio urbano, creando un equilibrio entre innovación y tradición.",
-      history_p2: "Hoy, Torre EntreCalles se consolida como el rediseño del espacio urbano que nuestro querido centro necesita. Este hito de gran altura, único en su tipo y de uso mixto, no solo elevará el estándar para el desarrollo inmobiliario en la región, sino que satisfará la demanda reprimida de espacios vibrantes donde vivir, trabajar y disfrutar sean una constante armoniosa y placentera.",
+      history_subtitle: "TORRE ESMERALDA: Un Sueño de Dos Décadas",
+      history_p1: "<strong>Torre Esmeralda nació hace más de veinte años</strong> como una visión para transformar el centro histórico de Bogotá. En ese momento, visualizamos un futuro donde los desarrollos modernos se integraran perfectamente con el patrimonio urbano, creando un equilibrio entre innovación y tradición.",
+      history_p2: "Hoy, Torre Esmeralda se consolida como el rediseño del espacio urbano que nuestro querido centro necesita. Este hito de gran altura, único en su tipo y de uso mixto, no solo elevará el estándar para el desarrollo inmobiliario en la región, sino que satisfará la demanda reprimida de espacios vibrantes donde vivir, trabajar y disfrutar sean una constante armoniosa y placentera.",
       stats_years: "Años de planeación estratégica",
       stats_height: "Altura total arquitectónica",
       stats_levels: "Niveles de innovación",
       impact_title: "Impacto Urbano",
-      impact_intro: "EntreCalles aborda las carencias urbanas de Bogotá y su centro de tres maneras clave:",
+      impact_intro: "Torre Esmeralda aborda las carencias urbanas de Bogotá y su centro de tres maneras clave:",
       impact_1_title: "Renovación Urbana Integral",
       impact_1_desc: "Ante la saturación de corredores de oficinas tradicionales, el centro se destaca como una oportunidad única para proyectos inmobiliarios a través de una renovación urbana que respeta la historia mientras construye el futuro.",
       impact_2_title: "Vivienda de Calidad Premium",
@@ -77,20 +85,20 @@ export const translations = {
       impact_3_desc: "El proyecto no solo ofrece espacios adicionales, sino que enriquece, valora y contribuye al desarrollo urbano, marcando un hito arquitectónico que se integra armoniosamente con la identidad del sector.",
       features_title: "Características del Proyecto",
       gallery_title: "Galería del Proyecto",
-      gallery_subtitle: "Haz clic en cualquier imagen para explorar los espacios que harán de EntreCalles un icono arquitectónico",
+      gallery_subtitle: "Haz clic en cualquier imagen para explorar los espacios que harán de Torre Esmeralda un icono arquitectónico",
       specs_title: "Especificaciones Técnicas",
       specs_main: "Datos Principales",
       specs_amenities: "Amenidades Premium",
       specs_sustain: "Sostenibilidad y Tecnología",
-      video_section_title: "ENTRECALLES EMERALD TOWER: El Futuro de Bogotá",
+      video_section_title: "TORRE ESMERALDA: El Futuro de Bogotá",
       video_section_desc: "Descubre en este video exclusivo la magnitud, visión y tecnología detrás del proyecto que redefinirá el skyline de la capital colombiana.",
       info_title: "Información del Proyecto",
-      info_p1: "Esta página web es una plataforma informativa dedicada al proyecto TORRE ENTRECALLES EMERALD TOWER. Toda la información presentada aquí corresponde al estado actual del desarrollo y está sujeta a actualizaciones periódicas a medida que avanza el proyecto.",
+      info_p1: "Esta página web es una plataforma informativa dedicada al proyecto TORRE ESMERALDA. Toda la información presentada aquí corresponde al estado actual del desarrollo y está sujeta a actualizaciones periódicas a medida que avanza el proyecto.",
       info_p2: "Cada proceso, avance o modificación en el desarrollo se irá actualizando en esta plataforma, manteniendo a todos los interesados informados sobre el progreso de esta obra que marcará un hito en la arquitectura colombiana.",
       info_update: "Agradecemos su interés en el proyecto y los invitamos a mantenerse conectados para futuras actualizaciones. Última Actualización: 30/01/2026",
       meta: {
-        title: "Entrecalles Emerald Tower - Proyecto Insignia de AMCO en Bogotá",
-        description: "Conoce Entrecalles, el rascacielos que transformará el centro de Bogotá. Un proyecto de uso mixto con 500m de altura, apartamentos de lujo, oficinas y más."
+        title: "Torre Esmeralda - Proyecto Insignia de AMCO en Bogotá",
+        description: "Conoce Torre Esmeralda, el rascacielos que transformará el centro de Bogotá. Un proyecto de uso mixto con 500m de altura, apartamentos de lujo, oficinas y más."
       },
       gallery_images: {
         img1_title: "Vista Principal del Edificio (Derechos de autor Bher President @Quantum-AIP LLC)",
@@ -297,7 +305,9 @@ export const translations = {
         page: "Página",
         status: {
           delivered: "Entregado",
-          in_progress: "En ejecución"
+          in_progress: "En ejecución",
+          pending: "Fecha por confirmar",
+          example: "Ejemplo"
         },
         category: {
           infraestructura: "Infraestructura",
@@ -534,13 +544,15 @@ export const translations = {
       home: "Inicio",
       about: "Nosotros",
       projects: "Proyectos",
-      entrecalles: "Entrecalles",
+      entrecalles: "Torre Esmeralda",
+      lamco: "LAMCO USA",
       contact: "Contacto",
       keywords: {
         home: ["inicio", "home", "principal"],
         about: ["nosotros", "empresa", "quienes somos", "historia"],
         projects: ["proyectos", "obras", "construcciones"],
-        entrecalles: ["entrecalles", "blog", "noticias"],
+        entrecalles: ["torre esmeralda", "blog", "noticias"],
+        lamco: ["lamco", "lamco usa", "usa", "florida", "orlando", "lehigh acres"],
         contact: ["contacto", "correo", "telefono"]
       }
     },
@@ -573,11 +585,15 @@ export const translations = {
     }
   },
   EN: {
+    loading: "Loading…",
+    lamco: lamcoEN,
+    organigrama: organigramaEN,
     nav: {
       home: "Home",
       about: "About us",
       projects: "Projects",
-      entrecalles: "Entrecalles",
+      entrecalles: "Torre Esmeralda",
+      lamco: "LAMCO USA",
       contact: "Contact",
       search: "Search..."
     },
@@ -612,31 +628,31 @@ export const translations = {
       ]
     },
     objective: {
-      name: "ENTRECALLES",
+      name: "TORRE ESMERALDA",
       title: "CORPORATE PURPOSE",
       paragraph: "AMCO Construction Ltd. is dedicated to the planning, design, development, management and execution of construction projects in the housing, office, commercial, institutional and industrial sectors, under strict technical and quality standards, contributing to the sustainable urban development of Colombia."
     },
     entrecalles: {
-      name: "ENTRECALLES",
+      name: "TORRE ESMERALDA",
       badge: "PROJECT IN DEVELOPMENT",
-      title: "ENTRECALLES EMERALD TOWER",
+      title: "TORRE ESMERALDA",
       description: "At the intersection of Avenue 19 and the Royal Street of Commerce, better known as Carrera Septima; a project takes flight that will renew the face of downtown Bogota and all of Colombia.",
       video_label: "Project Video",
-      video_title: "Entrecalles: The future of Bogotá",
+      video_title: "Torre Esmeralda: The future of Bogotá",
       video_description: "Discover the skyscraper that will transform the city center",
       height: "meters high",
       location: "Location",
       modal_title: "Project Video",
-      iframe_title: "Entrecalles - Project",
+      iframe_title: "Torre Esmeralda - Project",
       hero_title: "Building the Future of Colombia",
       hero_subtitle: "More than 50 years of experience, innovation and excellence in construction",
       unique_msg: "The backbone of a new center.",
-      img_main_title: "ENTRECALLES EMERALD TOWER",
+      img_main_title: "TORRE ESMERALDA",
       img_copyright: "Original image copyright Bher President @Quantum-AIP LLC",
       history_title: "Project History",
-      history_subtitle: "ENTRECALLES EMERALD TOWER: A Two-Decade Dream",
-      history_p1: "<strong>Entrecalles Tower was born over twenty years ago</strong> as a vision to transform Bogotá's historic center. At that time, we visualized a future where modern developments would integrate perfectly with urban heritage, creating a balance between innovation and tradition.",
-      history_p2: "Today, Entrecalles Tower consolidates itself as the redesign of the urban space our beloved center needs. This high-rise landmark, unique in its kind and mixed-use, will not only raise the standard for real estate development in the region, but will satisfy the pent-up demand for vibrant spaces where living, working and enjoying are a constant harmonious and pleasant constant.",
+      history_subtitle: "TORRE ESMERALDA: A Two-Decade Dream",
+      history_p1: "<strong>Torre Esmeralda was born over twenty years ago</strong> as a vision to transform Bogotá's historic center. At that time, we visualized a future where modern developments would integrate perfectly with urban heritage, creating a balance between innovation and tradition.",
+      history_p2: "Today, Torre Esmeralda consolidates itself as the redesign of the urban space our beloved center needs. This high-rise landmark, unique in its kind and mixed-use, will not only raise the standard for real estate development in the region, but will satisfy the pent-up demand for vibrant spaces where living, working and enjoying are a constant harmonious and pleasant constant.",
       stats_years: "Years of strategic planning",
       stats_height: "Total architectural height",
       stats_levels: "Levels of innovation",
@@ -655,15 +671,15 @@ export const translations = {
       specs_main: "Main Data",
       specs_amenities: "Premium Amenities",
       specs_sustain: "Sustainability and Technology",
-      video_section_title: "ENTRECALLES EMERALD TOWER: The Future of Bogotá",
+      video_section_title: "TORRE ESMERALDA: The Future of Bogotá",
       video_section_desc: "Discover in this exclusive video the magnitude, vision and technology behind the project that will redefine the Colombian capital's skyline.",
       info_title: "Project Information",
-      info_p1: "This website is an information platform dedicated to the ENTRECALLES EMERALD TOWER project. All information presented here corresponds to the current state of development and is subject to periodic updates as the project progresses.",
+      info_p1: "This website is an information platform dedicated to the TORRE ESMERALDA project. All information presented here corresponds to the current state of development and is subject to periodic updates as the project progresses.",
       info_p2: "Each process, progress or modification in the development will be updated on this platform, keeping all interested parties informed about the progress of this work that will mark a milestone in Colombian architecture.",
       info_update: "We appreciate your interest in the project and invite you to stay connected for future updates. Last Update: 01/30/2026",
       meta: {
-        title: "Entrecalles Emerald Tower - AMCO Flagship Project in Bogotá",
-        description: "Discover Entrecalles, the skyscraper that will transform downtown Bogotá. A 500m tall mixed-use project with luxury apartments, offices, and more."
+        title: "Torre Esmeralda - AMCO Flagship Project in Bogotá",
+        description: "Discover Torre Esmeralda, the skyscraper that will transform downtown Bogotá. A 500m tall mixed-use project with luxury apartments, offices, and more."
       },
       gallery_images: {
         img1_title: "Main Building View (Copyright Bher President @Quantum-AIP LLC)",
@@ -870,7 +886,9 @@ export const translations = {
         page: "Page",
         status: {
           delivered: "Completed",
-          in_progress: "In progress"
+          in_progress: "In progress",
+          pending: "Date to be confirmed",
+          example: "Example"
         },
         category: {
           infraestructura: "Infrastructure",
@@ -1110,13 +1128,15 @@ export const translations = {
       home: "Home",
       about: "About Us",
       projects: "Projects",
-      entrecalles: "Entrecalles",
+      entrecalles: "Torre Esmeralda",
+      lamco: "LAMCO USA",
       contact: "Contact",
       keywords: {
         home: ["home", "main", "start"],
         about: ["us", "company", "who we are", "history"],
         projects: ["projects", "works", "constructions"],
-        entrecalles: ["entrecalles", "emerald tower", "bogota", "skyscraper"],
+        entrecalles: ["torre esmeralda", "torre esmeralda", "bogota", "skyscraper"],
+        lamco: ["lamco", "lamco usa", "usa", "florida", "orlando", "lehigh acres"],
         contact: ["contact", "email", "phone"]
       }
     },
@@ -1149,11 +1169,15 @@ export const translations = {
     }
   },
   PT: {
+    loading: "Carregando…",
+    lamco: lamcoEN,
+    organigrama: organigramaEN,
     nav: {
       home: "Início",
       about: "Sobre nós",
       projects: "Projetos",
-      entrecalles: "Entrecalles",
+      entrecalles: "Torre Esmeralda",
+      lamco: "LAMCO USA",
       contact: "Contato",
       search: "Buscar..."
     },
@@ -1188,17 +1212,18 @@ export const translations = {
       paragraph: "A Construtora AMCO Ltda. dedica-se ao planejamento, projeto, desenvolvimento, gerenciamento e execução de projetos de construção nos setores de habitação, escritórios, comércio, institucional e industrial, sob rigorosas normas técnicas e de qualidade, contribuindo para o desenvolvimento urbano sustentável da Colômbia."
     },
     entrecalles: {
-      name: "ENTRE CALLES",
+      ...torreEsmeraldaPT,
+      name: "TORRE ESMERALDA",
       badge: "PROJETO EM DESENVOLVIMENTO",
-      title: "Entre Calles",
+      title: "Torre Esmeralda",
       description: "Na interseção da Avenida 19 com a Calle Real del Comercio, mais conhecida como Carrera Séptima; decola o projeto que renovará a face do centro de Bogotá e de toda a Colômbia.",
       video_label: "Vídeo do projeto",
-      video_title: "Entre Calles: O futuro de Bogotá",
+      video_title: "Torre Esmeralda: O futuro de Bogotá",
       video_description: "Descubra o arranha-céu que transformará o centro da cidade",
       height: "metros de altura",
       location: "Localização",
       modal_title: "Vídeo do Projeto",
-      iframe_title: "Entre Calles - Projeto"
+      iframe_title: "Torre Esmeralda - Projeto"
     },
     nosotros: {
       hero: {
@@ -1339,7 +1364,9 @@ export const translations = {
         page: "Página",
         status: {
           delivered: "Entregue",
-          in_progress: "Em execução"
+          in_progress: "Em execução",
+          pending: "Data a confirmar",
+          example: "Exemplo"
         },
         category: {
           infraestructura: "Infraestrutura",
@@ -1567,13 +1594,15 @@ export const translations = {
       home: "Início",
       about: "Sobre Nós",
       projects: "Projetos",
-      entrecalles: "Entrecalles",
+      entrecalles: "Torre Esmeralda",
+      lamco: "LAMCO USA",
       contact: "Contato",
       keywords: {
         home: ["inicio", "home", "principal"],
         about: ["nos", "empresa", "quem somos", "historia"],
         projects: ["projetos", "obras", "construcoes"],
-        entrecalles: ["entrecalles", "blog", "noticias"],
+        entrecalles: ["torre esmeralda", "blog", "noticias"],
+        lamco: ["lamco", "lamco usa", "usa", "florida", "orlando", "lehigh acres"],
         contact: ["contato", "correio", "telefone"]
       }
     },

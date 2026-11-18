@@ -1,7 +1,8 @@
 // Información de cada proyecto para las tarjetas (clave = id de dataProyectos).
 // Campos opcionales: estado ('Entregado' | 'En ejecución'), anio, entidad,
 // dato: { valor, etiqueta }.
-// IMPORTANTE: estado, entidad y dato solo se muestran cuando TODOS los proyectos lo tienen,
+// Fechas y estado visibles: editar fechasEntrega.js.
+// IMPORTANTE: entidad y dato solo se muestran cuando TODOS los proyectos lo tienen,
 // para que todas las tarjetas se vean iguales. Llena el campo en los 27 y aparece solo.
 export const detalles = {
   1:  { descripcion: 'Bodega comercial en el sector de Abastos, uno de los grandes polos de comercio de Bogotá.' },

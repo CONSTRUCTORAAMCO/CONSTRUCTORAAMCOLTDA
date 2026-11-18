@@ -1,3 +1,4 @@
+import Reveal from "../../components/animation/Reveal";
 // ================= IMPORTS =================
 // React y Hooks
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -221,15 +222,15 @@ const EntreCalles = () => {
   return (
     <>
       <Helmet>
-        <title>{t('entrecalles.meta.title', "Entrecalles Emerald Tower - Proyecto Insignia de AMCO en Bogotá")}</title>
-        <meta name="description" content={t('entrecalles.meta.description', "Conoce Entrecalles, el rascacielos que transformará el centro de Bogotá. Un proyecto de uso mixto con 500m de altura, apartamentos de lujo, oficinas y más.")} />
+        <title>{t('entrecalles.meta.title', "Torre Esmeralda - Proyecto Insignia de AMCO en Bogotá")}</title>
+        <meta name="description" content={t('entrecalles.meta.description', "Conoce Torre Esmeralda, el rascacielos que transformará el centro de Bogotá. Un proyecto de uso mixto con 500m de altura, apartamentos de lujo, oficinas y más.")} />
         <link rel="canonical" href="https://www.amcoltda.com/entrecalles" />
       </Helmet>
 
       {/* HERO SECTION - CON MÁS ESPACIO ABAJO */}
       <div className={styles.heroSection}>
         <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
+        <Reveal className={styles.heroContent}>
           <div className={styles.companyLogo}>
             <Building2 size={64} className={styles.logoIcon} />
             <div className={styles.companyName}>
@@ -237,13 +238,13 @@ const EntreCalles = () => {
               <p className={styles.companySubtitle}>CONSTRUCTORA AMCO LTDA</p>
             </div>
           </div>
-          <h2 ref={mainTitleRef} className={styles.heroTitle}>
+          <h2 ref={mainTitleRef} className={`${styles.heroTitle} ${styles.visible || ""}`}>
             {t('entrecalles.hero_title')}
           </h2>
           <p className={styles.heroSubtitle}>
             {t('entrecalles.hero_subtitle')}
           </p>
-        </div>
+        </Reveal>
       </div>
 
       {/* STATS BAR */}

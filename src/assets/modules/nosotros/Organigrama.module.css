@@ -1,0 +1,605 @@
+/* Organigrama — misma paleta que Nosotros (negro / blanco / amarillo #f2c200) */
+
+.section {
+  padding: 2rem 0 5rem;
+  --line: #1a1a1a;
+  --line-w: 2px;
+  --gap-v: 28px;
+}
+
+/* ---------- Encabezado ---------- */
+.header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.titleRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.titleIcon {
+  width: 40px;
+  height: 40px;
+  color: #000000;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #f2c200, #e9ba00);
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* ---------- Árbol ---------- */
+.tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  padding: 3rem 1.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.vline {
+  display: block;
+  width: var(--line-w);
+  height: var(--gap-v);
+  background: var(--line);
+  margin: 0.5rem auto;
+}
+
+/* Ramas con conectores (línea vertical + barra horizontal) */
+.branch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: var(--gap-v);
+  margin-top: 0.5rem;
+}
+
+.branch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--line-w);
+  height: var(--gap-v);
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+.col {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--gap-v) 0.5rem 0;
+}
+
+.col::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--line-w);
+  height: var(--gap-v);
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+.col::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--line-w);
+  background: var(--line);
+}
+
+.col:first-child::after {
+  left: 50%;
+}
+
+.col:last-child::after {
+  right: 50%;
+}
+
+.col:only-child::after {
+  display: none;
+}
+
+.branchMain {
+  max-width: 1000px;
+  margin-bottom: 0.5rem;
+}
+
+.branchThree {
+  max-width: 820px;
+}
+
+/* ---------- Empresa ---------- */
+.company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 140px;
+}
+
+.companyCircle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 3px solid #1a1a1a;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.companyLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dim {
+  opacity: 0.4;
+}
+
+.companyText {
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #1a202c;
+  letter-spacing: 0.04em;
+}
+
+.companyLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #718096;
+  text-align: center;
+  line-height: 1.25;
+  min-height: 2.5em;
+}
+
+/* ---------- Persona ---------- */
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 200px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.avatar {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 3px solid #1a1a1a;
+  overflow: hidden;
+  background: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatarHint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 14px;
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.7) 100%);
+  color: #f2c200;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.person:hover .avatar,
+.person:focus-visible .avatar {
+  border-color: #f2c200;
+  box-shadow: 0 0 0 5px rgba(242, 194, 0, 0.25);
+  transform: translateY(-3px);
+}
+
+.person:hover .avatarHint,
+.person:focus-visible .avatarHint {
+  opacity: 1;
+}
+
+.person:focus-visible {
+  outline: none;
+}
+
+.personName {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.personRole {
+  display: inline-block;
+  background: #edf0f3;
+  color: #2d3748;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.personFeatured .avatar {
+  width: 136px;
+  height: 136px;
+  border-color: #f2c200;
+}
+
+.personFeatured .personName {
+  font-size: 1.05rem;
+}
+
+.personFeatured .personRole {
+  background: #000000;
+  color: #f2c200;
+  font-size: 0.78rem;
+  padding: 0.4rem 1.2rem;
+}
+
+/* ---------- Botones ---------- */
+.actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.btnPrimary,
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btnPrimary {
+  background: #f2c200;
+  color: #000000;
+  border: 2px solid #f2c200;
+}
+
+.btnPrimary:hover {
+  background: #e9ba00;
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.btnSecondary:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+/* ---------- Modal ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000; /* por encima del widget de WhatsApp */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.modal {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  width: 100%;
+  max-width: 860px;
+  max-height: calc(100vh - 2.5rem);
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modalClose {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modalClose:hover {
+  background: #f2c200;
+  color: #000000;
+}
+
+.modalPhoto {
+  background: #f1f1f1;
+  min-height: 100%;
+}
+
+.modalPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.modalBody {
+  padding: 2.5rem 2.25rem;
+  overflow-y: auto;
+  border-left: 6px solid #f2c200;
+}
+
+.modalCompany {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #9a9a9a;
+  margin-bottom: 0.6rem;
+}
+
+.modalName {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #000000;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+  padding-right: 2.5rem;
+}
+
+.modalRole {
+  display: inline-block;
+  background: #000000;
+  color: #f2c200;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modalTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin: 1rem 0 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #fef3c7;
+}
+
+.modalDesc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .company {
+    width: 120px;
+  }
+
+  .companyCircle {
+    width: 84px;
+    height: 84px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    --gap-v: 22px;
+    padding: 1rem 0 4rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .tree {
+    padding: 2rem 0.5rem;
+  }
+
+  /* Las dos personas bajo AMR y LAMCO se apilan en móvil */
+  .branchMain .branch {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .branchMain .branch .col::after {
+    display: none;
+  }
+
+  .branchMain .branch .col + .col {
+    padding-top: calc(var(--gap-v) + 0.5rem);
+  }
+
+  .branchMain .branch .col + .col::before {
+    height: calc(var(--gap-v) + 0.5rem);
+  }
+
+  .col {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .personFeatured .avatar {
+    width: 112px;
+    height: 112px;
+  }
+
+  .personName {
+    font-size: 0.78rem;
+  }
+
+  .personRole {
+    font-size: 0.62rem;
+    padding: 0.25rem 0.55rem;
+  }
+
+  .company {
+    width: 100%;
+    max-width: 120px;
+  }
+
+  .companyCircle {
+    width: 72px;
+    height: 72px;
+    padding: 9px;
+  }
+
+  .companyLabel {
+    font-size: 0.62rem;
+  }
+
+  .companyText {
+    font-size: 0.5rem;
+  }
+
+  .modal {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .modalPhoto {
+    height: 300px;
+    min-height: 0;
+  }
+
+  .modalBody {
+    border-left: none;
+    border-top: 6px solid #f2c200;
+    padding: 1.75rem 1.5rem;
+    overflow: visible;
+  }
+
+  .modalName {
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    justify-content: center;
+  }
+}

@@ -1,10 +1,12 @@
+import FechaEntrega from "./FechaEntrega";
+import Reveal from "../../components/animation/Reveal";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { proyectos } from './dataProyectos';
 import { ubicaciones, departamentoDe } from './ubicaciones';
 import { detalles } from './detalles';
 import { useLanguage } from '../../../i18n/LanguageContext';
-import heroBogota from '../../img/heroBogota.svg';
+import styles from './Proyectos.module.css';
 import Select from 'react-select';
 import { MapPin, ArrowUpRight, SearchX, Building2 } from 'lucide-react';
 
@@ -19,7 +21,6 @@ const proyectosFull = proyectos.map((p) => ({
   sinUbicacion: !p.ubicacion || p.ubicacion === 'Por definir',
 }));
 
-const mostrarEstado = proyectosFull.every((p) => p.estado);
 const mostrarEntidad = proyectosFull.every((p) => p.entidad);
 const mostrarDato = proyectosFull.every((p) => p.dato);
 
@@ -323,46 +324,32 @@ const SesioProy = () => {
 
   return (
     <div className="!w-full !min-h-screen !bg-slate-50 !pb-24 !flex !flex-col !font-sans !overflow-x-hidden">
-      {/* HERO SECTION ULTRA PREMIUM Y RESPONSIVO */}
-      <section className="!relative !w-full !min-h-[520px] md:!min-h-[640px] !pt-[100px] md:!pt-[120px] !bg-black !flex !items-center !justify-center !overflow-hidden">
-        <img
-          src={heroBogota}
-          alt=""
-          aria-hidden="true"
-          className="!absolute !inset-0 !w-full !h-full !object-cover !object-center !opacity-40 !mix-blend-luminosity"
-        />
-        <div className="!absolute !inset-0 !bg-gradient-to-b from-black/95 via-neutral-950/65 to-slate-50" />
-        <div className="!absolute !top-1/4 !left-1/2 !-translate-x-1/2 !w-full !max-w-[600px] !h-[400px] !bg-amber-500/20 !blur-[120px] !rounded-full !pointer-events-none" />
-
-        <div className="!relative !z-10 !w-full !max-w-[1000px] !mx-auto !text-center !px-4 sm:!px-6 !pt-8 !pb-24 md:!pb-32 !flex !flex-col !items-center">
-          <span className="!inline-flex !items-center !gap-2 !rounded-full !border !border-white/10 !bg-white/5 !backdrop-blur-md !px-5 !py-2 !text-xs sm:!text-sm !font-medium !text-slate-100 !mb-8 md:!mb-10 !shadow-lg">
-            <span className="!w-2 !h-2 !rounded-full !bg-amber-400 !animate-pulse" />
-            {t('proyectos.directory.badge')}
-          </span>
-          
-          <h1 className="!text-4xl sm:!text-5xl md:!text-7xl !font-extrabold !text-white !tracking-tighter !leading-[1.1] !mb-6 !drop-shadow-sm">
-            {t('proyectos.directory.headline')} <br className="md:!hidden" />
-            <span className="!text-transparent !bg-clip-text !bg-gradient-to-r !from-amber-400 !to-amber-200">{t('proyectos.directory.headline_highlight')}</span>
-          </h1>
-          
-          <p className="!text-base sm:!text-lg md:!text-xl !text-slate-300 !max-w-2xl !leading-relaxed !font-light">
-            {t('proyectos.directory.description')}
-          </p>
-
-          {stats.length > 0 && (
-  <dl className="!mt-10 md:!mt-14 !w-full sm:!w-auto !grid !grid-cols-1 sm:!grid-cols-3 !divide-y sm:!divide-y-0 sm:!divide-x !divide-white/10 !rounded-3xl sm:!rounded-[2rem] !border !border-white/10 !bg-white/5 !backdrop-blur-xl !shadow-2xl !overflow-hidden">
-    {stats.map((s) => (
-      <div key={s.t} className="!px-6 !py-5 sm:!px-8 lg:!px-12 !text-center hover:!bg-white/5 !transition-colors !duration-300">
-        <dd className="!text-3xl sm:!text-4xl !font-bold !text-white !tabular-nums !tracking-tight">{s.n}</dd>
-        <dt className="!text-sm sm:!text-base !font-bold !text-white !mt-1">{t(`proyectos.directory.stats.${s.key}`)}</dt>
-      </div>
-    ))}
-  </dl>
-)}
-        </div>
+      <section className={styles.heroSection} aria-labelledby="projects-title">
+        <div className={styles.heroOverlay} aria-hidden="true" />
+        <Reveal className={styles.heroContent}>
+          <div className={styles.companyLogo}>
+            <Building2 size={64} className={styles.logoIcon} aria-hidden="true" />
+            <div className={styles.companyName}>
+              <h1 id="projects-title" className={styles.companyMainName}>{t('nav.projects')}</h1>
+              <p className={styles.companySubtitle}>CONSTRUCTORA AMCO LTDA</p>
+            </div>
+          </div>
+          <h2 className={`${styles.heroTitle} ${styles.visible || ""}`}>{t('nosotros.hero.title')}</h2>
+          <p className={styles.heroSubtitle}>{t('nosotros.hero.subtitle')}</p>
+        </Reveal>
       </section>
 
-      <main className="!w-full !max-w-[1360px] !mx-auto !px-4 sm:!px-6 lg:!px-8 !relative !z-20 !-mt-12 md:!-mt-20">
+      <main className="!w-full !max-w-[1360px] !mx-auto !px-4 sm:!px-6 lg:!px-8 !relative !z-20">
+        {stats.length > 0 && (
+          <Reveal as="dl" className={styles.statsBar} delay={0.15}>
+            {stats.map((s) => (
+              <div key={s.key} className={styles.statItem}>
+                <dd className={styles.statNumber}>{s.n}</dd>
+                <dt className={styles.statLabel}>{t('proyectos.directory.stats.' + s.key)}</dt>
+              </div>
+            ))}
+          </Reveal>
+        )}
         {/* FILTROS FLOTANTES RESPONSIVOS */}
         <div className="!w-full !bg-white/90 !backdrop-blur-2xl !rounded-[2rem] !shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)] !p-5 sm:!p-6 md:!p-8 !mb-12 md:!mb-16 !border !border-white !ring-1 !ring-slate-100">
           <div className="!flex !flex-col md:!flex-row !gap-4 md:!gap-6">
@@ -435,7 +422,6 @@ const SesioProy = () => {
         ) : (
           <div ref={tarjetasRef} className="!w-full !grid !grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3 !gap-6 md:!gap-8">
             {proyectosActuales.map((proyecto) => {
-              const entregado = proyecto.estado === 'Entregado';
               const categoriaKey = proyecto.categoria || 'featured';
               const categoriaTraducida = t(`proyectos.directory.category.${categoriaKey}`);
               const categoriaLabel =
@@ -445,7 +431,6 @@ const SesioProy = () => {
                     : cap(categoriaKey)
                   : categoriaTraducida;
               const descripcionTraducida = t(`proyectos.directory.items.${proyecto.id}.description`);
-              const estadoTraducido = t(`proyectos.directory.status.${entregado ? 'delivered' : 'in_progress'}`);
               const etiquetaDato =
                 proyecto.id === 4
                   ? t('proyectos.directory.data.daily_students')
@@ -482,17 +467,10 @@ const SesioProy = () => {
                         <MapPin className="!w-4 !h-4 sm:!w-5 sm:!h-5" />
                       </a>
                     )}
-
-                    {mostrarEstado && (
-                      <span className="!absolute !bottom-4 !left-4 !inline-flex !items-center !gap-2 !bg-white/10 !backdrop-blur-md !border !border-white/20 !text-white !text-[11px] sm:!text-xs !font-bold !px-3 !py-1.5 sm:!py-2 !rounded-full">
-                        <span className={`!w-2 !h-2 !rounded-full !shadow-sm ${entregado ? '!bg-emerald-400' : '!bg-amber-400'}`} />
-                        {estadoTraducido}
-                        {proyecto.anio ? <span className="!opacity-70 !font-medium">· {proyecto.anio}</span> : ''}
-                      </span>
-                    )}
                   </div>
 
                   <div className="!px-4 sm:!px-5 !pt-5 sm:!pt-6 !pb-4 sm:!pb-5 !flex !flex-col !flex-grow">
+                    <div className="!mb-3"><FechaEntrega id={proyecto.id} /></div>
                     <h3 className="!text-lg sm:!text-xl !font-extrabold !text-slate-900 !leading-tight !mb-2 sm:!mb-3 !min-h-[3.5rem]" style={dosLineas}>
                       {proyecto.nombre}
                     </h3>

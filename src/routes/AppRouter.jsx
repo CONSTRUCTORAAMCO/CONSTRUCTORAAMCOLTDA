@@ -1,3 +1,4 @@
+import LoadingScreen from "../assets/components/loading/LoadingScreen";
 // ================= IMPORTS =================
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
@@ -12,6 +13,7 @@ const Contacto = lazy(() => import("../pages/Contacto"));
 const Proyectos = lazy(() => import("../pages/Proyectos"));
 const Politicaprivacidad = lazy(() => import("../pages/Politicaprivacidad"));
 const Tyc = lazy(() => import("../pages/Tyc"));
+const LamcoUsa = lazy(() => import("../pages/LamcoUsa"));
 
 const VistasProyecto = lazy(() =>
   import("../assets/modules/vistasproyectos/vistaproyecto").then((module) => ({
@@ -31,7 +33,7 @@ const Error404 = lazy(() => import("../pages/Error404.jsx"));
 // ================= COMPONENT =================
 function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingScreen />}>
       <ScrollToTop />
 
       <Routes>
@@ -42,6 +44,7 @@ function App() {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/entrecalles" element={<Entrecalles />} />
+          <Route path="/lamco-usa" element={<LamcoUsa />} />
           <Route path="/prototipos" element={<ComunidadesCarousel />} />
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/politicaprivacidad" element={<Politicaprivacidad />} />

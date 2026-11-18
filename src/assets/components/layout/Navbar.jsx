@@ -92,6 +92,7 @@ const Navbar = () => {
     { key: 'nav.about', path: '/nosotros' },
     { key: 'nav.projects', path: '/proyectos' },
     { key: 'nav.entrecalles', path: '/entrecalles' },
+    { key: 'nav.lamco', path: '/lamco-usa' },
     { key: 'nav.contact', path: '/contacto' }
   ];
 
@@ -103,7 +104,7 @@ const Navbar = () => {
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${show ? "translate-y-0" : "-translate-y-full"} ${isScrolledStyle ? "bg-white shadow-md" : "bg-transparent"}`}>
          <nav className="relative w-full h-20 flex items-center">
            <img src={AMCO} alt="AMCO" className={`absolute left-6 h-18 w-auto ${isScrolledStyle ? "" : "brightness-0 invert"}`} />
-           <ul className={`hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 text-sm font-semibold uppercase tracking-wide ${isScrolledStyle ? "text-black" : "text-white"}`}>
+           <ul className={`hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-6 sm:gap-8 md:gap-4 lg:gap-10 xl:gap-12 whitespace-nowrap md:text-xs lg:text-sm font-semibold uppercase tracking-wide ${isScrolledStyle ? "text-black" : "text-white"}`}>
              {navLinks.map((link) => (
                <li 
                  key={link.key} 

@@ -1,3 +1,4 @@
+import FechaEntrega from "../proyectos/FechaEntrega";
 // ================= IMPORTS =================
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -95,6 +96,7 @@ const VistaProyecto = () => {
               {projectTitle}
             </h1>
 
+            <div className="mb-4"><FechaEntrega id={proyecto.id} /></div>
             <p className="text-gray-300 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 leading-relaxed">
               {projectDescription}
             </p>

@@ -1,0 +1,45 @@
+.amco-cursor-effects, .amco-cursor-effects * { pointer-events: none; }
+.amco-cursor-effects {
+  --ring-yellow: #ffd600;
+  position: fixed; inset: 0; z-index: 20000; overflow: hidden;
+  opacity: 0; transition: opacity .2s ease;
+}
+.amco-cursor-effects[data-visible="true"] { opacity: 1; }
+
+/* Aro que sigue el cursor */
+.amco-cursor-ring { position: absolute; top: 0; left: 0; width: 0; height: 0; will-change: transform; }
+.amco-cursor-ring span {
+  position: absolute; left: -16px; top: -16px; width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ring-yellow);
+  box-shadow: 0 0 0 1px rgb(17 17 17 / 18%);
+  transition: transform .3s cubic-bezier(.2, .9, .3, 1.2), background-color .25s ease, border-width .25s ease;
+}
+/* Pequeño "+" en el centro del aro */
+.amco-cursor-ring::before, .amco-cursor-ring::after {
+  content: ''; position: absolute; background: var(--ring-yellow);
+  box-shadow: 0 0 0 .5px rgb(17 17 17 / 25%);
+  transition: transform .3s cubic-bezier(.2, .9, .3, 1.2);
+}
+.amco-cursor-ring::before { left: -4px; top: -.75px; width: 8px; height: 1.5px; }
+.amco-cursor-ring::after { left: -.75px; top: -4px; width: 1.5px; height: 8px; }
+.amco-cursor-effects[data-active="true"] .amco-cursor-ring::before,
+.amco-cursor-effects[data-active="true"] .amco-cursor-ring::after { transform: rotate(90deg); }
+
+.amco-cursor-effects[data-active="true"] .amco-cursor-ring span {
+  transform: scale(1.45);
+  background-color: rgb(255 214 0 / 12%);
+  border-width: 1px;
+}
+.amco-cursor-effects[data-pressed="true"] .amco-cursor-ring span {
+  transform: scale(.8);
+  background-color: rgb(255 214 0 / 22%);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .amco-custom-cursor, .amco-custom-cursor body, .amco-custom-cursor body * {
+    cursor: url('./arrow.svg') 3 2, auto !important;
+  }
+  .amco-custom-cursor input, .amco-custom-cursor textarea, .amco-custom-cursor [contenteditable="true"] { cursor: text !important; }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .amco-cursor-effects { display: none; } }

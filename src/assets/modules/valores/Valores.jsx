@@ -1,3 +1,4 @@
+import Reveal from "../../components/animation/Reveal";
 import styles from "./Valores.module.css";
 import { useLanguage } from "../../../i18n/LanguageContext";
 
@@ -9,7 +10,7 @@ const Valores = () => {
     <section className={styles.section}>
       <div className={styles.container}>
         {/* Header */}
-        <header className={styles.header}>
+        <Reveal as="header" className={styles.header}>
           <span className={styles.kicker}>{t('valores_home.kicker')}</span>
           <h2>
             {t('valores_home.title')}
@@ -17,15 +18,15 @@ const Valores = () => {
           <p>
             {t('valores_home.subtitle')}
           </p>
-        </header>
+        </Reveal>
 
         {/* Grid */}
         <div className={styles.grid}>
           {valores.map((item, index) => (
-            <article key={index} className={styles.card}>
+            <Reveal as="article" key={index} className={styles.card} delay={index * 0.08} interactive>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

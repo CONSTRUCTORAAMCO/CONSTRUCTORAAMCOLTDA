@@ -25,6 +25,7 @@ export function generateSitemapRoutes() {
     '/nosotros',
     '/proyectos',
     '/entrecalles',
+    '/lamco-usa',
     '/contacto',
     '/politica-privacidad', // Ruta inferida para la política de privacidad
     '/terminos-y-condiciones', // Ruta inferida para los términos y condiciones

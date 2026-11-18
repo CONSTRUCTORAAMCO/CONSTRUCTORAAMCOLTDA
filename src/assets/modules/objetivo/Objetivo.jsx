@@ -29,8 +29,7 @@ const Objetivo = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           texto.classList.add(styles.active);
-        } else {
-          texto.classList.remove(styles.active);
+          observer.unobserve(texto);
         }
       },
       { threshold: 0.3 }

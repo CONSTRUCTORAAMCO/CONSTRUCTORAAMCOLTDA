@@ -1,3 +1,4 @@
+import Reveal from "../../components/animation/Reveal";
 import { useEffect, useRef } from "react";
 import {
   Building2, Target, Eye, Award, Clock, Leaf, MessageSquare,
@@ -8,6 +9,7 @@ import {
 import styles from "./Nosotros.module.css";
 import { useLanguage } from "../../../i18n/LanguageContext";
 import imgAlfredo from "../../img/alfredoimg.png";
+import Organigrama from "./Organigrama";
 
 export default function Nosotros() {
   const { t } = useLanguage();
@@ -65,23 +67,23 @@ export default function Nosotros() {
       {/* HERO SECTION */}
       <div className={styles.heroSection}>
         <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
+        <Reveal className={styles.heroContent}>
           <div className={styles.companyLogo}>
             <Building2 size={64} className={styles.logoIcon} />
             <div className={styles.companyName}>
-              <h1 ref={heroNameRef} className={styles.heroTitle}>
+              <h1 ref={heroNameRef} className={`${styles.heroTitle} ${styles.visible || ""}`}>
                 {t('nosotros.hero.name')}
               </h1>
               <p className={styles.companySubtitle}>CONSTRUCTORA AMCO LTDA</p>
             </div>
           </div>
-          <h2 ref={mainTitleRef} className={styles.heroTitle}>
+          <h2 ref={mainTitleRef} className={`${styles.heroTitle} ${styles.visible || ""}`}>
             {t('nosotros.hero.title')}
           </h2>
           <p className={styles.heroSubtitle}>
             {t('nosotros.hero.subtitle')}
           </p>
-        </div>
+        </Reveal>
       </div>
 
       <div className={styles.container}>
@@ -115,6 +117,9 @@ export default function Nosotros() {
             </div>
           </div>
         </div>
+
+        {/* ORGANIGRAMA */}
+        <Organigrama />
 
         {/* NUEVA SECCIÓN: EL FUNDADOR */}
         <div ref={fundadorRef} className={styles.fundadorSection}>

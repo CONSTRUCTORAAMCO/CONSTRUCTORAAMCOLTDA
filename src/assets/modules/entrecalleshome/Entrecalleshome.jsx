@@ -40,7 +40,7 @@ const EntreCallesHome = () => {
           <div className={styles.imageWrapper}>
             <img 
               src={edificioImage} 
-              alt="Edificio Entre Calles" 
+              alt={t('entrecalles.name')}
               className={styles.edificioImage}
               onError={(e) => {
                 // Si la imagen no carga, usa un placeholder

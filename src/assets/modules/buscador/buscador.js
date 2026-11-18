@@ -15,9 +15,14 @@ export const searchIndex = [
     keywords: ["proyectos", "obras", "construcciones"]
   },
   {
-    title: "Entrecalles",
+    title: "Torre Esmeralda",
     path: "/entrecalles",
-    keywords: ["entrecalles", "blog", "noticias"]
+    keywords: ["torre esmeralda", "esmeralda", "torre", "bogota", "rascacielos"]
+  },
+  {
+    title: "LAMCO USA",
+    path: "/lamco-usa",
+    keywords: ["lamco", "lamco usa", "usa", "estados unidos", "florida", "orlando", "lehigh acres"]
   },
   {
     title: "Contacto",

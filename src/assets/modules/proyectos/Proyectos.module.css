@@ -1,0 +1,119 @@
+.heroSection {
+  position: relative;
+  height: 60vh;
+  min-height: 500px;
+  background: linear-gradient(135deg, #000000 0%, #111111 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 20px; 
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M20,20 L80,20 L80,80 L20,80 Z" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/></svg>');
+  opacity: 0.3;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 0 2rem;
+  max-width: 800px;
+}
+
+.companyLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.logoIcon {
+  color: #f0b429;
+}
+
+.companyName {
+  text-align: left;
+}
+
+.companyMainName {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0;
+  line-height: 1;
+  color: white;
+}
+
+.companySubtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.heroTitle.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.companyMainName { text-transform: uppercase; }
+.logoIcon { flex-shrink: 0; }
+.statsBar {
+  display: flex;
+  justify-content: space-around;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: -60px auto 4rem;
+  max-width: 1000px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+.statItem { flex: 1; text-align: center; padding: 0 1rem; }
+.statItem + .statItem { border-left: 1px solid #e2e8f0; }
+.statNumber { font-size: 2.5rem; font-weight: 800; color: #000; margin: 0; line-height: 1; }
+.statLabel { font-size: .9rem; color: #000; margin-top: .5rem; text-transform: uppercase; letter-spacing: 1px; }
+@media (max-width: 768px) {
+  .heroSection { height: auto; min-height: 500px; padding: 4rem 0 7rem; }
+  .heroContent { padding: 0 1.5rem; }
+  .companyLogo { gap: 1rem; }
+  .companyMainName { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+  .companySubtitle { font-size: .8rem; letter-spacing: 1px; }
+  .heroTitle { font-size: 2rem; }
+  .heroSubtitle { font-size: 1.1rem; }
+  .logoIcon { width: 48px; height: 48px; }
+  .statsBar { padding: 1.5rem .5rem; margin-bottom: 2rem; }
+  .statItem { padding: 0 .5rem; }
+  .statNumber { font-size: 2rem; }
+  .statLabel { font-size: .7rem; letter-spacing: .5px; }
+}
+@media (max-width: 480px) {
+  .companyLogo { flex-direction: column; }
+  .companyName { text-align: center; }
+  .heroTitle { font-size: 1.75rem; }
+}

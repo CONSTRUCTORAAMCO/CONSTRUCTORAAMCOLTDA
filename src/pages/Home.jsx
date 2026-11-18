@@ -1,3 +1,4 @@
+import Reveal from "../assets/components/animation/Reveal";
 import { Helmet } from "react-helmet-async";
 import { useLanguage } from "../i18n/LanguageContext";
 import HeroVideo from "../assets/modules/home/home";
@@ -19,10 +20,10 @@ const Home = () => {
       </Helmet>
 
       <HeroVideo />
-      <Historialproyectos />
-      <Services />
-      <Entrecalleshome />
-      <Objetivo />
+      <Reveal><Historialproyectos /></Reveal>
+      <Reveal><Services /></Reveal>
+      <Reveal><Entrecalleshome /></Reveal>
+      <Reveal><Objetivo /></Reveal>
       <Valores />
     </>
   );

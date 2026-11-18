@@ -1,3 +1,4 @@
+import Reveal from "../../components/animation/Reveal";
 import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import styles from "./Formulario.module.css";
@@ -192,7 +193,7 @@ const Formulario = () => {
       {/* HERO SECTION */}
       <div className={styles.heroSection}>
         <div className={styles.heroOverlay}></div>
-        <div className={styles.heroContent}>
+        <Reveal className={styles.heroContent}>
           <div className={styles.companyLogo}>
             <Building2 size={64} className={styles.logoIcon} />
             <div className={styles.companyName}>
@@ -200,13 +201,13 @@ const Formulario = () => {
               <p className={styles.companySubtitle}>{t('formulario.company_subtitle')}</p>
             </div>
           </div>
-          <h2 ref={mainTitleRef} className={styles.heroTitle}>
+          <h2 ref={mainTitleRef} className={`${styles.heroTitle} ${styles.visible || ""}`}>
             {t('formulario.hero_slogan')}
           </h2>
           <p className={styles.heroSubtitle}>
             {t('formulario.hero_subslogan')}
           </p>
-        </div>
+        </Reveal>
       </div>
 
       {/* STATS BAR */}

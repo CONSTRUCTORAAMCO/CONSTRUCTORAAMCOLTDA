@@ -35,6 +35,7 @@ export default function Footer() {
           <Link to="/Nosotros">{t("nav.about")}</Link>
           <Link to="/Proyectos">{t("nav.projects")}</Link>
           <Link to="/entrecalles">{t("nav.entrecalles")}</Link>
+          <Link to="/lamco-usa">{t("nav.lamco")}</Link>
           <Link to="/contacto">{t("nav.contact")}</Link>
         </div>
       </div>

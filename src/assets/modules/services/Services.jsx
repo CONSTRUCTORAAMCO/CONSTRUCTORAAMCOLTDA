@@ -1,3 +1,4 @@
+import Reveal from "../../components/animation/Reveal";
 import { useEffect, useRef, useState } from "react";
 import styles from "./Services.module.css";
 import { useLanguage } from "../../../i18n/LanguageContext";
@@ -82,15 +83,11 @@ export default function Services() {
 
             <div className={styles.projectsGrid}>
               {t('services.project_list', { returnObjects: true })?.map((project, index) => (
-                <div
-                  key={index}
-                  className={styles.projectCard}
-                  style={{ animationDelay: `${0.2 + (index * 0.1)}s` }}
-                >
+                <Reveal key={index} className={styles.projectCard} delay={index * 0.07} interactive>
                   <div className={styles.projectNumber}>0{index + 1}</div>
                   <div className={styles.projectName}>{project}</div>
                   <div className={styles.projectLine}></div>
-                </div>
+                </Reveal>
               ))}
             </div>
 
