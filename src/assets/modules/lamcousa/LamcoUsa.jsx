@@ -14,6 +14,11 @@ import imgCocina from "../../img/lamco/interior-cocina.jpg";
 import imgSala from "../../img/lamco/interior-sala.jpg";
 import imgAlcoba from "../../img/lamco/interior-alcoba.jpg";
 
+
+import imgLegado from "../../img/lamco/legado-interior.jpg";
+import imgLogo from "../../img/lamco/lamco-logo-white.svg";
+import imgPoster from "../../img/lamco/lamco-brand-poster.png";
+
 const statIcons = [Calendar, MapPin, Cpu];
 const valueIcons = [ShieldCheck, Leaf, Lightbulb, Award];
 const featureIcons = [Compass, Sparkles, BadgeCheck];
@@ -70,6 +75,9 @@ export default function LamcoUsa() {
           })}
         </Reveal>
 
+        <Reveal className={styles.introLogo}>
+          <img src={imgLogo} alt="LAMCO USA" loading="lazy" width="646" height="558" />
+        </Reveal>
         {/* ===== EXPANSIÓN ===== */}
         <div className={styles.split}>
           <Reveal className={styles.splitText}>
@@ -87,8 +95,10 @@ export default function LamcoUsa() {
               ))}
             </div>
           </Reveal>
-          <Reveal delay={0.1} className={styles.splitMedia}>
-            <img src={imgFachada} alt={t("lamco.expansion.imageAlt")} loading="lazy" />
+          <Reveal delay={0.1} className={styles.expansionFigure}>
+            <div className={styles.splitMedia}>
+              <img src={imgLegado} alt={t("lamco.legacy.imageAlt")} loading="lazy" width="1180" height="881" />
+            </div>
           </Reveal>
         </div>
 
@@ -126,7 +136,7 @@ export default function LamcoUsa() {
             </div>
           </Reveal>
 
-          <div className={styles.gallery}>
+<div className={styles.gallery}>
             {list("lamco.legacy.gallery").map((label, i) => (
               <Reveal key={label} delay={i * 0.1} className={styles.galleryItem}>
                 <img src={galleryImages[i]} alt={label} loading="lazy" />
@@ -229,7 +239,7 @@ export default function LamcoUsa() {
 
         {/* ===== IDENTIDAD DE MARCA ===== */}
         <Reveal className={styles.brand}>
-          <div className={styles.brandInner}>
+<div className={styles.brandInner}>
             <Quote className={styles.brandQuoteIcon} />
             <span className={styles.kicker}>{t("lamco.brand.kicker")}</span>
             <p className={styles.brandQuote}>“{t("lamco.brand.quote")}”</p>
@@ -237,6 +247,21 @@ export default function LamcoUsa() {
           </div>
         </Reveal>
 
+      </div>
+
+      <div className={styles.posterBand}>
+        <div className={styles.container}>
+        <Reveal as="figure" className={styles.standalonePoster}>
+          <div className={styles.posterFade}>
+            <img src={imgPoster} alt={t("lamco.brand.posterAlt")} loading="lazy" width="1253" height="836" />
+          </div>
+          <figcaption>{t("lamco.brand.posterCaption")}</figcaption>
+        </Reveal>
+
+        </div>
+      </div>
+
+      <div className={styles.container}>
         {/* ===== CTA ===== */}
         <Reveal className={styles.cta}>
           <h2 className={styles.ctaTitle}>{t("lamco.cta.title")}</h2>

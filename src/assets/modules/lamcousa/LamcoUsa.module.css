@@ -884,3 +884,21 @@
     align-items: flex-start;
   }
 }
+
+/* Photography and brand references */
+.introLogo { width: min(280px, 70%); margin: 0 auto 3rem; background: #fff; }
+.introLogo img { display: block; width: 100%; height: auto; }
+.expansionFigure { min-width: 0; }
+.posterBand { width: 100%; background: #000; padding: clamp(3rem, 6vw, 6rem) 0; margin-bottom: 5rem; }
+.standalonePoster { margin: 0 auto; max-width: 780px; }
+.posterFade { position: relative; isolation: isolate; }
+.posterFade::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, #000 0%, transparent 4%, transparent 95%, #000 100%), linear-gradient(to bottom, #000 0%, transparent 4%, transparent 95%, #000 100%);
+}
+.standalonePoster img { display: block; width: 100%; height: auto; }
+.standalonePoster figcaption { padding: 1rem .5rem 0; color: #aaa; font-size: .75rem; text-align: center; }
+@media (max-width: 768px) {
+ .introLogo { width: min(230px, 70%); margin-bottom: 2rem; }
+ .posterBand { margin-bottom: 3rem; }
+}

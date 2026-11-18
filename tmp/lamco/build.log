@@ -1,0 +1,167 @@
+
+> amco@0.0.0 build
+> vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 2679 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) C:/Users/AMCO-2/Desktop/CONSTRUCTORAAMCOLTDA/AMCO/src/assets/modules/whatsapp/WhatsAppWidget.jsx is dynamically imported by C:/Users/AMCO-2/Desktop/CONSTRUCTORAAMCOLTDA/AMCO/src/assets/components/layout/MainLayout.jsx but also statically imported by C:/Users/AMCO-2/Desktop/CONSTRUCTORAAMCOLTDA/AMCO/src/App.jsx, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/index.html                                                                1.80 kB │ gzip:   0.77 kB
+dist/assets/logo-entrecalles-UsoPKnnE.png                                      6.95 kB
+dist/assets/cedritos-CB8VOnL8.jpg                                              8.97 kB
+dist/assets/3-BASE-AEREA-LETICIA-6-BgtskI5m.jpg                                9.73 kB
+dist/assets/libre uni-CWMukbJj.jpg                                             9.77 kB
+dist/assets/altamira-300x139-G0qmLOip.jpg                                     12.29 kB
+dist/assets/CENTRO DE MEDICINA AEROESPACIAL (CEMAE)7-DdL7bOoU.jpg             12.82 kB
+dist/assets/torres-de-granada-300x165-DIOLwrYo.jpg                            13.19 kB
+dist/assets/2-BASE-AEREA-LETICIA-5-BdhvAObU.jpg                               13.25 kB
+dist/assets/CENTRO DE MEDICINA AEROESPACIAL (CEMAE)2-BM4Ey-Ci.jpg             13.47 kB
+dist/assets/CENTRO DE MEDICINA AEROESPACIAL (CEMAE)1-BWkBJpyt.jpg             13.48 kB
+dist/assets/juan-esteban-munoz-thumb-C-Ptq9qo.jpg                             16.06 kB
+dist/assets/acropolis-300x187-CbSkyx3Y.jpg                                    16.30 kB
+dist/assets/alfredo-munoz-roa-thumb-C_t0Q9ph.jpg                              17.08 kB
+dist/assets/CENTRO DE MEDICINA AEROESPACIAL (CEMAE)6-DwHKIcf_.jpg             17.53 kB
+dist/assets/CENTRO DE MEDICINA AEROESPACIAL (CEMAE)5-CJr5WID_.jpg             17.79 kB
+dist/assets/Novum-300x245-BDYQR36q.jpg                                        18.82 kB
+dist/assets/alfredo-munoz-rodriguez-thumb-BLPgm1Hr.jpg                        19.59 kB
+dist/assets/4-BASE-AEREA-LETICIA-7-VM7UBXHb.jpg                               19.75 kB
+dist/assets/behr-champana-thumb-CtsEp0yF.jpg                                  19.94 kB
+dist/assets/omar-patino-thumb-BfwOpSz6.jpg                                    20.01 kB
+dist/assets/logo-ispowering-DL8PQE6k.jpg                                      20.73 kB
+dist/assets/8-BASE-AEREA-LETICIA1-DNr8IKUd.jpg                                21.08 kB
+dist/assets/2-CENTRO-DE-MEDICINA-AEROESPACIA-CEMAE principal-VuDcc2T8.jpg     21.11 kB
+dist/assets/PLATAFORMA BASE FAC1-DiEtFRB4.jpg                                 21.70 kB
+dist/assets/helena-munoz-thumb-CGG-huUk.jpg                                   22.94 kB
+dist/assets/7-BASE-AEREA-LETICIA 10-CaeHkZo0.jpg                              23.18 kB
+dist/assets/lawrence-selevan-thumb-Bmdn4b2a.jpg                               24.19 kB
+dist/assets/interior-alcoba-CLWpS--W.jpg                                      26.68 kB
+dist/assets/juan-carlos-salmon-thumb-nIBX9q-D.jpg                             27.35 kB
+dist/assets/1-BASE-AEREA-LETICIA4-CdEA_1i3.jpg                                27.53 kB
+dist/assets/PLATAFORMA BASE FAC2-EgeyEoKU.jpg                                 30.58 kB
+dist/assets/CONSTRUCCIÓN Y DOTACIÓN FASE III GRUPO AÉREO6-mJE-_7Wd.jpg        32.07 kB
+dist/assets/interior-sala-B8dKfXjK.jpg                                        32.27 kB
+dist/assets/CONSTRUCCIÓN Y DOTACIÓN FASE III GRUPO AÉREO2-BMGDmtMS.jpg        37.96 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN5-CzEMOVV7.jpg                    39.05 kB
+dist/assets/CONSTRUCCIÓN Y DOTACIÓN FASE III GRUPO AÉREO1-D06al9EZ.jpg        39.14 kB
+dist/assets/behr-champana-Cqo_37hw.jpg                                        45.36 kB
+dist/assets/juan-esteban-munoz-4d5tdNUC.jpg                                   49.07 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN13-C_2g-VZi.jpg                   50.79 kB
+dist/assets/omar-patino-D8GU2d28.jpg                                          55.49 kB
+dist/assets/9-BASE-AEREA-LETICIA 2-CBzcH43g.jpg                               56.08 kB
+dist/assets/WhatsApp_icon-Bs_f00FW.png                                        56.18 kB
+dist/assets/alfredo-munoz-roa-BgLnWZSU.jpg                                    56.82 kB
+dist/assets/alfredo-munoz-rodriguez-B9bBZDru.jpg                              57.61 kB
+dist/assets/CONSTRUCCIÓN Y DOTACIÓN FASE III GRUPO AÉREO3-BJV-NTrL.jpg        63.71 kB
+dist/assets/juan-carlos-salmon-DPOOVXyQ.jpg                                   63.91 kB
+dist/assets/Escuela-de-aviacion-FAC-Cali-DAIoydfC.jpg                         64.02 kB
+dist/assets/helena-munoz-CWHKpBrt.jpg                                         65.79 kB
+dist/assets/FOTOS-AEREAS-BASE-YOPAL-FINALES-3-BJ4tAJ3M.jpeg                   66.23 kB
+dist/assets/AMCO-CFXhWB4V.png                                                 70.96 kB
+dist/assets/lawrence-selevan-CdmjQbZV.jpg                                     73.37 kB
+dist/assets/gobernacion de cundinamarca-DrQ74d1U.jpg                          75.74 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN9-D1hRqZkg.jpg                    87.27 kB
+dist/assets/Comando-de-Policia-de-Bogota-BCivMGqw.jpg                         87.43 kB
+dist/assets/FOTOS-AEREAS-BASE-YOPAL-FINALES-1-DbA37ckS.jpeg                   89.72 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN8-ccWlmFEu.jpg                    89.74 kB
+dist/assets/tunal5-BPEzOhlN.jpeg                                              90.09 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN12-BV9kbgOp.jpg                   91.03 kB
+dist/assets/FOTOS-AEREAS-BASE-YOPAL-FINALES-5-CUB3_HLq.jpeg                   93.51 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN15-CSzn7yTG.jpeg                  94.95 kB
+dist/assets/CENTRO DE MEDICINA AEROESPACIAL (CEMAE)3-PbcZ3-eM.jpg             95.96 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN11-D0J5wTlW.jpg                   97.80 kB
+dist/assets/interior-cocina-D13x6C1V.jpg                                      98.36 kB
+dist/assets/logo-amr-CNCJ2f5U.jpg                                            102.00 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN6-D1pBNRlH.jpg                   107.64 kB
+dist/assets/tunal6-DVlXc0Y8.jpeg                                             108.84 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN10-DyI-WYjv.jpg                  110.84 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN14-CbXM_b00.jpg                  111.34 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN7-D-U4-s92.jpg                   111.79 kB
+dist/assets/Universidad-libre-Bogota-C1Gb-ORX.jpg                            125.74 kB
+dist/assets/tunal4-Akxe9XsW.jpeg                                             135.14 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN 1-Bm1siRQY.jpeg                 136.00 kB
+dist/assets/tunal7-BNWBHcjj.jpeg                                             141.04 kB
+dist/assets/lamco-hero-BJCWQ5RV.jpg                                          142.17 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN principal-DmeeLh2y.jpeg         145.24 kB
+dist/assets/javeriana-Bd24JI1b.jpg                                           150.91 kB
+dist/assets/lamco-logo-white-DXonqn1W.svg                                    161.83 kB │ gzip: 120.98 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN2-C7vpi9FV.jpg                   167.98 kB
+dist/assets/Sena-de-Soacha-Ey7oiL6D.jpg                                      168.53 kB
+dist/assets/AEROPUERTO INTERNACIONAL EL EDEN3-qldZk9hc.jpg                   182.14 kB
+dist/assets/gilbartar-construccion-BLhDDlRp.jpg                              189.64 kB
+dist/assets/carcel de san angel-4vVzK5EQ.jpg                                 191.60 kB
+dist/assets/EJECUCION-2-BelPVbV5.jpg                                         200.11 kB
+dist/assets/BASE AÉREA LETICIA 3-DQTRWnuN.jpg                                211.95 kB
+dist/assets/legado-interior-Bk822pLx.jpg                                     212.15 kB
+dist/assets/rathburn-fachada-BZ1RxprQ.jpg                                    219.17 kB
+dist/assets/rathburn-piscina-Cps-cjOq.jpg                                    230.53 kB
+dist/assets/Entrecallesimg5-DbHdsagr.png                                     245.65 kB
+dist/assets/bodega abastos-BRTUzS9Q.jpg                                      256.44 kB
+dist/assets/Penitenciaria-de-maxima-seguridad-de-Valledupar-sTVDQ93f.jpg     258.46 kB
+dist/assets/tunal1-nqn0Auga.jpg                                              261.66 kB
+dist/assets/Tunalprincipal-BR99VgQP.jpeg                                     271.32 kB
+dist/assets/Entrecallesimg4-D_vKCnSY.png                                     273.56 kB
+dist/assets/Entrecallesimg3-CQT5qLm2.png                                     286.79 kB
+dist/assets/CONTRALORIAMANIZALES principal-BqBOq8xw.jpg                      327.05 kB
+dist/assets/base-aerea-leticia-principal-BNomOOqX.jpg                        428.19 kB
+dist/assets/Centro-de-Talento-Creativo-del-Bronx_17-me50mVp0.jpg             457.20 kB
+dist/assets/personeria-BjA-3OOX.jpg                                          553.68 kB
+dist/assets/gilbartar9-BXE0OBVW.png                                          566.21 kB
+dist/assets/gilbartar11-DyMKE5Vl.png                                         600.64 kB
+dist/assets/gilbartar1-C7AD1VJE.png                                          620.67 kB
+dist/assets/gilbartar3-CjBB7eaR.png                                          628.38 kB
+dist/assets/objetivosocialimg-Cd9m1Qw2.png                                   652.31 kB
+dist/assets/gilbartar4-ByqLmfEL.png                                          708.84 kB
+dist/assets/gilbartar8-C2dDLTIY.png                                          729.42 kB
+dist/assets/gilbartar10-DnJGhx1d.png                                         731.26 kB
+dist/assets/gilbartar7-CQfW6uHy.png                                          757.37 kB
+dist/assets/gilbartar5-CBErr7Wt.png                                          774.19 kB
+dist/assets/gilbartar2-B7VPeqwv.png                                          782.67 kB
+dist/assets/Entrecallesimg1-B99A1ujG.png                                   1,083.48 kB
+dist/assets/gilbartar6-Da8FUiqr.png                                        1,096.07 kB
+dist/assets/lamco-brand-poster-BH8ZFpd6.png                                1,251.76 kB
+dist/assets/Entrecallesimg1h-DU4GHLKG.png                                  1,277.21 kB
+dist/assets/Entrecallesimg6-D6dxOxsA.png                                   1,332.16 kB
+dist/assets/alfredoimg-Bgyvss8I.png                                        1,347.73 kB
+dist/assets/Entrecallesimg2-Bb5lx6ce.png                                   1,650.13 kB
+dist/assets/cdc-tibabuyes-suba-principal-Wtq6Koex.png                      1,726.49 kB
+dist/assets/21233-316116300_small-sldCVxND.mp4                             1,914.09 kB
+dist/assets/Entrecallesimg7-BtZ-8aaI.png                                   2,082.49 kB
+dist/assets/servicesfondo-DuCXlGDz.png                                     2,805.92 kB
+dist/assets/consorcio-yopal-lKD9_Xx6.png                                   3,207.85 kB
+dist/assets/Politicaprivacidad-Br9DjtkZ.css                                    1.12 kB │ gzip:   0.51 kB
+dist/assets/Tyc-ChA_JWz3.css                                                   1.13 kB │ gzip:   0.52 kB
+dist/assets/index-kY2mxJAf.css                                                 2.22 kB │ gzip:   0.91 kB
+dist/assets/Proyectos-mmawHSDE.css                                             2.69 kB │ gzip:   1.01 kB
+dist/assets/Contacto-CWadLSFF.css                                              9.98 kB │ gzip:   2.64 kB
+dist/assets/LamcoUsa-DSNHORxb.css                                             13.30 kB │ gzip:   3.32 kB
+dist/assets/Home-DjwxUoxq.css                                                 15.46 kB │ gzip:   3.73 kB
+dist/assets/Entrecalles-CgUXZVKq.css                                          20.80 kB │ gzip:   4.67 kB
+dist/assets/Nosotros-CNdl4Yjq.css                                             24.46 kB │ gzip:   5.13 kB
+dist/assets/index-ksj94fbv.css                                                75.91 kB │ gzip:  12.88 kB
+dist/assets/map-pin-CHDYbXjJ.js                                                0.27 kB │ gzip:   0.23 kB
+dist/assets/house-C6WCmdaH.js                                                  0.29 kB │ gzip:   0.23 kB
+dist/assets/building-2-C1SGstwN.js                                             0.40 kB │ gzip:   0.25 kB
+dist/assets/calendar-BRB8f0WJ.js                                               0.50 kB │ gzip:   0.33 kB
+dist/assets/javeriana-B0KYdiCH.js                                              0.50 kB │ gzip:   0.32 kB
+dist/assets/x-RqvmU_W5.js                                                      0.86 kB │ gzip:   0.43 kB
+dist/assets/quote-7Q7x0wjd.js                                                  0.97 kB │ gzip:   0.48 kB
+dist/assets/Tyc-CNDCCgWx.js                                                    1.06 kB │ gzip:   0.50 kB
+dist/assets/createLucideIcon-CYWA3Jx7.js                                       1.17 kB │ gzip:   0.69 kB
+dist/assets/index-B_AdiJ4Z.js                                                  2.59 kB │ gzip:   1.10 kB
+dist/assets/Error404-DRMQMNhE.js                                               2.62 kB │ gzip:   1.13 kB
+dist/assets/Politicaprivacidad-GuHFf36U.js                                     3.40 kB │ gzip:   0.52 kB
+dist/assets/Contacto-iwAaFS2h.js                                              11.56 kB │ gzip:   4.33 kB
+dist/assets/Home-C8NVFE2e.js                                                  12.70 kB │ gzip:   4.42 kB
+dist/assets/LamcoUsa-CvbWLbzS.js                                              13.89 kB │ gzip:   4.16 kB
+dist/assets/Entrecalles-_6IoaP5Y.js                                           16.13 kB │ gzip:   4.32 kB
+dist/assets/emotion-element-f0de968e.browser.esm-DoC4vvKp.js                  18.57 kB │ gzip:   7.74 kB
+dist/assets/Nosotros-BPGLiFYx.js                                              32.52 kB │ gzip:   9.13 kB
+dist/assets/vistaproyecto-C5_0Im07.js                                         90.92 kB │ gzip:  31.25 kB
+dist/assets/Proyectos-Dh-mFPVi.js                                             99.09 kB │ gzip:  33.91 kB
+dist/assets/Reveal-Cr-hrBh1.js                                               141.27 kB │ gzip:  48.24 kB
+dist/assets/index-BTCNGpmq.js                                                411.37 kB │ gzip: 130.99 kB
+✓ built in 8.07s

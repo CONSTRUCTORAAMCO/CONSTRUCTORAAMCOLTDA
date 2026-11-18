@@ -23,7 +23,8 @@ export const lamcoES = {
     p1: "Creada bajo la sombrilla del Grupo Constructor AMCO, nace LAMCO con el objetivo estratégico de adquirir, promover y desarrollar bienes raíces residenciales en los Estados Unidos.",
     p2: "Hoy consolidamos este paso con la exitosa finalización de nuestros primeros proyectos residenciales unifamiliares en Orlando y Lehigh Acres, Florida, uniendo más de cinco décadas de rigor técnico con los más altos estándares de ejecución norteamericanos, reafirmando nuestro compromiso con la calidad, la innovación y el desarrollo sostenible en cada mercado donde operamos.",
     locations: ["Orlando, Florida", "Lehigh Acres, Florida"],
-    imageAlt: "Vivienda unifamiliar LAMCO USA en Florida"
+    source: "Ver en Zillow",
+    imageAlt: "Fachada de la vivienda en 1336 Marshall Dr, Leesburg, Florida"
   },
   mission: {
     kicker: "Misión",
@@ -37,6 +38,7 @@ export const lamcoES = {
   },
   legacy: {
     kicker: "Legado, diseño y bienestar",
+    imageAlt: "Interior de la presentación LAMCO: cocina, comedor y sala integrados",
     title: "Un hogar es una inversión de vida",
     text: "En LAMCO entendemos que un hogar no es solo una estructura, sino una inversión de vida. Por eso, concebimos cada desarrollo unifamiliar en la Florida bajo una visión de construcción a largo plazo, fusionando un riguroso estándar técnico con una arquitectura familiar diseñada para perdurar, resistir y trascender generacionalmente en el mercado estadounidense.",
     pillars: ["Experiencia", "Calidad", "Ejecución"],
@@ -77,6 +79,8 @@ export const lamcoES = {
   },
   brand: {
     kicker: "Nuestra identidad",
+    posterAlt: "Aplicación de marca LAMCO USA con el mensaje Strong roots, Solid homes",
+    posterCaption: "Aplicación de marca · Imagen de referencia publicitaria",
     text: "El logo de LAMCO USA evoluciona la identidad original de AMCO integrando una \"L\" en su estructura y conservando la reconocible paleta amarilla. La \"L\" envuelve y sostiene la \"A\" original, representando fortaleza, orden y continuidad: la expansión al mercado estadounidense, armonizando herencia y crecimiento.",
     quote: "Construyendo sobre una base sólida para el éxito futuro."
   },
@@ -108,7 +112,8 @@ export const lamcoEN = {
     p1: "Created under the umbrella of AMCO Construction Group, LAMCO was born with the strategic objective of acquiring, promoting and developing residential real estate in the United States.",
     p2: "Today we consolidate this step with the successful completion of our first single-family residential projects in Orlando and Lehigh Acres, Florida, combining more than five decades of technical rigor with the highest North American execution standards, reaffirming our commitment to quality, innovation and sustainable development in every market where we operate.",
     locations: ["Orlando, Florida", "Lehigh Acres, Florida"],
-    imageAlt: "LAMCO USA single-family home in Florida"
+    source: "View on Zillow",
+    imageAlt: "Front of the home at 1336 Marshall Dr, Leesburg, Florida"
   },
   mission: {
     kicker: "Mission",
@@ -122,6 +127,7 @@ export const lamcoEN = {
   },
   legacy: {
     kicker: "Legacy, design and well-being",
+    imageAlt: "LAMCO presentation interior: open-plan kitchen, dining and living room",
     title: "A home is a life investment",
     text: "At LAMCO we understand that a home is not just a structure, but a life investment. That is why we conceive each single-family development in Florida with a long-term construction vision, merging a rigorous technical standard with family architecture designed to endure, resist and transcend generations in the U.S. market.",
     pillars: ["Experience", "Quality", "Execution"],
@@ -162,6 +168,8 @@ export const lamcoEN = {
   },
   brand: {
     kicker: "Our identity",
+    posterAlt: "LAMCO USA brand application with the message Strong roots, Solid homes",
+    posterCaption: "Brand application · Advertising reference image",
     text: "The LAMCO USA logo evolves the original AMCO identity by integrating an \"L\" into its structure while preserving the recognizable yellow palette. The \"L\" wraps and supports the original \"A\", representing strength, order and continuity: the expansion into the U.S. market, harmonizing heritage with growth.",
     quote: "Building upon a strong foundation for future success."
   },
