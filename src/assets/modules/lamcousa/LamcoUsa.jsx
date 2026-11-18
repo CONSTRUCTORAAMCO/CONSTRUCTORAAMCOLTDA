@@ -272,7 +272,6 @@ export default function LamcoUsa() {
           <div className={styles.posterFade}>
             <img src={imgPoster} alt={t("lamco.brand.posterAlt")} loading="lazy" width="1253" height="836" />
           </div>
-          <figcaption>{t("lamco.brand.posterCaption")}</figcaption>
         </Reveal>
 
         </div>

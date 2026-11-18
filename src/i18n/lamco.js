@@ -84,7 +84,6 @@ export const lamcoES = {
   brand: {
     kicker: "Nuestra identidad",
     posterAlt: "Aplicación de marca LAMCO USA con el mensaje Strong roots, Solid homes",
-    posterCaption: "Aplicación de marca · Imagen de referencia publicitaria",
     text: "El logo de LAMCO USA evoluciona la identidad original de AMCO integrando una \"L\" en su estructura. La \"L\" envuelve y sostiene la \"A\" original, representando fortaleza, orden y continuidad: en la expansión al mercado estadounidense, armonizando herencia y crecimiento.",
     quote: "Construyendo sobre una base sólida para el éxito futuro."
   },
@@ -177,7 +176,6 @@ export const lamcoEN = {
   brand: {
     kicker: "Our identity",
     posterAlt: "LAMCO USA brand application with the message Strong roots, Solid homes",
-    posterCaption: "Brand application · Advertising reference image",
     text: "The LAMCO USA logo evolves the original AMCO identity by integrating an \"L\" into its structure. The \"L\" wraps and supports the original \"A\", representing strength, order and continuity in the expansion into the U.S. market, harmonizing heritage with growth.",
     quote: "Building upon a strong foundation for future success."
   },
