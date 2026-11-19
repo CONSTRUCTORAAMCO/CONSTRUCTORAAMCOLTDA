@@ -24,3 +24,10 @@ Thumbs.db
 
 # Optional: cache folders
 .cache/
+
+# Local tools, review builds and screenshots are not website sources.
+/tmp/
+/dist/
+/.vercel/
+__pycache__/
+*.pyc
