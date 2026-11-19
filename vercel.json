@@ -8,6 +8,28 @@
       "has": [
         {
           "type": "host",
+          "value": "lamcousa.com"
+        }
+      ],
+      "destination": "https://www.amcoltda.com/lamco-usa",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.lamcousa.com"
+        }
+      ],
+      "destination": "https://www.amcoltda.com/lamco-usa",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
           "value": "amcoltda.com"
         }
       ],
