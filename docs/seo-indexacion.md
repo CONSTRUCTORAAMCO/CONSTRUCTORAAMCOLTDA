@@ -32,6 +32,12 @@ La comprobación valida rutas, URLs únicas, canónicas, etiquetas robots, conte
 
 ## Publicación y seguimiento
 
-Los cambios locales solo surten efecto en Google después de publicarse. Al terminar la revisión no había una sesión abierta de Vercel en el navegador. No se debe pulsar VALIDAR CORRECCIÓN ni reenviar el sitemap mientras la versión pública siga sirviendo el sitemap anterior.
+Publicado en producción el 19/11/2026 mediante el commit c603a46 de la rama main. Vercel confirmó el despliegue listo en el dominio principal.
 
-Tras publicar: comprobar /sitemap.xml, /proyecto/11, la redirección de /proyectos/11 y el estado 404 de una URL inexistente. Reenviar sitemap.xml en Search Console, validar los errores corregidos y solicitar indexación de las páginas prioritarias. Los contadores históricos no cambian al instante. Google decide qué páginas indexa; corregir estos fallos no garantiza una posición ni un plazo.
+Verificaciones públicas: las 35 URLs del sitemap respondieron HTTP 200 y una única canónica coincidente. /proyectos/11 redirige con 308 a /proyecto/11; /about/ y /contact/ terminan en las páginas correctas; /blog/, /project/254/ y /proyecto/999 terminan con HTTP 404.
+
+También se cambió en Vercel la redirección de amcoltda.com hacia www.amcoltda.com: de 307 temporal a 308 permanente. Se comprobó la respuesta pública 308.
+
+Search Console confirmó el envío de sitemap.xml, el inicio de las validaciones de Soft 404 y duplicados sin canónica, y la aceptación de la solicitud de indexación de /proyectos en la cola prioritaria. La inspección de /proyecto/2 mostró que esa ficha ya estaba indexada; ese estado no se atribuye al despliegue recién realizado.
+
+Los contadores históricos no cambian al instante. Queda pendiente el procesamiento por Google de las nuevas solicitudes. Google decide qué páginas indexa; corregir estos fallos no garantiza una posición ni un plazo. No es necesario reenviar la misma solicitud repetidamente.
