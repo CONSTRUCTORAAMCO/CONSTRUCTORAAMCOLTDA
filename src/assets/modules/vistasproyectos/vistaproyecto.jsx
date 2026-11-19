@@ -1,231 +1,70 @@
-import FechaEntrega from "../proyectos/FechaEntrega";
-// ================= IMPORTS =================
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-// Local Components & Data
-import VideoPlayer from './VideoPlayer';
-import { proyectos } from "./vistaproyectos.data";
-import { useLanguage } from "../../../i18n/LanguageContext";
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowLeft, ArrowUpRight, MapPin, X, Expand } from 'lucide-react';
+import FechaEntrega from '../proyectos/FechaEntrega';
+import { proyectos } from './vistaproyectos.data';
+import { proyectos as directory } from '../proyectos/dataProyectos';
+import { projectResearch, projectMapUrl, detailLabels, localized } from '../proyectos/projectResearch';
+import { useLanguage } from '../../../i18n/LanguageContext';
+import styles from './VistaProyecto.module.css';
 
-const VistaProyecto = () => {
-  // ================= HOOKS =================
-  const { t } = useLanguage();
+export default function VistaProyecto() {
   const { id } = useParams();
+  const { language } = useLanguage();
+  const labels = detailLabels[language] || detailLabels.ES;
+  const dialog = useRef(null);
   const [selectedImg, setSelectedImg] = useState(null);
+  const proyecto = proyectos.find(p => String(p.id) === id);
+  const listing = directory.find(p => String(p.id) === id);
+  const research = projectResearch[id];
 
-  // Efecto: Scroll al inicio al cargar un nuevo proyecto
+  useEffect(() => { window.scrollTo(0, 0); }, [id]);
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [id]);
+    if (!selectedImg || !dialog.current) return;
+    dialog.current.showModal();
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = previous; };
+  }, [selectedImg]);
 
-  // ================= LOGIC =================
-  // Buscar proyecto por ID (convirtiendo ambos a String para seguridad)
-  const proyecto = proyectos?.find((p) => String(p.id) === String(id));
-
-  // Extraer textos traducidos
-  const projectTitle = t(`data_proyectos.${proyecto?.id}.title`) || proyecto?.title;
-  const projectDescription = t(`data_proyectos.${proyecto?.id}.description`) || proyecto?.description;
-
-  // Manejo de caso: Proyecto no encontrado
-  if (!proyecto) {
-    return (
-      <p className="text-center text-gray-400 mt-10 text-base sm:text-lg font-medium">
-        Proyecto no encontrado (ID buscado: {id})
-      </p>
-    );
-  }
-
-  // Preparar datos de la galería si existe contenido
-  const hasGallery = Array.isArray(proyecto.content) && proyecto.content.length > 0;
-  const itemData = hasGallery
-    ? proyecto.content.map((item) => ({
-        img: item.image,
-        title: proyecto.title,
-      }))
-    : [];
+  if (!proyecto || !research) return <main className={styles.page}><div className={styles.container}><h1>{labels.notFound}</h1><Link to="/proyectos">{labels.back}</Link></div></main>;
+  const title = research.title || listing?.nombre || proyecto.title;
+  const summary = localized(research.summary, language);
+  const mapUrl = projectMapUrl(id);
+  const photos = [...new Set([proyecto.image, ...(proyecto.content || []).map(item => item.image)].filter(Boolean))];
+  const facts = { location: research.city || listing?.ubicacion, ...research.facts, ...(research.map?.address ? { address: research.map.address } : {}) };
 
   return (
-    <section className="relative min-h-screen flex justify-center px-3 sm:px-6 pt-24 sm:pt-40 md:pt-48 pb-16 sm:pb-20 overflow-hidden bg-black">
-      {/* SEO METADATA */}
-      <Helmet>
-        <title>{`${projectTitle} | Proyecto de Constructora AMCO`}</title>
-        <meta
-          name="description"
-          content={projectDescription?.substring(0, 155) + '...'}
-        />
-        <link rel="canonical" href={`https://www.amcoltda.com/proyecto/${id}`} />
-      </Helmet>
-
-      {/* FONDO */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div
-          className="absolute w-[200%] h-[200%]
-          bg-[radial-gradient(circle,white_1.5px,transparent_3px),radial-gradient(circle,yellow_1.5px,transparent_3px)]
-          bg-[size:120px_120px]
-          animate-[moveParticles_20s_linear_infinite]"
-        />
-      </div>
-
-      {/* CONTENIDO */}
-      <div className="max-w-6xl w-full flex flex-col items-center gap-16">
-           <br /><br /><br />
-        {/* IMAGEN PRINCIPAL Y TEXTO */}
-        <div className="w-full flex flex-col md:flex-row items-center gap-10">
-          
-          <div className="w-full md:w-1/2 flex justify-center relative group">
-            {/* Efecto de brillo de fondo sutil para la imagen principal */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/20 to-amber-500/0 rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition duration-500"></div>
-            <img
-              src={proyecto.image}
-              alt={proyecto.title}
-              className="relative w-full max-h-[180px] sm:max-h-[280px] md:max-h-[420px] object-contain rounded-lg sm:rounded-xl shadow-xl shadow-yellow-500/10 transition-transform duration-500 md:hover:scale-105 border border-white/5 bg-neutral-900/40 p-2"
-            />
-          </div>
-
-          <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left">
-            {/* Badge estético superior */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs sm:text-sm font-medium w-fit mb-4 mx-auto md:mx-0 shadow-sm">
-              <i className="ri-building-2-line"></i>
-              <span>{t("proyectos.detail.badge")}</span>
-            </div>
-
-            <h1 className="text-xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight">
-              {projectTitle}
-            </h1>
-
-            <div className="mb-4"><FechaEntrega id={proyecto.id} /></div>
-            <p className="text-gray-300 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6 leading-relaxed">
-              {projectDescription}
-            </p>
-          </div>
+    <main className={styles.page}>
+      <div className={styles.container}>
+        <Link to="/proyectos" className={styles.back}><ArrowLeft size={17} />{labels.back}</Link>
+        <header className={styles.header}>
+          <div><p className={styles.eyebrow}>{labels.eyebrow} / {String(id).padStart(2, '0')}</p><h1>{title}</h1></div>
+          <FechaEntrega id={id} />
+        </header>
+        <div className={styles.hero}>
+          <button className={styles.cover} onClick={() => setSelectedImg(proyecto.image)} aria-label={`${labels.enlarge}: ${title}`}>
+            <img src={proyecto.image} alt={title} fetchPriority="high" />
+            <span className={styles.zoom}><Expand size={19} aria-hidden="true" /></span>
+          </button>
+          <aside className={styles.facts} aria-labelledby="project-facts">
+            <p className={styles.eyebrow}>AMCO / {String(id).padStart(2, '0')}</p>
+            <h2 id="project-facts">{labels.facts}</h2>
+            <dl>{Object.entries(facts).filter(([, value]) => value).map(([key, value]) => <div key={key}><dt>{labels[key]}</dt><dd>{localized(value, language)}</dd></div>)}</dl>
+            {mapUrl && <><a className={styles.map} href={mapUrl} target="_blank" rel="noopener noreferrer"><MapPin size={18} />{labels.map}<ArrowUpRight size={17} /></a>{research.map.reference && <p className={styles.note}>{labels.reference}</p>}</>}
+          </aside>
         </div>
-
-        {/* VIDEO (Enmarcado con estilo moderno) */}
-        {proyecto.video && (
-          <div className="w-full flex justify-center">
-            <div className="w-full max-w-4xl p-3 sm:p-4 rounded-2xl bg-neutral-950/60 border border-white/10 shadow-2xl backdrop-blur-md">
-              <VideoPlayer src={proyecto.video} title={proyecto.title} />
-            </div>
-          </div>
-        )}
-
-        {/* GALERÍA */}
-        {hasGallery && (
-          <div className="w-full flex flex-col items-center gap-6">
-            {/* Título de sección de galería para mayor orden visual */}
-            <div className="w-full max-w-5xl flex items-center gap-3 px-2">
-              <div className="h-px bg-white/10 flex-grow"></div>
-              <span className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest font-semibold flex items-center gap-2">
-                <i className="ri-image-line text-yellow-400"></i> {t("proyectos.detail.gallery_title")}
-              </span>
-              <div className="h-px bg-white/10 flex-grow"></div>
-            </div>
-
-            <div className="w-full flex justify-center">
-              <ImageList
-                sx={{ width: "100%", maxWidth: 1000 }}
-                variant="quilted"
-                cols={4}
-                rowHeight={130}
-                gap={12}
-              >
-                {itemData.map((item, index) => (
-                  <ImageListItem
-                    key={index}
-                    className="group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-neutral-900"
-                    onClick={() => setSelectedImg(item.img)}
-                  >
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      loading="lazy"
-                      className="
-                        w-full h-full object-cover
-                        transition-all duration-500 ease-out
-                        group-hover:scale-110
-                        group-hover:brightness-110
-                        group-hover:contrast-110
-                      "
-                    />
-
-                    {/* Overlay futurista */}
-                    <div className="
-                      absolute inset-0
-                      bg-gradient-to-t from-black/60 via-black/10 to-transparent
-                      opacity-0 group-hover:opacity-100
-                      transition duration-500 flex items-end p-3
-                    ">
-                      <span className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 flex items-center gap-1">
-                        <i className="ri-zoom-in-line text-yellow-400"></i> Ampliar
-                      </span>
-                    </div>
-                  </ImageListItem>
-                ))}
-              </ImageList>
-            </div>
-          </div>
-        )}
-
-        {/* MODAL FUTURISTA */}
-        {selectedImg && (
-          <div
-            className="
-              fixed inset-0 z-[999]
-              bg-black/80 backdrop-blur-xl
-              flex items-center justify-center
-              p-4 overflow-auto
-              animate-fadeIn
-            "
-            onClick={() => setSelectedImg(null)}
-          >
-            <div
-              className="
-                relative
-                max-w-6xl w-full
-                flex items-center justify-center
-                animate-popIn
-              "
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img
-                src={selectedImg}
-                alt="preview"
-                className="
-                  max-h-[90vh] w-auto
-                  rounded-3xl
-                  shadow-[0_20px_80px_rgba(0,0,0,0.8)]
-                  border border-white/20
-                  select-none
-                  bg-neutral-950
-                "
-              />
-
-              {/* Botón de cierre más estilizado */}
-              <button
-                className="
-                  absolute top-4 right-4
-                  w-10 h-10 rounded-full
-                  bg-black/60 border border-white/20
-                  flex items-center justify-center
-                  text-white text-xl
-                  cursor-pointer
-                  transition-all duration-300
-                  hover:bg-yellow-500 hover:text-black hover:scale-110
-                  shadow-lg
-                "
-                onClick={() => setSelectedImg(null)}
-              >
-                <i className="ri-close-line"></i>
-              </button>
-            </div>
-          </div>
-        )}
-      </div> 
-    </section>
+        <div className={styles.editorial}>
+          <section><p className={styles.eyebrow}>01 / {labels.overview}</p><h2>{title}</h2><p className={styles.summary}>{summary}</p>
+            {research.scope?.length > 0 && <><h3>{labels.scope}</h3><ul className={styles.scope}>{research.scope.map((item, index) => <li key={index}>{localized(item, language)}</li>)}</ul></>}
+          </section>
+          <aside className={styles.milestone}><h3>{labels.milestone}</h3><FechaEntrega id={id} />{research.date ? <a href={research.date.url} target="_blank" rel="noopener noreferrer">{labels.sources}<ArrowUpRight size={15} /></a> : <p>{labels.unknown}</p>}</aside>
+        </div>
+        {photos.length > 1 && <section className={styles.gallerySection}><div className={styles.sectionHeading}><p className={styles.eyebrow}>02 / {labels.gallery}</p><span>{String(photos.length).padStart(2, '0')}</span></div><div className={styles.gallery}>{photos.map((src, index) => <button key={src} onClick={() => setSelectedImg(src)} aria-label={`${labels.enlarge} ${index + 1}: ${title}`}><img src={src} alt={`${title} · ${index + 1}`} loading="lazy" /><span className={styles.zoom}><Expand size={18} /></span></button>)}</div></section>}
+        {proyecto.video && <section className={styles.video}><h2>{labels.video}</h2><iframe src={proyecto.video} title={`${labels.video}: ${title}`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></section>}
+        {research.sources.length > 0 && <section className={styles.sources}><h2>{labels.sources}</h2><ul>{research.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}<ArrowUpRight size={16} /></a></li>)}</ul></section>}
+      </div>
+      {selectedImg && <dialog ref={dialog} className={styles.lightbox} aria-label={title} onClose={() => setSelectedImg(null)} onClick={event => { if (event.target === event.currentTarget) dialog.current.close(); }}><button className={styles.close} aria-label={labels.close} onClick={() => dialog.current.close()} autoFocus><X size={24} /></button><img src={selectedImg} alt={title} /></dialog>}
+    </main>
   );
-};
-
-export default VistaProyecto;
+}

@@ -32,8 +32,8 @@ export default function Footer() {
         {/* Redes / navegación */}
         <div className={styles.socials}>
           <Link to="/">{t("nav.home")}</Link>
-          <Link to="/Nosotros">{t("nav.about")}</Link>
-          <Link to="/Proyectos">{t("nav.projects")}</Link>
+          <Link to="/nosotros">{t("nav.about")}</Link>
+          <Link to="/proyectos">{t("nav.projects")}</Link>
           <Link to="/entrecalles">{t("nav.entrecalles")}</Link>
           <Link to="/lamco-usa">{t("nav.lamco")}</Link>
           <Link to="/contacto">{t("nav.contact")}</Link>
@@ -47,8 +47,8 @@ export default function Footer() {
         <span>© 2026 CONSTRUCTORA AMCO LTDA. {t("footer.rights")}</span>
 
         <div className={styles.legal}>
-          <Link to="/Tyc">{t("footer.terms")}</Link>
-          <Link to="/Politicaprivacidad">{t("footer.privacy")}</Link>
+          <Link to="/tyc">{t("footer.terms")}</Link>
+          <Link to="/politicaprivacidad">{t("footer.privacy")}</Link>
         </div>
       </div>
     </footer>

@@ -10,7 +10,6 @@ import {
   RiCloseLine,
 } from "react-icons/ri"
 import { Building2 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { useLanguage } from "../../../i18n/LanguageContext";
 
 const Formulario = () => {
@@ -184,11 +183,6 @@ const Formulario = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{t('formulario.meta.title')}</title>
-        <meta name="description" content={t('formulario.meta.description')} />
-        <link rel="canonical" href="https://www.amcoltda.com/contacto" />
-      </Helmet>
 
       {/* HERO SECTION */}
       <div className={styles.heroSection}>
@@ -318,7 +312,7 @@ const Formulario = () => {
                 <h3>
                   {t('formulario.info.phone')} <RiPhoneLine size={18} />
                 </h3>
-                <p>+57 3223351710</p>
+                <p><a href="tel:+573114672067">+57 3114672067</a></p>
               </div>
             </div>
 

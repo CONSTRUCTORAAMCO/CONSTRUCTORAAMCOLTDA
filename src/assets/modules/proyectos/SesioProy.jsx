@@ -1,10 +1,10 @@
 import FechaEntrega from "./FechaEntrega";
 import Reveal from "../../components/animation/Reveal";
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { proyectos } from './dataProyectos';
 import { ubicaciones, departamentoDe } from './ubicaciones';
-import { detalles } from './detalles';
+import { projectResearch, projectMapUrl, localized } from './projectResearch';
 import { useLanguage } from '../../../i18n/LanguageContext';
 import styles from './Proyectos.module.css';
 import Select from 'react-select';
@@ -13,8 +13,9 @@ import { MapPin, ArrowUpRight, SearchX, Building2 } from 'lucide-react';
 // Proyectos enriquecidos
 const proyectosFull = proyectos.map((p) => ({
   ...p,
-  ...(detalles[p.id] || {}),
-  departamento: departamentoDe[p.ubicacion] || null,
+  nombre: projectResearch[p.id]?.title || p.nombre,
+  ubicacion: projectResearch[p.id]?.city || p.ubicacion,
+  departamento: departamentoDe[projectResearch[p.id]?.city || p.ubicacion] || null,
   direccion: ubicaciones[p.id]?.direccion || null,
   lat: ubicaciones[p.id]?.lat,
   lng: ubicaciones[p.id]?.lng,
@@ -105,13 +106,7 @@ const selectStyles = {
 
 const dosLineas = { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' };
 
-const urlMapa = (p) => {
-  let consulta;
-  if (p.lat && p.lng) consulta = `${p.lat},${p.lng}`;
-  else if (p.direccion) consulta = [p.direccion, p.ubicacion, 'Colombia'].filter(Boolean).join(', ');
-  else consulta = [p.nombre, p.ubicacion, 'Colombia'].filter(Boolean).join(', ');
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(consulta)}`;
-};
+const urlMapa = (p) => projectMapUrl(p.id);
 
 const Flecha = ({ dir }) => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ display: 'block', flexShrink: 0 }}>
@@ -133,8 +128,7 @@ const paginasVisibles = (actual, total) => {
 };
 
 const SesioProy = () => {
-  const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const departamentoPredeterminado = useMemo(
     () => ({ ...todosLosDepartamentos, label: t('proyectos.directory.filters.all_departments') }),
     [t]
@@ -430,7 +424,7 @@ const SesioProy = () => {
                     ? t('proyectos.directory.featured')
                     : cap(categoriaKey)
                   : categoriaTraducida;
-              const descripcionTraducida = t(`proyectos.directory.items.${proyecto.id}.description`);
+              const descripcionTraducida = localized(projectResearch[proyecto.id]?.summary, language);
               const etiquetaDato =
                 proyecto.id === 4
                   ? t('proyectos.directory.data.daily_students')
@@ -455,7 +449,7 @@ const SesioProy = () => {
                       {categoriaLabel}
                     </span>
 
-                    {!proyecto.sinUbicacion && (
+                    {projectMapUrl(proyecto.id) && (
                       <a
                         href={urlMapa(proyecto)}
                         target="_blank"
@@ -476,9 +470,7 @@ const SesioProy = () => {
                     </h3>
 
                     <p className="!text-xs sm:!text-sm !font-medium !text-slate-500 !leading-relaxed !mb-4 sm:!mb-5 !min-h-[2.75rem]" style={dosLineas}>
-                      {descripcionTraducida === `proyectos.directory.items.${proyecto.id}.description`
-                        ? proyecto.descripcion
-                        : descripcionTraducida}
+                      {descripcionTraducida}
                     </p>
 
                     {mostrarDato && proyecto.dato && (
@@ -497,9 +489,9 @@ const SesioProy = () => {
                       </div>
                     )}
 
-                    {proyecto.sinUbicacion ? (
+                    {!projectMapUrl(proyecto.id) ? (
                       <span className="!inline-flex !items-center !gap-2 !text-slate-400 !mb-5 sm:!mb-6 !mt-auto !text-xs sm:!text-sm !font-semibold">
-                        <MapPin className="!w-4 !h-4" /> {t('proyectos.directory.location_undefined')}
+                        <MapPin className="!w-4 !h-4" /> {proyecto.ubicacion || t('proyectos.directory.location_undefined')}
                       </span>
                     ) : (
                       <a
@@ -513,16 +505,15 @@ const SesioProy = () => {
                       </a>
                     )}
 
-                    <button
-                      type="button"
-                      onClick={() => navigate(`/proyecto/${proyecto.id}`)}
+                    <Link
+                      to={`/proyecto/${proyecto.id}`}
                       className="!w-full !flex !items-center !justify-between !p-3 sm:!p-4 !bg-slate-50 hover:!bg-amber-400 !rounded-2xl !text-slate-900 !font-bold !text-xs sm:!text-sm !cursor-pointer !transition-colors !duration-300 !border-0"
                     >
                       {t('proyectos.directory.explore')}
                       <span className="!w-7 !h-7 sm:!w-8 sm:!h-8 !rounded-full !bg-white !flex !items-center !justify-center !shadow-sm !overflow-hidden">
                         <ArrowUpRight className="!w-3 !h-3 sm:!w-4 sm:!h-4 !transition-transform !duration-300 group-hover:!translate-x-0.5 group-hover:!-translate-y-0.5" />
                       </span>
-                    </button>
+                    </Link>
                   </div>
                 </article>
               );
@@ -580,6 +571,8 @@ const SesioProy = () => {
             </p>
           </div>
         )}
+
+        <details className="!mt-10 !border-t !border-slate-200 !pt-6"><summary className="!cursor-pointer !text-sm !font-semibold !text-slate-700">{language === 'EN' ? 'All project pages' : language === 'PT' ? 'Todas as páginas de projetos' : 'Todas las fichas de proyectos'}</summary><ul className="!mt-4 !grid sm:!grid-cols-2 lg:!grid-cols-3 !gap-3">{proyectosFull.map(project => <li key={project.id}><Link className="!text-sm !text-slate-600 hover:!underline" to={`/proyecto/${project.id}`}>{project.nombre}</Link></li>)}</ul></details>
       </main>
     </div>
   );
